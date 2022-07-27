@@ -1,0 +1,22 @@
+:root{
+    --navi-height:60px;
+}
+.navi-component{
+background-color:#7c14a8;
+display: flex;
+position: relative;
+height: var(--navi-height);
+margin-bottom: 5px;
+padding: 0px 10px 0px 10px;
+color: white;
+align-items: center;
+box-shadow: 5px 5px 18px grey ;
+}
+.navi-items-general-div{
+    background-color: yellow;
+    width: 100%;
+    height: cla;
+}
+.brand-name-for-navi{
+    color: black;
+}

@@ -1,13 +1,14 @@
 :root {
     --navi-height: 60px;
+    --navi-color:#7c14a8
 }
 
 .navi-component {
-    background-color: #7c14a8;
+    background-color: var(--navi-color);
     display: flex;
     position: relative;
     height: var(--navi-height);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     padding: 0px 10px 0px 10px;
     align-items: center;
     box-shadow: 5px 5px 10px rgb(174, 171, 171);
@@ -44,7 +45,7 @@
 .navi-avatar {
     position: absolute;
     right: 2%;
-    border: 3px white solid;
+    border: 2px black solid;
     border-radius: 100%;
 }
 

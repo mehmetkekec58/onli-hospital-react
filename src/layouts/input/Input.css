@@ -1,15 +1,19 @@
 .search-input {
-    border-radius: 5px;
+    border-radius: 3px;
     border: none;
     width: 85%;
     min-width: 50px;
     height: 33px;
+    padding-left: 10px;
+    font-family: 'Ubuntu';
 }
 
 .search-input:focus {
-    border-radius: 5px;
     outline: none;
 }
+input:focus::placeholder {
+    color: transparent;
+  }
 
 .search-input-form {
     padding: 5px 5px 5px 5px;
@@ -21,11 +25,11 @@
 
 .search-button {
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     margin-left: 2px;
     height: 33px;
     width: 13%;
-    background-color: rgb(226, 233, 19);
+    background-color: #ffd740;
     color: black;
     font-size: large;
 }
@@ -36,18 +40,11 @@
 }
 @media only screen and (max-width: 600px) {
     .search-button {
-        border: none;
-        border-radius: 5px;
-        margin-left: 2px;
         height: 33px;
         width: 13%;
-        background-color: rgb(226, 233, 19);
-        color: black;
         font-size: small;
     }
     .search-input {
-        border-radius: 5px;
-        border: none;
         width: 65%;
         min-width: 50px;
         height: 33px;
@@ -59,19 +56,12 @@
 @media only screen and (max-width: 460px) {
 
     .search-button {
-        border: none;
-        border-radius: 5px;
-        margin-left: 2px;
         height: 33px;
         width: 16%;
-        background-color: rgb(226, 233, 19);
-        color: black;
         font-size: small;
         padding: 2px 2px 2px 2px;
     }
     .search-input {
-        border-radius: 5px;
-        border: none;
         width: 65%;
         min-width: 20px;
         height: 33px;

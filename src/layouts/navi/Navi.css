@@ -1,21 +1,105 @@
-:root{
-    --navi-height:60px;
+:root {
+    --navi-height: 60px;
 }
-.navi-component{
-background-color:#7c14a8;
-display: flex;
-position: relative;
-height: var(--navi-height);
-margin-bottom: 5px;
-padding: 0px 10px 0px 10px;
-align-items: center;
-box-shadow: 5px 5px 18px grey ;
+
+.navi-component {
+    background-color: #7c14a8;
+    display: flex;
+    position: relative;
+    height: var(--navi-height);
+    margin-bottom: 5px;
+    padding: 0px 10px 0px 10px;
+    align-items: center;
+    box-shadow: 5px 5px 10px rgb(174, 171, 171);
 }
-.navi-items-general-div{
-    background-color: yellow;
+
+.navi-items-general-div {
     width: 100%;
+    align-items: center;
+    display: flex;
+    padding: 1px 10px 1px 10px;
     height: calc(var(--navi-height) - 20px);
 }
-.brand-name-for-navi{
+
+.brand-name-for-navi {
+    color: white;
+    position: absolute;
+    left: 60px;
+    font-weight: bold;
+    font-size: large;
+    font-family: 'Mochiy Pop One';
+}
+
+.navi-icon-for-drawer-open {
+    position: absolute;
+    left: 15px;
+}
+
+.navi-input {
+    position: absolute;
+    left: 32%;
+    width: 40%;
+}
+
+.navi-avatar {
+    position: absolute;
+    right: 2%;
+    border: 3px white solid;
+    border-radius: 100%;
+}
+
+.navi-first-search-icon {
+    position: absolute;
+    right: 6%;
     color: black;
+}
+
+@media only screen and (max-width: 800px) {
+    .navi-input {
+        position: absolute;
+        left: 35%;
+        width: 50%;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .brand-name-for-navi {
+        font-size: medium;
+
+    }
+
+    .navi-input {
+        left: 40%;
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .brand-name-for-navi {
+        left: 50px;
+        font-size: small;
+
+    }
+
+    .navi-input {
+        left: 40%;
+        width: 50%;
+    }
+
+
+}
+
+@media only screen and (max-width: 330px) {
+
+    .brand-name-for-navi {
+        display: none;
+    }
+
+    .navi-input {
+        left: 22%;
+        width: 70%;
+    }
+
+
 }

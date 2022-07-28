@@ -11,9 +11,10 @@
 .search-input:focus {
     outline: none;
 }
+
 input:focus::placeholder {
     color: transparent;
-  }
+}
 
 .search-input-form {
     padding: 5px 5px 5px 5px;
@@ -33,26 +34,34 @@ input:focus::placeholder {
     color: black;
     font-size: large;
 }
-.search-icon{
+
+.search-button:disabled {
+    opacity: 0.8;
+}
+
+.search-icon {
     font-size: large;
     width: 100px;
     height: 100px;
 }
+
 @media only screen and (max-width: 600px) {
     .search-button {
         height: 33px;
         width: 13%;
         font-size: small;
     }
+
     .search-input {
         width: 65%;
         min-width: 50px;
         height: 33px;
     }
-    
 
-    
+
+
 }
+
 @media only screen and (max-width: 460px) {
 
     .search-button {
@@ -61,6 +70,7 @@ input:focus::placeholder {
         font-size: small;
         padding: 2px 2px 2px 2px;
     }
+
     .search-input {
         width: 65%;
         min-width: 20px;

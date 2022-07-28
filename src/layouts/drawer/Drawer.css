@@ -1,0 +1,78 @@
+.drawer-general-div {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 70px);
+}
+
+.drawer-item-container {
+    display: flex;
+    width: calc(95%);
+    border-radius: 10px;
+    align-items: center;
+    margin: 7px 7px 10px 7px;
+    padding: 5px 5px 5px;
+}
+
+.drawer-item-container-when-close-drawer {
+    display: flex;
+    width: 95%;
+    border-radius: 10px;
+    align-items: center;
+    margin: 7px 7px 10px 7px;
+    padding: 5px 5px 5px;
+}
+
+.drawer-item-container:hover {
+    background-color: #e4dada;
+    border-radius: 10px;
+}
+
+.drawer-menu-icon {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: large;
+    background-color: #ffd740;
+    padding: 5px;
+    border-radius: 10px;
+}
+.drawer-menu-icon-when-close-drawer {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: large;
+    background-color: #ffd740;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.drawer-menu-icon-when-close-drawer:hover {
+    background-color: #e6c036;
+}
+
+.drawer-menu-text {
+    margin-left: 5px;
+    font-size: large;
+    font-family: 'Open Sans';
+    font-weight: 600;
+
+}
+
+
+::-webkit-scrollbar {
+    width: 7px;
+
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px white;
+    border-radius: 100%;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(168, 168, 167);
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #929191;
+}

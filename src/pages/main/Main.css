@@ -1,12 +1,17 @@
-.grid-container{
+.grid-container1{
    display: grid; 
-   grid-template-columns: 240px calc(100vw - 240px);
+   grid-template-columns: 240px calc(100vw - 240px) ;
    height: calc(100vh - 65px);
 }
+.grid-container2{
+    display: grid; 
+    grid-template-columns: 65px calc(100vw - 65px) ;
+    height: calc(100vh - 65px);
+ }
 .grid-item {
-    background-color: #44ff6c;
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(170, 167, 167, 0.8);
     padding: 2px 2px 2px 2px;
-    font-size: 30px;
-    text-align: center;
+  }
+  .grid-display{
+    display: none;
   }

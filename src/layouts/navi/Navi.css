@@ -1,6 +1,6 @@
 :root {
     --navi-height: 60px;
-    --navi-color:#7c14a8
+    --navi-color: #7c14a8;
 }
 
 .navi-component {
@@ -28,12 +28,19 @@
     left: 60px;
     font-weight: bold;
     font-size: large;
-    font-family: 'Mochiy Pop One';
+    font-family: 'Comfortaa';
 }
 
 .navi-icon-for-drawer-open {
     position: absolute;
     left: 15px;
+
+}
+
+.navi-icon-for-drawer-open:active {
+    background-color: rgb(199, 189, 189, 0.2);
+    border-radius: 5px;
+
 }
 
 .navi-input {
@@ -45,8 +52,7 @@
 .navi-avatar {
     position: absolute;
     right: 2%;
-    border: 2px black solid;
-    border-radius: 100%;
+
 }
 
 .navi-first-search-icon {

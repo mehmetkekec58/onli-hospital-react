@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navi from '../../layouts/navi/Navi'
 import { Route, Routes } from 'react-router-dom';
 import Home from '../home/Home';
@@ -8,12 +8,13 @@ import Profile from '../profile/Profile';
 import "./Main.css";
 
 const Main = () => {
+  const [openDrawer, setOpenDrawer] = useState<boolean>(true);
+
   return (
     <div>
-      <Navi />
-
-      <div className='grid-container'>
-        <div className='grid-item'> <Drawer /></div>
+      <Navi setOpenDrawer={setOpenDrawer} openDrawer={openDrawer} />
+      <div className={openDrawer? "grid-container1" : "grid-container2"}>
+        <div  className='grid-item'> <Drawer openDrawer={openDrawer} /></div>
         <div className='grid-item'>
           <Routes>
             <Route index element={<Home />} />

@@ -1,0 +1,12 @@
+.grid-container{
+   display: grid; 
+   grid-template-columns: 240px calc(100vw - 240px);
+   height: calc(100vh - 65px);
+}
+.grid-item {
+    background-color: #44ff6c;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 2px 2px 2px 2px;
+    font-size: 30px;
+    text-align: center;
+  }

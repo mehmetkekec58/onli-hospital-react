@@ -9,7 +9,7 @@
     position: relative;
     height: var(--navi-height);
     margin-bottom: 3px;
-    padding: 0px 10px 0px 10px;
+    padding: 0px 10px;
     align-items: center;
     box-shadow: 5px 5px 10px rgb(174, 171, 171);
 }
@@ -18,7 +18,7 @@
     width: 100%;
     align-items: center;
     display: flex;
-    padding: 1px 10px 1px 10px;
+    padding: 1px 10px;
     height: calc(var(--navi-height) - 20px);
 }
 

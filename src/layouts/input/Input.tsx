@@ -8,6 +8,7 @@ const containSearchUrl: string = "search?q=";
 const enter: string = "Enter";
 
 const Input = () => {
+    const searchList: string[] = ["kanser nedir", "yaz mevsimi hastalıkları", "Grip nasıl geçer", "renk körü", "yorgunluk"];
 
     let navigate = useNavigate();
 
@@ -34,9 +35,13 @@ const Input = () => {
     return (
         <div className='search-input-form'>
             <input onChange={(e) => setInputText(e.target.value)} className="search-input" placeholder={containTexts.search} type="text" onKeyDown={handleKeyDown} />
-            <button  disabled={inputTextNullOrEmpty()? true : false} onClick={handleSearchButton} className='search-button' ><SearchIcon className='search-icon' /></button>
+            <ul className='search-input-recommended'>
+                {searchList.map(word => (
+                    <li className='search-input-recommended-item'>{word}</li>
+                ))}
+            </ul>
+            <button disabled={inputTextNullOrEmpty() ? true : false} onClick={handleSearchButton} className='search-button' ><SearchIcon className='search-icon' /></button>
         </div>
     )
 }
-
 export default Input

@@ -1,0 +1,41 @@
+.home-general-div {
+    height: calc(100vh - 70px);
+    padding: 7px 15px;
+    font-family: 'Open Sans';
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+
+}
+
+.home-container {
+    width: 100%;
+}
+
+.home-most-read-card-home-most-read-text {
+    margin-left: 18px;
+    font-family: 'Open Sans';
+    font-size: medium;
+    font-weight: 600;
+}
+.home-most-read-card-div{
+    height: 100%;
+}
+.home-grid-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    padding: 5px;
+  }
+  .home-grid-item {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+  }
+  @media only screen and (max-width: 800px) {
+    .home-grid-container {
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+   
+      }
+  }

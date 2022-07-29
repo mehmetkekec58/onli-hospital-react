@@ -7,7 +7,26 @@
     padding-left: 10px;
     font-family: 'Ubuntu';
 }
-
+.search-input-recommended{
+    width: 33.5%;
+    height: 50%;
+    top: 46px;
+    border-radius: 2px;
+    position: fixed;
+    background-color: rgb(245, 249, 249);
+    list-style-type: none;
+    display: none;
+   
+}
+.search-input-recommended-item{
+    width: 95%;
+    height: 30px;
+    margin-top: 10px;
+    font-weight: 600;
+    border-bottom: 1px rgba(211, 210, 210, 0.6) solid;
+    
+    
+}
 .search-input:focus {
     outline: none;
 }

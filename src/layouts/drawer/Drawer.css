@@ -10,7 +10,7 @@
     border-radius: 10px;
     align-items: center;
     margin: 7px 7px 10px 7px;
-    padding: 5px 5px 5px;
+    padding: 5px 5px 5px 0px;
 }
 
 .drawer-item-container-when-close-drawer {
@@ -19,7 +19,7 @@
     border-radius: 10px;
     align-items: center;
     margin: 7px 7px 10px 7px;
-    padding: 5px 5px 5px;
+    padding: 5px 5px 5px 0px;
 }
 
 .drawer-item-container:hover {

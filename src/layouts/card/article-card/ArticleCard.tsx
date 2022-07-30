@@ -1,7 +1,7 @@
 import React from 'react'
-import ArticleModel from '../../models/articleModel'
+import ArticleModel from '../../../models/articleModel'
 import "./ArticleCard.css";
-import selectCharacterHelper from '../../helpers/selectCharacterHelper'
+import selectCharacterHelper from '../../../helpers/selectCharacterHelper'
 import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
 import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';

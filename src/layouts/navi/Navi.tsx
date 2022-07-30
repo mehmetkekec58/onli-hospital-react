@@ -23,7 +23,7 @@ const Navi: React.FC<Props> = ({ openDrawer, setOpenDrawer }: Props) => {
         <div onClick={handleOpenOrCloseDrawer} className='navi-icon-for-drawer-open'><MenuIcon sx={{ color: 'white' }} /></div>
         <div className='brand-name-for-navi'>  <Link style={{ textDecoration: 'none', color: 'white' }} to="/">{containTexts.brandName}</Link></div>
         <div className='navi-input'><Input /></div>
-        <div className='navi-avatar'><Avatar alt={userFullName} src={profilePhotoUrl} sx={{ backgroundColor: '#ffd740', border: '2px black solid', color: 'black', fontWeight: 'bold', width: 45, height: 45 }} /></div>
+        <div className='navi-avatar'><Avatar alt={userFullName} src={profilePhotoUrl} sx={{ backgroundColor: '#ffd740', border: '2px white solid', color: 'black', fontWeight: 'bold', width: 45, height: 45 }} /></div>
 
       </div>
 

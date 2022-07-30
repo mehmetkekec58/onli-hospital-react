@@ -3,6 +3,7 @@ import "./Input.css"
 import SearchIcon from '@mui/icons-material/Search';
 import { containTexts } from '../../contains/containTexts';
 import { Link, useNavigate } from 'react-router-dom';
+import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
 
 const containSearchUrl: string = "search?q=";
 const enter: string = "Enter";
@@ -65,7 +66,7 @@ const Input = () => {
             <input onBlur={handleActiveSearchItems} onFocus={handleActiveSearchItems} value={inputText} onChange={(e) => setInputText(e.target.value)} className="search-input" placeholder={containTexts.search} type="text" onKeyDown={handleKeyDown} />
             <ul style={{ ...(!inputOnFocus && { display: 'none' }) }} className='search-input-recommended'>
                 {searchListItems.map((word, index) => (
-                    <Link style={{ textDecoration: 'none', color: 'black' }} onClick={(e) => handleActiveSearchItemsClick(word)} key={index} to={`search?q=${word}`}><li className='search-input-recommended-item'>{word}</li></Link>
+                    <Link style={{ textDecoration: 'none', color: 'black' }} onClick={(e) => handleActiveSearchItemsClick(word)} key={index} to={`search?q=${word}`}><li className='search-input-recommended-item'><HistoryOutlinedIcon style={{marginRight:'5px'}}/>{word}</li></Link>
                 ))}
             </ul>
             <button disabled={inputTextNullOrEmpty() ? true : false} onClick={handleSearchButton} className='search-button' ><SearchIcon className='search-icon' /></button>

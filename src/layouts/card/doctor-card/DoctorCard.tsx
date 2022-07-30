@@ -1,6 +1,6 @@
 import React from 'react'
-import selectCharacterHelper from '../../helpers/selectCharacterHelper'
-import DoctorModel from '../../models/doctorModel'
+import selectCharacterHelper from '../../../helpers/selectCharacterHelper'
+import DoctorModel from '../../../models/doctorModel'
 import "./DoctorCard.css"
 import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
 interface Props {
@@ -17,7 +17,7 @@ const DoctorCard: React.FC<Props> = ({ doctor }: Props) => {
       <div className='doctor-card-branch'>{doctor.branch}</div>
       <div className='doctor-card-about'>{selectCharacterHelper(doctor.about)}</div>
       <div className='doctor-card-operations-icons'>
-        <div className='doctor-card-follow-button doctor-card-follow'>Takip Et</div>
+        <div className={doctor.userId % 2 ===1 ? 'doctor-card-follow-button doctor-card-follow': 'doctor-card-follow-button doctor-card-unfollow'}>{doctor.userId % 2 ===1 ? "Takip et" : "Takibi bırak"}</div>
       </div>
 
     </div>

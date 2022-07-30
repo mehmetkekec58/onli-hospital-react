@@ -1,6 +1,6 @@
 import React from 'react'
-import ArticleModel from '../../models/articleModel'
-import ArticleCard from '../article-card/ArticleCard'
+import ArticleModel from '../../../models/articleModel'
+import ArticleCard from '../../card/article-card/ArticleCard'
 import "./GridListCard.css"
 
 interface Props{

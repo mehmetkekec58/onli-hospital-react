@@ -1,12 +1,15 @@
 import React from 'react'
-import ArticleCard from '../../layouts/article-card/ArticleCard'
+import DoctorCard from '../../layouts/doctor-card/DoctorCard';
+import GridListCard from '../../layouts/grid-list-card/GridListCard';
+import GridListDoctorCard from '../../layouts/grid-list-doctor-card/GridListDoctorCard';
 import ArticleModel from '../../models/articleModel';
+import DoctorModel from '../../models/doctorModel';
 import "./Home.css";
 
 const articles: ArticleModel[] = [
   {
     articleId: 0,
-    thumbnailUrl: "https://docsd.anadolusaglik.org/blog/crops/600x340/kanser_nedir_54682.jpg",
+    thumbnailUrl: "http://drmustafasener.com/2018/10/kanser-hucresi-vucutta-nasil-beslenir.jpeg",
     username: "mehmetkekec",
     profilePhotoUrl: "https://pbs.twimg.com/profile_images/1523976377074163713/hRUFPi6z_400x400.jpg",
     firstName: "Mehmet",
@@ -59,25 +62,64 @@ const articles: ArticleModel[] = [
     text: "Bronşiol olarak adlandırılan küçük hava keseciklerinin enfeksiyonu sonucu ortaya çıkan iltihaplanma, keseciklerde daralmaya neden olur ve bunun sonucunda akciğer kapasitesi büyük oranda azalır. Sıklıkla iki yaş altı çocuklarda meydana gelen ve alt solunum yollarının en sık görülen rahatsızlığı olan bu olgu Akut Bronşit Hastalığı olarak tanımlanır. Sıklıkla viral patojenlerin yol açtığı bu hastalıktan yüzde 50 oranında Respiratuvar Sinsisyal Virüs (RSV) sorumludur",
     tag: ["Bronş", "Bronşit", "Bronşit tedavisi"],
   },
+]
 
-
-
+const doctors:DoctorModel[] = [
+  {
+    userId:0,
+    firstName:"Mehmet",
+    lastName:"Kekeç",
+    profilePhotoUrl:"https://pbs.twimg.com/profile_images/1523976377074163713/hRUFPi6z_400x400.jpg",
+    username:"mehmetkekec",
+    branch:"Admin",
+    about:"Merhaba ben Mehmet Kekeç. Onli Hospital'in kurucusu.",
+  },
+  {
+    userId:2,
+    firstName:"Aslı",
+    lastName:"Keser",
+    profilePhotoUrl:"https://cdn.psychologytoday.com/sites/default/files/styles/article-inline-half-caption/public/field_blog_entry_images/2018-09/shutterstock_648907024.jpg?itok=0hb44OrI",
+    username:"aslıkeser",
+    branch:"Diyetisyen",
+    about:"Merhaba ben Aslı. 8 yıldır diyetsyen olarak çalışıyorum.",
+  },
+  {
+    userId:3,
+    firstName:"Veli",
+    lastName:"Özmen",
+    profilePhotoUrl:"https://4bgowik9viu406fbr2hsu10z-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Portrait_5-1.jpg",
+    username:"veliozmen",
+    branch:"Dahiliye Doktoru",
+    about:"merhaba ben Cerrahpaşa'da dahiliye doktoru olarak çalıyorum.",
+  },
+  {
+    userId:4,
+    firstName:"Veli",
+    lastName:"Özmen",
+    profilePhotoUrl:"https://4bgowik9viu406fbr2hsu10z-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Portrait_5-1.jpg",
+    username:"veliozmen",
+    branch:"Dahiliye Doktoru",
+    about:"merhaba ben Cerrahpaşa'da dahiliye doktoru olarak çalıyorum.",
+  },
+  {
+    userId:5,
+    firstName:"Veli",
+    lastName:"Özmen",
+    profilePhotoUrl:"https://4bgowik9viu406fbr2hsu10z-wpengine.netdna-ssl.com/wp-content/uploads/2020/03/Portrait_5-1.jpg",
+    username:"veliozmen",
+    branch:"Dahiliye Doktoru",
+    about:"merhaba ben Cerrahpaşa'da dahiliye doktoru olarak çalıyorum.",
+  },
 ]
 
 const Home = () => {
   return (
     <div className='home-general-div'>
       <div className='home-container'>
-        <div className='home-most-read-card-home-most-read-text'>En Çok Okunanlar:</div>
-        <div className='home-most-read-card-div'>
-          <div className="home-grid-container">
-
-            {articles.map((article) => (
-              <div className="home-grid-item"> <ArticleCard article={article} /></div>
-            ))}
-          </div>
-        </div>
-        <div className='home-most-read-card-home-most-read-text'>En Çok Okunanlar:</div>
+      <div className='home-most-read-card-home-most-read-text'>En Çok Okunanlar:</div> 
+         <GridListCard articles={articles}/>  
+        <div className='home-most-read-card-home-most-read-text'>Popüler Doktorlar:</div>
+     <GridListDoctorCard doctors={doctors} />
       </div>
     </div>
   )

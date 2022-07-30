@@ -1,6 +1,6 @@
 .grid-container1 {
   display: grid;
-  grid-template-columns: 240px calc(100vw - 240px);
+  grid-template-columns: 210px calc(100vw - 210px);
   height: calc(100vh - 65px);
 }
 

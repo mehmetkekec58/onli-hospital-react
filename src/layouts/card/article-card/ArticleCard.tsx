@@ -18,14 +18,14 @@ const ArticleCard: React.FC<Props> = ({ article }: Props) => {
             <div className='article-card-user-info'>
                 <img alt={article.firstName} className='article-card-user-info-avatar' src={article.profilePhotoUrl} />
                 <div className='article-card-user-info-full-name-username'>
-                    <div className='article-card-user-info-full-name'>{article.firstName} {article.lastName} <VerifiedOutlinedIcon style={{color:'#3fbdeb'}}/></div>
+                    <div className='article-card-user-info-full-name'>{selectCharacterHelper( `${article.firstName} ${article.lastName}`,13)} </div>
                     <div className='article-card-user-info-username'>@{article.username}</div>
                 </div>
-                <div className='article-card-user-info-date'>1 ay önce</div>
+                <div className='article-card-user-info-date'>3 hafta önce</div>
             </div>
             <img alt={article.title} className='article-card-thumbnail-image' src={article.thumbnailUrl} />
             <h4 className='article-card-article-title'>{article.title}</h4>
-           <div className='article-card-article-text'>{selectCharacterHelper(article.text)}</div> 
+           <div className='article-card-article-text'>{selectCharacterHelper(article.text,120)}</div> 
            <div className='article-card-operations-icons'>
            <div style={{...(article.articleId % 2 === 0 && {color:'red'})}}> {article.articleId % 2 === 1 ?    <FavoriteBorderOutlinedIcon/>  :<FavoriteIcon/>}</div>
            <div style={{color:'#ab1bc4'}}>{article.articleId % 2 === 0 ? <BookmarkOutlinedIcon/>  :<BookmarkBorderOutlinedIcon/>}</div>

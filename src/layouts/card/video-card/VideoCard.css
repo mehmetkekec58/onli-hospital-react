@@ -1,0 +1,120 @@
+.video-card {
+    background-color: rgba(197, 190, 197, 0.2);
+    width: 330px;
+    height: 400px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgb(201, 198, 198);
+}
+
+.video-card:hover {
+    background-color: rgb(255, 4, 4);
+    color: white;
+}
+
+.video-card-user-info {
+    display: flex;
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 3px;
+
+}
+
+.video-card-thumbnail-image {
+    height: 200px;
+    width: 99%;
+    margin: 5px 0px;
+    border-radius: 3px;
+    position: relative;
+
+}
+
+.video-card-user-info-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-right: 5px;
+    border: 2px #ab1bc4 solid;
+
+}
+
+.video-card-user-info-full-name-username {
+    margin-left: 10px;
+    text-align: left;
+    padding: 0px 5px;
+    height: 50px;
+    overflow: hidden;
+
+}
+
+.video-card-user-info-full-name {
+    font-weight: bold;
+    font-size: small;
+
+}
+
+.video-card-user-info-username {
+    font-size: small;
+
+}
+
+.video-card-user-info-date {
+    font-size: small;
+    font-family: 'Open Sans';
+    margin-top: 5px;
+    float: right;
+    height: 20px;
+    width: 30%;
+    text-align: center;
+    padding: 2px 2px;
+    border-radius: 5px;
+    background-color: rgb(162, 165, 168, 0.25);
+
+}
+
+.video-card-article-title {
+    font-weight: bold;
+    font-size: 22px;
+    height: 80px;
+    overflow: hidden;
+    text-align: center;
+    padding: 1px;
+    position: relative;
+    bottom: 95px;
+
+
+
+}
+.video-card-play-icon{
+position: relative;
+bottom: 160px;;
+left: 95px;
+display: inline-flex;
+}
+
+
+
+
+@media only screen and (max-width: 1300px) {
+
+    .video-card-user-info-date {
+    font-size: 11px;
+    overflow: hidden;
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+
+    .video-card-user-info-full-name {
+        font-size: 11px;
+    
+    }
+    
+    .video-card-user-info-username {
+        font-size: 10px;
+    
+    }
+
+}

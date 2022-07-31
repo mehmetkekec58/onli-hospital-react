@@ -8,4 +8,5 @@ export default interface ArticleModel {
     title:string;
     text:string;
     tag:string[];
+    date:Date;
 }

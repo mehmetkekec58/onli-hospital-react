@@ -15,7 +15,7 @@ const DoctorCard: React.FC<Props> = ({ doctor }: Props) => {
       <h4 className='doctor-card-first-name-last-name'>{doctor.firstName} {doctor.lastName} <VerifiedOutlinedIcon style={{color:'#3fbdeb'}}/></h4>
       <div className='doctor-card-username'>@{doctor.username}</div>
       <div className='doctor-card-branch'>{doctor.branch}</div>
-      <div className='doctor-card-about'>{selectCharacterHelper(doctor.about)}</div>
+      <div className='doctor-card-about'>{selectCharacterHelper(doctor.about,120)}</div>
       <div className='doctor-card-operations-icons'>
         <div className={doctor.userId % 2 ===1 ? 'doctor-card-follow-button doctor-card-follow': 'doctor-card-follow-button doctor-card-unfollow'}>{doctor.userId % 2 ===1 ? "Takip et" : "Takibi bırak"}</div>
       </div>

@@ -1,5 +1,4 @@
-export default function selectCharacterHelper(text: string): string {
-    let number: number = 120
+export default function selectCharacterHelper(text: string, number:number): string {
     return text.length > number ? `${substringText(text, number)}...` : text
 }
 function substringText(text: string, number: number): string {

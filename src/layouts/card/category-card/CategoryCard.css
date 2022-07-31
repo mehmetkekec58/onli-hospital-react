@@ -1,0 +1,44 @@
+.category-card {
+    background-color: rgba(197, 190, 197, 0.2);
+    width: 250px;
+    height: 350px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgb(201, 198, 198);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    flex-direction: column;
+    font-family: 'Open Sans';
+}
+
+.category-card:hover {
+    background-color: rgb(58, 166, 233);
+    color: white;
+}
+
+
+.category-card-photo {
+    height: 75%;
+    width: 90%;
+    display: flex;
+    margin: 5px 0px;
+    border-radius: 10px;
+    box-shadow: 2px 3px 3px rgb(183, 177, 177);
+    position: relative;
+    left: 5%;
+    bottom: 5px;
+   
+
+}
+
+.category-card-name {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    padding: 1px;
+    height: 20%;
+    overflow: hidden;
+}

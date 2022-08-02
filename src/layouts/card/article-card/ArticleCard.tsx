@@ -7,6 +7,7 @@ import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
+import {containTexts} from "../../../contains/containTexts"
 
 interface Props {
     article: ArticleModel
@@ -30,7 +31,7 @@ const ArticleCard: React.FC<Props> = ({ article }: Props) => {
            <div style={{...(article.articleId % 2 === 0 && {color:'red'})}}> {article.articleId % 2 === 1 ?    <FavoriteBorderOutlinedIcon/>  :<FavoriteIcon/>}</div>
            <div style={{color:'#ab1bc4'}}>{article.articleId % 2 === 0 ? <BookmarkOutlinedIcon/>  :<BookmarkBorderOutlinedIcon/>}</div>
           
-           <div className='article-card-read-more'>Devamını Oku</div>
+           <div className='article-card-read-more'>{containTexts.readMore}</div>
            </div>
            
         </div>

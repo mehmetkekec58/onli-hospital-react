@@ -8,7 +8,7 @@
     display: flex;
     position: relative;
     height: var(--navi-height);
-    margin-bottom: 3px;
+    margin-bottom: 0px;
     padding: 0px 10px;
     align-items: center;
     box-shadow: 5px 5px 10px rgb(174, 171, 171);

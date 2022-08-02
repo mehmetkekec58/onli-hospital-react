@@ -6,9 +6,11 @@ import Search from '../search/Search';
 import Drawer from '../../layouts/drawer/Drawer';
 import Profile from '../profile/Profile';
 import "./Main.css";
+import Login from '../login/Login';
+import Register from '../register/Register';
 
 const Main = () => {
-  const [openDrawer, setOpenDrawer] = useState<boolean>(true);
+  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
 
   return (
     <div>
@@ -19,7 +21,27 @@ const Main = () => {
           <Routes>
             <Route index element={<Home />} />
             <Route path='/search' element={<Search />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/category/:id' element={<Search />} />
+            <Route path='/video/:id' element={<Search />} />
+            <Route path='/purse' element={<Search />} />
+            <Route path='/buycredit' element={<Search />} />
+            <Route path='/history' element={<Search />} />
+            <Route path='/readinglist' element={<Search />} />
+            <Route path='/settings' element={<Search />} />
+            <Route path='/about' element={<Search />} />
+            <Route path='/videochat/:id' element={<Search />} />
+            <Route path='/resetpassword' element={<Search />} />
+            <Route path='/chat'>
+              <Route index element={<Search />} />
+              <Route path=':id' element={<Search />} />
+            </Route>
+            <Route path='/profile/:username'>
+              <Route index element={<Profile />} />
+              <Route path='update' element={<Profile />} />
+            </Route>
+            <Route path='/*' element={<Search />} />
           </Routes>
         </div>
       </div>

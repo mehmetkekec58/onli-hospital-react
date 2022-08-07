@@ -9,7 +9,7 @@
 }
 .search-input-recommended{
     width: 33.5%;
-    height: 50%;
+    height: 260px;
     top: 46px;
     justify-content: center;
     border-bottom-left-radius: 10px;
@@ -32,6 +32,7 @@
     margin: 5px 0px;
     font-weight: 600;
     overflow: hidden;
+    cursor:pointer;
     
     
 }

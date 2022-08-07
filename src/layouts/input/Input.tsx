@@ -2,17 +2,18 @@ import React, { useEffect, useRef, useState } from 'react'
 import "./Input.css"
 import SearchIcon from '@mui/icons-material/Search';
 import { containTexts } from '../../contains/containTexts';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const containSearchUrl: string = "search?q=";
 const enter: string = "Enter";
 
 const Input = () => {
 
-
     let navigate = useNavigate();
-    const [searchList] = useState<string[]>(["kanser nedir", "yaz mevsimi hastalıkları", "Grip nasıl geçer", "renk körü", "yorgunluk"])
+    const [searchList] = useState<(string[])>(["kanser nedir", "yaz mevsimi hastalıkları", "Grip nasıl geçer", "renk körü", "yorgunluk", "Kışın nasıl giysiler giyilmeli", "Boyun ağrısı egzersizleri", "Baş ağrısı"])
+    const [searchHistory, setSearchHistory] = useState<string[]>([])
     const inputRef = useRef<HTMLInputElement>(null);
     const [inputText, setInputText] = useState<string>("")
     const [inputOnFocus, setInputOnFocus] = useState<boolean>(false);
@@ -20,20 +21,24 @@ const Input = () => {
 
     useEffect(() => {
         if (inputText !== "") {
-            setsearchListItems(searchList.filter((item) => (item.toLocaleLowerCase().includes(inputText.toLocaleLowerCase())) && item))
+            setsearchListItems(searchFilter())
         } else {
-            setsearchListItems(searchList);
+            setsearchListItems(searchHistory.slice(0, 7));
         }
     }, [inputText])
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
         if (event.key === enter) {
-            inputRef.current?.blur();
-            goSearchPage()
+            if(!inputTextNullOrEmpty()){
+                inputRef.current?.blur();
+                directGoSearchPage(inputText)
+            }
+         
         }
+
     }
     const handleSearchButton = () => {
-        goSearchPage()
+        goSearchPage(inputText)
     }
     const handleActiveOrPassiveSearchItems = () => {
         setTimeout(inputFocusChangeValue, 100)
@@ -43,10 +48,21 @@ const Input = () => {
     const handleSearchItemsClick = (letters: string) => {
         setInputText(letters)
         inputFocusChangeValue()
+        directGoSearchPage(letters)
+
     }
-    function goSearchPage() {
+    function goSearchPage(letters: string) {
         if (!inputTextNullOrEmpty()) {
-            navigate(`${containSearchUrl}${inputText}`)
+            directGoSearchPage(letters)
+        }
+    }
+    function directGoSearchPage(letters: string) {
+        addSearchHistory(letters)
+        navigate(`${containSearchUrl}${letters}`)
+    }
+    function addSearchHistory(letters: string) {
+        if (!searchHistoryIncludeLetters(letters)) {
+            setSearchHistory([...searchHistory, letters])
         }
     }
     function inputFocusChangeValue() {
@@ -56,13 +72,21 @@ const Input = () => {
     function inputTextNullOrEmpty(): boolean {
         return inputText === "" || inputText === null;
     }
+    function searchFilter(): string[] {
+        let list = (searchHistory.filter((item) => (item.toLocaleLowerCase().includes(inputText.toLocaleLowerCase())) && item)).concat(searchList.filter((item) => (item.toLocaleLowerCase().includes(inputText.toLocaleLowerCase())) && item))
+        return (list.filter((c, index) => { return list.indexOf(c) === index; })).slice(0, 7)
+    }
+    function searchHistoryIncludeLetters(letters: string): boolean {
+        return searchHistory.includes(letters);
+    }
+
     return (
         <div className='search-input-form'>
             <input ref={inputRef} onBlur={handleActiveOrPassiveSearchItems} onFocus={handleActiveOrPassiveSearchItems} value={inputText} onChange={(e) => setInputText(e.target.value)} className="search-input" placeholder={containTexts.search} type="text" onKeyDown={handleKeyDown} />
             {searchListItems.length !== 0 &&
                 (<ul style={{ ...(!inputOnFocus && { display: 'none' }) }} className='search-input-recommended'>
                     {searchListItems.map((word, index) => (
-                        <Link style={{ textDecoration: 'none', color: 'black' }} onClick={(e) => handleSearchItemsClick(word)} key={index} to={`search?q=${word}`}><li className='search-input-recommended-item'><HistoryOutlinedIcon style={{ marginRight: '5px' }} />{word}</li></Link>
+                        <li key={index} onClick={(e) => handleSearchItemsClick(word)} className='search-input-recommended-item'>{!searchHistoryIncludeLetters(word) ? <SearchOutlinedIcon style={{ marginRight: '5px' }} /> : <HistoryOutlinedIcon style={{ marginRight: '5px' }} />}{word}</li>
                     ))}
                 </ul>)
             }

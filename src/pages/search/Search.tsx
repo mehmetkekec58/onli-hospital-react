@@ -3,12 +3,11 @@ import { useSearchParams } from 'react-router-dom';
 
 const Search = () => {
 
-  const [searchParams, getSearchParams] = useSearchParams();
-  
+  const [searchParams] = useSearchParams();
+
   return (
     <div>Search 
       <div>{searchParams.get("q")}</div>
-      
     </div>
   )
 }

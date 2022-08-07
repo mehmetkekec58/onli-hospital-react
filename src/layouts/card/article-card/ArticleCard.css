@@ -1,5 +1,4 @@
 .article-card {
-    /* background-color: #80fc7e;*/
     background-color: rgba(197, 190, 197, 0.2);
     width: 330px;
     height: 470px;
@@ -10,7 +9,7 @@
 }
 
 .article-card:hover {
-    background-color: #ffd740;
+    background-color: var(--button-color-yellow);
 }
 
 .article-card-user-info {

@@ -24,7 +24,7 @@ export const containTexts = {
     password:"Şifre",
 
     homePage:"Ana Sayfa",
-    purse:"Cüzdan",
+    payments:"Ödemeler",
     editProfile:"Profili Düzenle",
     history:"Geçmiş",
     readingList:"Okuma Listesi",

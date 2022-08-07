@@ -8,6 +8,7 @@ import Profile from '../profile/Profile';
 import "./Main.css";
 import Login from '../login/Login';
 import Register from '../register/Register';
+import Payment from '../payment/Payment';
 
 const Main = () => {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
@@ -25,7 +26,7 @@ const Main = () => {
             <Route path='/register' element={<Register />} />
             <Route path='/category/:id' element={<Search />} />
             <Route path='/video/:id' element={<Search />} />
-            <Route path='/purse' element={<Search />} />
+            <Route path='/payments' element={<Payment />} />
             <Route path='/buycredit' element={<Search />} />
             <Route path='/history' element={<Search />} />
             <Route path='/readinglist' element={<Search />} />

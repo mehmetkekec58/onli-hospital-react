@@ -1,0 +1,59 @@
+.payment-container {
+  height: 100%;
+  padding: 5px 1px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  font-family: "Open Sans";
+
+}
+
+.payment-your-earning-container {
+  background-color: white;
+  margin: 10px 2px 5px 2px;
+  width: 60%;
+  height: 250px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px 5px gainsboro;
+  padding: 5px 0px;
+  position: relative;
+  display:block;
+}
+
+.payment-your-earning-text {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 5px 10px;
+}
+
+.payment-amount-of-money {
+  height: 100px;
+  padding-top: 20px;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  font-weight: 800;
+  font-size: 30px;
+}
+
+.payment-button-container {
+  position: absolute;
+  display: flex;
+  height: 50px;
+  width: 59%;
+  bottom: 0px;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10px;
+  margin-bottom: 15px;
+}
+
+.payment-payment-settings {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--button-color-yellow);
+  padding: 10px 10px;
+}
+.payment-payment-settings:hover{
+    background-color: var(--button-color-yellow-hover);
+}

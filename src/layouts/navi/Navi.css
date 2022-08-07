@@ -1,6 +1,11 @@
 :root {
     --navi-height: 60px;
     --navi-color: #7c14a8;
+    --button-color-yellow:#ffd740;
+    --button-color-yellow-hover:#cdab2f;
+    --button-color-red:red;
+    --button-color-red-hover:rgb(188, 40, 40);
+    --fade-background-color-grey:rgba(201, 200, 195, 0.6);
 }
 
 .navi-component {

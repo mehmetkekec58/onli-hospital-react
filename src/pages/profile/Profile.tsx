@@ -8,8 +8,6 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
-
-
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
@@ -20,7 +18,6 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 
-
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined';
@@ -30,10 +27,14 @@ import VideoModel from '../../models/videoModel';
 import GridListVideoCard from '../../layouts/grid-list/grid-list-video-card/GridListVideoCard';
 import PostModel from '../../models/postModel';
 import GridListPostCard from '../../layouts/grid-list/grid-list-post-card/GridListPostCard';
+import { containTexts } from '../../contains/containTexts';
 
 const profilePhotoUrl = "https://pbs.twimg.com/profile_images/1523976377074163713/hRUFPi6z_400x400.jpg"
 const userFullName: string = "Mehmet Kekeç"
-
+const dialogTitle = containTexts.about;
+const dialogText = " Merhaba, ben Mehmet Kekeç. Onli Hospital'in kurucusu."
+const dialogButtonText = containTexts.OK;
+const currencyUnit: string = containTexts.credit;
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -56,7 +57,7 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
   return (
     <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
       {children}
-      {onClose ? (
+      {onClose && (
         <IconButton
           aria-label="close"
           onClick={onClose}
@@ -69,7 +70,7 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
         >
           <CloseIcon />
         </IconButton>
-      ) : null}
+      )}
     </DialogTitle>
   );
 };
@@ -205,8 +206,54 @@ const posts: PostModel[] = [
   },
 ]
 
+function alertDialog(title: string, text: string, buttonText: string, open: boolean, handleClose: () => void) {
+  return (
+  <BootstrapDialog
+    onClose={handleClose}
+    aria-labelledby="customized-dialog-title"
+    open={open}
+  >
+    <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+      {title}
+    </BootstrapDialogTitle>
+    <DialogContent dividers>
+      <Typography gutterBottom>
+        {text}
+      </Typography>
+    </DialogContent>
+    <DialogActions>
+      <Button autoFocus onClick={handleClose}>
+        {buttonText}
+      </Button>
+    </DialogActions>
+  </BootstrapDialog>
+  )
+}
+
+function tabs(value: string, handleChange: (event: React.SyntheticEvent, newValue: string) => void) {
+  return (
+    <div className='profile-tabs-container'>
+      <Box sx={{ width: '100%', height: '100%', typography: 'body1' }}>
+        <TabContext value={value}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
+            <TabList textColor="secondary"
+              indicatorColor="secondary" onChange={handleChange} >
+              <Tab icon={<ArticleOutlinedIcon />} iconPosition="start" label={containTexts.articles} value="1" />
+              <Tab icon={<ThumbUpOutlinedIcon />} iconPosition="start" label={containTexts.posts} value="2" />
+              <Tab icon={<OndemandVideoOutlinedIcon />} iconPosition="start" label={containTexts.videos} value="3" />
+            </TabList>
+          </Box>
+          <TabPanel value="1"> <GridListCard articles={articles} /></TabPanel>
+          <TabPanel value="2"><GridListPostCard posts={posts} /></TabPanel>
+          <TabPanel value="3"> <GridListVideoCard videos={videos} /></TabPanel>
+        </TabContext>
+      </Box>
+    </div>
+  )
+}
+
 const Profile = () => {
-  const currencyUnit: string = "$"
+
   const [mySelf] = useState<boolean>(true);
   const [login] = useState<boolean>(false)
   const [follow] = useState<boolean>(true)
@@ -236,54 +283,18 @@ const Profile = () => {
           <div className="profile-doctor-info-branch">Admin</div>
 
           <div className="profile-button-container">
-            {!login || !mySelf ? (<div> <button className={follow ? "profile-unfollow-button profile-button-general" : "profile-button-general"}>{follow ? "Takibi bırak" : "Takip et"}</button>
-              <button className="profile-ask-question profile-button-general"><QuestionAnswerOutlinedIcon /> Soru sor (15 {currencyUnit})</button>
-              <button className="profile-button-about profile-button-general"  onClick={handleClickOpen}>Hakkında</button>
-              <BootstrapDialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={open}
-      >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Hakkında
-        </BootstrapDialogTitle>
-        <DialogContent dividers>
-          <Typography gutterBottom>
-           Merhaba, ben Mehmet Kekeç. Onli Hospital'in kurucusu.
-          </Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Tamam
-          </Button>
-        </DialogActions>
-      </BootstrapDialog>
-              </div>)
+            {!login || !mySelf ? (<div> <button className={follow ? "profile-unfollow-button profile-button-general" : "profile-button-general"}>{follow ? containTexts.unfollow : containTexts.follow}</button>
+              <button className="profile-ask-question profile-button-general"><QuestionAnswerOutlinedIcon /> {containTexts.askQuestion} (15 {currencyUnit})</button>
+              <button className="profile-button-about profile-button-general" onClick={handleClickOpen}>{containTexts.about}</button>
+              {alertDialog(dialogTitle, dialogText, dialogButtonText, open, handleClose)}
+            </div>)
               :
-              <button className="profile-button-edit-profile profile-button-general">Profili Düzenle</button>
+              <button className="profile-button-edit-profile profile-button-general">{containTexts.editProfile}</button>
             }
           </div>
         </div>
-        <div className='profile-tabs-container'>
-          <Box sx={{ width: '100%', height: '100%', typography: 'body1' }}>
-            <TabContext value={value}>
-              <Box sx={{ borderBottom: 1, borderColor: 'divider', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
-                <TabList textColor="secondary"
-                  indicatorColor="secondary" onChange={handleChange} aria-label="lab API tabs example">
-                  <Tab icon={<ArticleOutlinedIcon />} iconPosition="start" label="Yazılar" value="1" />
-                  <Tab icon={<ThumbUpOutlinedIcon />} iconPosition="start" label="Gönderiler" value="2" />
-                  <Tab icon={<OndemandVideoOutlinedIcon />} iconPosition="start" label="Videolar" value="3" />
-                </TabList>
-              </Box>
-              <TabPanel value="1"> <GridListCard articles={articles} /></TabPanel>
-              <TabPanel value="2"><GridListPostCard posts={posts}/></TabPanel>
-              <TabPanel value="3"> <GridListVideoCard videos={videos} /></TabPanel>
-            </TabContext>
-          </Box>
-        </div>
+        {tabs(value, handleChange)}
       </div>
-      {/* <div className="profile-statistics-container"></div> */}
-
     </div>
   )
 }

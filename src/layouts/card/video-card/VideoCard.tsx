@@ -1,8 +1,8 @@
 import React from 'react'
 import VideoModel from '../../../models/videoModel'
 import "./VideoCard.css"
-import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
 import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFilledWhiteOutlined';
+import selectCharacterHelper from '../../../helpers/selectCharacterHelper';
 
 interface Props{
     video:VideoModel
@@ -15,7 +15,7 @@ const VideoCard:React.FC<Props> = ({video}:Props) => {
    
                 <img alt={video.firstName} className='video-card-user-info-avatar' src={video.profilePhotoUrl} />
                 <div className='video-card-user-info-full-name-username'>
-                    <div className='video-card-user-info-full-name'>{video.firstName} {video.lastName} <VerifiedOutlinedIcon style={{color:'#3fbdeb'}}/></div>
+                    <div className='video-card-user-info-full-name'>{selectCharacterHelper( `${video.firstName} ${video.lastName}`,13)}</div>
                     <div className='video-card-user-info-username'>@{video.username}</div>
                 </div>
                 <div className='video-card-user-info-date'>1 yıl önce</div>

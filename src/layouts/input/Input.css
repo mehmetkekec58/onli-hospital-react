@@ -26,13 +26,13 @@
 .search-input-recommended-item{
     width: 100%;
     padding-left: 1%;
-    height: 30px;
     padding-bottom: 3px;
-    padding-top: 3px;
+    padding-top: 2px;
     margin: 5px 0px;
     font-weight: 600;
     overflow: hidden;
     cursor:pointer;
+    border-radius: 8px;
     
     
 }

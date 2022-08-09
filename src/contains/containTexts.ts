@@ -32,4 +32,18 @@ export const containTexts = {
     about: "Hakkında",
     logout:"Çıkış Yap",
     loadMoney:"Para Yükle",
+    addArticle:"Yazı Ekle",
+
+    askQuestion:"Soru Sor",
+
+    follow:"Takip et",
+    unfollow:"Takibi bırak",
+
+    articles:"Yazılar",
+    posts:"Gönderiler",
+    videos:"Videolar",
+    
+    OK:"Tamam",
+
+    credit:"Kredi",
 };

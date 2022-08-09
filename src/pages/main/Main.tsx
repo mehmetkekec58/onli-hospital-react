@@ -9,6 +9,8 @@ import "./Main.css";
 import Login from '../login/Login';
 import Register from '../register/Register';
 import Payment from '../payment/Payment';
+import LoadMoney from '../load-money/LoadMoney';
+import Settings from '../settings/Settings';
 
 const Main = () => {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
@@ -25,15 +27,24 @@ const Main = () => {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/category/:id' element={<Search />} />
-            <Route path='/video/:id' element={<Search />} />
             <Route path='/payments' element={<Payment />} />
-            <Route path='/buycredit' element={<Search />} />
+            <Route path='/buycredit' element={<LoadMoney />} />
             <Route path='/history' element={<Search />} />
             <Route path='/readinglist' element={<Search />} />
-            <Route path='/settings' element={<Search />} />
+            <Route path='/settings' element={<Settings />} />
             <Route path='/about' element={<Search />} />
             <Route path='/videochat/:id' element={<Search />} />
             <Route path='/resetpassword' element={<Search />} />
+            <Route path='/video'>
+              <Route path=':id' element={<Search />} />
+              <Route path='upload' element={<Search />} />
+              <Route path=':id/update' element={<Search />} />
+            </Route>
+            <Route path='/article'>
+              <Route path=':id' element={<Search />} />
+              <Route path='add' element={<Search />} />
+              <Route path=':id/update' element={<Search />} />
+            </Route>
             <Route path='/chat'>
               <Route index element={<Search />} />
               <Route path=':id' element={<Search />} />

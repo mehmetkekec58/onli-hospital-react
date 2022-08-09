@@ -1,0 +1,59 @@
+.load-money-card {
+    background-color: rgba(197, 190, 197, 0.2);
+    width: 330px;
+    height: 470px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgb(201, 198, 198);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    flex-direction: column;
+    font-family: 'Open Sans';
+}
+
+
+.load-money-card-package-name {
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+    padding: 1px;
+}
+
+
+.load-money-card-operations-icons {
+    display: flex;
+    bottom: 50%;
+    align-items: center;
+    padding: 10px;
+    gap: 20px;
+    margin: 2px;
+    top: 0px;
+    justify-content: center;
+    margin-top: 20px;
+    clear: both
+}
+
+.load-money-card-follow-button {
+    font-weight: 700;
+   
+    border-radius: 5px;
+    padding: 5px;
+    color: black;
+}
+.load-money-card-follow{
+    background-color: rgb(255, 215, 64);
+}
+.load-money-card-title {
+    font-weight: bold;
+    font-size: 22px;
+    height: 55px;
+    overflow: hidden;
+    text-align: center;
+    padding: 1px;
+
+
+}
+

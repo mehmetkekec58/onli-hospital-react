@@ -17,7 +17,7 @@
   box-shadow: 2px 2px 5px 5px gainsboro;
   padding: 5px 0px;
   position: relative;
-  display:block;
+  display: block;
 }
 
 .payment-your-earning-text {
@@ -28,12 +28,25 @@
 
 .payment-amount-of-money {
   height: 100px;
-  padding-top: 20px;
+  top: 2em;
+  padding: 20px;
+  align-items: center;
   width: 100%;
   position: absolute;
   text-align: center;
   font-weight: 800;
   font-size: 30px;
+  background-color: rgba(227, 227, 220, 0.5);
+  border-radius: 15px;
+}
+
+.payment-threshold {
+  position: absolute;
+  display: flex;
+  top: 12em;
+  left: 4px;
+  font-size: large;
+  font-weight: 700;
 }
 
 .payment-button-container {
@@ -48,12 +61,14 @@
   margin-bottom: 15px;
 }
 
-.payment-payment-settings {
+.payment-payment-button {
   border: none;
   border-radius: 5px;
   background-color: var(--button-color-yellow);
   padding: 10px 10px;
+  margin-right: 5px;
 }
-.payment-payment-settings:hover{
-    background-color: var(--button-color-yellow-hover);
+
+.payment-payment-button:hover {
+  background-color: var(--button-color-yellow-hover);
 }

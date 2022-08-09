@@ -6,10 +6,12 @@ const Payment = () => {
     <div className="payment-container">
       <div className="payment-your-earning-container">
         <div className="payment-your-earning-text">Kazancınız</div>
-        <div className="payment-amount-of-money">52.5$</div>
+        <div className="payment-amount-of-money">120 kredi = 30.0$</div>
+        <div className="payment-threshold">Ödeme Eşiği: 250$</div>
       </div>
       <div className="payment-button-container">
-        <button className="payment-payment-settings">Ödeme Ayarları</button>
+      <button className="payment-payment-button">Daha Önce Yapılan Ödemeler</button>
+        <button className="payment-payment-button">Ödeme Ayarları</button>
       </div>
     </div>
   );

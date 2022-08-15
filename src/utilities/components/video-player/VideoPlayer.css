@@ -1,0 +1,11 @@
+.video-player-video{
+width: 70%;
+height: 350px;
+background-color:black;
+object-fit:cover;
+}
+:fullscreen{
+    position: fixed;
+    z-index: 3;
+    background-color: aqua;
+}

@@ -32,7 +32,12 @@ export const containTexts = {
     about: "Hakkında",
     logout:"Çıkış Yap",
     loadMoney:"Para Yükle",
+    artiles:"Yazılar",
+    playlist:"Oynatma Listesi",
+  
+
     addArticle:"Yazı Ekle",
+    videoUpload:"Video Yükle",
 
     askQuestion:"Soru Sor",
 
@@ -46,4 +51,17 @@ export const containTexts = {
     OK:"Tamam",
 
     credit:"Kredi",
+
+    like:"Beğen",
+    addReadingList:"Okuma Listesine Ekle",
+    share:"Paylaş",
+
+    recommended:"Önerilenler",
+    
+    follower:"Takipçi",
+    article:"Yazı",
+    video:"Video",
+
+    addPlaylist:"Oynatma Listesine Ekle",
+    yourBrowserDoesNotSupportTheVideoTag:"Tarayıcın video oynatmayı desteklemiyor."
 };

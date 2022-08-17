@@ -6,8 +6,9 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
-import {containTexts} from "../../../contains/containTexts"
+import { containTexts } from "../../../contains/containTexts"
+import CardUserInfo from '../../../utilities/components/card-user-info/CardUserInfo';
+import { Link } from 'react-router-dom';
 
 interface Props {
     article: ArticleModel
@@ -16,24 +17,21 @@ const ArticleCard: React.FC<Props> = ({ article }: Props) => {
     return (
 
         <div className='article-card'>
-            <div className='article-card-user-info'>
-                <img alt={article.firstName} className='article-card-user-info-avatar' src={article.profilePhotoUrl} />
-                <div className='article-card-user-info-full-name-username'>
-                    <div className='article-card-user-info-full-name'>{selectCharacterHelper( `${article.firstName} ${article.lastName}`,13)} </div>
-                    <div className='article-card-user-info-username'>@{article.username}</div>
+            <CardUserInfo userInfo={{ firstName: article.firstName, lastName: article.lastName, username: article.username, profilePhotoUrl: article.profilePhotoUrl }} />
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`/article/${article.articleId}`}>
+                <img alt={article.title} className='article-card-thumbnail-image' src={article.thumbnailUrl} />
+                <h4 className='article-card-article-title'>{article.title}</h4>
+                <div className='article-card-article-text'>{selectCharacterHelper(article.text, 120)}</div>
+                </Link>
+                <div className='article-card-operations-icons'>
+                    <div className='article-card-button' style={{ ...(article.articleId % 2 === 0 && { color: 'red' }) }}> {article.articleId % 2 === 1 ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon />}</div>
+                    <div className='article-card-button' style={{ color: '#ab1bc4' }}>{article.articleId % 2 === 0 ? <BookmarkOutlinedIcon /> : <BookmarkBorderOutlinedIcon />}</div>
+
+                    <Link  to={`/article/${article.articleId}`}> <div  className='article-card-read-more'>{containTexts.READ_MORE}</div>  </Link>
+
                 </div>
-                <div className='article-card-user-info-date'>3 hafta önce</div>
-            </div>
-            <img alt={article.title} className='article-card-thumbnail-image' src={article.thumbnailUrl} />
-            <h4 className='article-card-article-title'>{article.title}</h4>
-           <div className='article-card-article-text'>{selectCharacterHelper(article.text,120)}</div> 
-           <div className='article-card-operations-icons'>
-           <div style={{...(article.articleId % 2 === 0 && {color:'red'})}}> {article.articleId % 2 === 1 ?    <FavoriteBorderOutlinedIcon/>  :<FavoriteIcon/>}</div>
-           <div style={{color:'#ab1bc4'}}>{article.articleId % 2 === 0 ? <BookmarkOutlinedIcon/>  :<BookmarkBorderOutlinedIcon/>}</div>
-          
-           <div className='article-card-read-more'>{containTexts.readMore}</div>
-           </div>
-           
+        
+
         </div>
 
     )

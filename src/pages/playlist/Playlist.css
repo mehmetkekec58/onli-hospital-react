@@ -1,0 +1,8 @@
+.playlist-container{
+    height: calc(100vh - 70px);
+    padding: 7px 15px;
+    font-family: 'Open Sans';
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+}

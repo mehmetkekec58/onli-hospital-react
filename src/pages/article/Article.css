@@ -1,0 +1,132 @@
+.article-container {
+    height: calc(100vh - 70px);
+    font-family: 'Open Sans';
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 0px 5px;
+}
+
+.article-grid-container {
+    display: grid;
+    grid-template-columns: calc(100vw - 30vw) 24vw;
+    height: calc(100vh - 65px);
+}
+
+.article-grid-container2 {
+    display: grid;
+    grid-template-columns: calc(100vw - 37vw) 20vw;
+    height: calc(100vh - 65px);
+}
+
+.article-grid-item1 {
+    overflow-y: scroll;
+    padding: 20px 10px;
+
+}
+
+.article-grid-item2 {
+    overflow-y: scroll;
+
+
+}
+
+.article-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 10px;
+    height: 150px;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.article-user-info {
+    height: 80px;
+    margin-bottom: 5px;
+}
+
+.article-thumbnail-photo {
+    width: 70%;
+    height: 350px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
+.article-text-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.article-text {
+    font-size: 18px;
+    text-align: left;
+    width: 70%;
+}
+
+.article-tags-general-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.article-buttons-container {
+    height: 55px;
+    font-size: smaller;
+    font-weight: 600;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.article-general-button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.article-general-button:hover {
+    background-color: rgba(206, 203, 200, 0.5);
+
+}
+
+@media only screen and (max-width: 800px) {
+    .article-buttons-container {
+        font-size: 10px;
+
+    }
+
+    .article-thumbnail-photo {
+        width: 80%;
+    }
+
+    .article-text {
+        width: 80%;
+    }
+
+}
+@media only screen and (max-width: 1283px) {
+    .article-grid-container {
+        display: grid;
+        grid-template-columns: 85vw  ;
+        height: calc(100vh - 65px);
+    }
+    
+    .article-grid-container2 {
+        display: grid;
+        grid-template-columns:80vw ;
+        height: calc(100vh - 65px);
+    }
+    
+
+}

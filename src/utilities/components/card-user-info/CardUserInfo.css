@@ -1,0 +1,76 @@
+.card-user-info {
+    display: flex;
+    padding: 5px;
+    width: 100%;
+    margin-bottom: 3px;
+}
+.card-user-info-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    margin-right: 5px;
+    border: 2px #ab1bc4 solid;
+    cursor: pointer;
+
+}
+
+.card-user-info-full-name-username {
+    margin-left: 10px;
+    text-align: left;
+    padding: 0px 5px;
+    cursor:context-menu;
+    height: 52px;
+    overflow: hidden;
+    
+
+}
+
+.card-user-info-full-name {
+    font-weight: bold;
+    font-size: small;
+
+}
+
+.card-user-info-username {
+    font-size: small;
+
+}
+
+.card-user-info-date {
+    font-size: small;
+    font-family: 'Open Sans';
+    margin-top: 5px;
+    float: right;
+    height: 20px;
+    overflow: hidden;
+    width: 30%;
+    text-align: center;
+    padding: 2px 2px;
+    border-radius: 5px;
+    background-color: rgb(162, 165, 168, 0.25);
+    cursor:context-menu;
+
+}
+
+@media only screen and (max-width: 1300px) {
+
+    .card-user-info-date {
+    font-size: 11px;
+    overflow: hidden;
+    }
+}
+
+
+@media only screen and (max-width: 800px) {
+
+    .card-user-info-full-name {
+        font-size: 11px;
+    
+    }
+    
+    .card-user-info-username {
+        font-size: 10px;
+    
+    }
+
+}

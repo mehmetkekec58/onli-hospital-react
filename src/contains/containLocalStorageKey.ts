@@ -1,3 +1,4 @@
 export const containLocalStorageKey={
-    searhHistory:"search-history"
+    SEARCH_HISTORY:"search-history",
+    TOKEN:"token",
 }

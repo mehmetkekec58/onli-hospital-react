@@ -1,21 +1,21 @@
 import React, { useRef } from 'react'
 import { containTexts } from '../../../contains/containTexts';
+import videoModel from '../../../models/videoModel';
 import "./VideoPlayer.css";
 
-
-const VideoPlayer = () => {
+interface Props{
+    video:videoModel
+}
+const VideoPlayer = ({video}:Props) => {
     const videoPlayer = useRef<HTMLVideoElement>(null);
-    const handle = () => {
-        console.log("first")
-    }
+  
 
     return (
         <div>
-            <video className='video-player-video' ref={videoPlayer} about="hello"  controlsList="nodownload" controls>
-                <source src='http://media.w3.org/2010/05/sintel/trailer.mp4' type='video/mp4' />
-                {containTexts.yourBrowserDoesNotSupportTheVideoTag}
+            <video className='video-player-video' ref={videoPlayer} poster={video.thumbnailUrl}  controlsList="nodownload" controls>
+                <source src={video.videoUrl} type='video/mp4' />
+                {containTexts.YOUR_BROWSER_DOES_NOT_SUPPORT_THE_VIDEO_TAG}
             </video>
-            <button onClick={handle}>Bas</button>
         </div>
     )
 }

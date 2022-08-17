@@ -8,16 +8,6 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
-import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
-
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined';
@@ -28,53 +18,14 @@ import GridListVideoCard from '../../layouts/grid-list/grid-list-video-card/Grid
 import PostModel from '../../models/postModel';
 import GridListPostCard from '../../layouts/grid-list/grid-list-post-card/GridListPostCard';
 import { containTexts } from '../../contains/containTexts';
+import alertDialog from '../../utilities/components/alert-dialog/AlertDialog';
 
 const profilePhotoUrl = "https://pbs.twimg.com/profile_images/1523976377074163713/hRUFPi6z_400x400.jpg"
 const userFullName: string = "Mehmet Kekeç"
-const dialogTitle = containTexts.about;
+const dialogTitle = containTexts.ABOUT;
 const dialogText = " Merhaba, ben Mehmet Kekeç. Onli Hospital'in kurucusu."
 const dialogButtonText = containTexts.OK;
-const currencyUnit: string = containTexts.credit;
-
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialogContent-root': {
-    padding: theme.spacing(2),
-  },
-  '& .MuiDialogActions-root': {
-    padding: theme.spacing(1),
-  },
-}));
-
-export interface DialogTitleProps {
-  id: string;
-  children?: React.ReactNode;
-  onClose: () => void;
-}
-
-const BootstrapDialogTitle = (props: DialogTitleProps) => {
-  const { children, onClose, ...other } = props;
-
-  return (
-    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-      {children}
-      {onClose && (
-        <IconButton
-          aria-label="close"
-          onClick={onClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-      )}
-    </DialogTitle>
-  );
-};
-
+const currencyUnit: string = containTexts.CREDIT;
 
 const articles: ArticleModel[] = [
   {
@@ -204,31 +155,16 @@ const posts: PostModel[] = [
     text: "Kanser Oluşumu ile video paylaştım iyi seyirler.",
     date: new Date(2022, 8, 3),
   },
-]
+];
 
-function alertDialog(title: string, text: string, buttonText: string, open: boolean, handleClose: () => void) {
-  return (
-  <BootstrapDialog
-    onClose={handleClose}
-    aria-labelledby="customized-dialog-title"
-    open={open}
-  >
-    <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-      {title}
-    </BootstrapDialogTitle>
-    <DialogContent dividers>
-      <Typography gutterBottom>
-        {text}
-      </Typography>
-    </DialogContent>
-    <DialogActions>
-      <Button autoFocus onClick={handleClose}>
-        {buttonText}
-      </Button>
-    </DialogActions>
-  </BootstrapDialog>
-  )
-}
+const infoText: (string | number)[][] = [
+  [containTexts.FOLLOWER, 102],
+  [containTexts.ARTICLE, 17],
+  [containTexts.VIDEO, 2],
+];
+
+
+
 
 function tabs(value: string, handleChange: (event: React.SyntheticEvent, newValue: string) => void) {
   return (
@@ -238,9 +174,9 @@ function tabs(value: string, handleChange: (event: React.SyntheticEvent, newValu
           <Box sx={{ borderBottom: 1, borderColor: 'divider', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
             <TabList textColor="secondary"
               indicatorColor="secondary" onChange={handleChange} >
-              <Tab icon={<ArticleOutlinedIcon />} iconPosition="start" label={containTexts.articles} value="1" />
-              <Tab icon={<ThumbUpOutlinedIcon />} iconPosition="start" label={containTexts.posts} value="2" />
-              <Tab icon={<OndemandVideoOutlinedIcon />} iconPosition="start" label={containTexts.videos} value="3" />
+              <Tab icon={<ArticleOutlinedIcon />} iconPosition="start" label={containTexts.ARTICLES} value="1" />
+              <Tab icon={<ThumbUpOutlinedIcon />} iconPosition="start" label={containTexts.POSTS} value="2" />
+              <Tab icon={<OndemandVideoOutlinedIcon />} iconPosition="start" label={containTexts.VIDEOS} value="3" />
             </TabList>
           </Box>
           <TabPanel value="1"> <GridListCard articles={articles} /></TabPanel>
@@ -256,8 +192,9 @@ const Profile = () => {
 
   const [mySelf] = useState<boolean>(true);
   const [login] = useState<boolean>(false)
-  const [follow] = useState<boolean>(true)
+  const [follow] = useState<boolean>(false)
   const [value, setValue] = React.useState('1');
+  const [activeAskQuestion, setActiveAskQuestion] = useState<boolean>(true)
 
   const [open, setOpen] = React.useState(false);
 
@@ -283,14 +220,22 @@ const Profile = () => {
           <div className="profile-doctor-info-branch">Admin</div>
 
           <div className="profile-button-container">
-            {!login || !mySelf ? (<div> <button className={follow ? "profile-unfollow-button profile-button-general" : "profile-button-general"}>{follow ? containTexts.unfollow : containTexts.follow}</button>
-              <button className="profile-ask-question profile-button-general"><QuestionAnswerOutlinedIcon /> {containTexts.askQuestion} (15 {currencyUnit})</button>
-              <button className="profile-button-about profile-button-general" onClick={handleClickOpen}>{containTexts.about}</button>
+            {!login || !mySelf ? (<div> <button className={follow ? "profile-unfollow-button profile-button-general" : "profile-button-general"}>{follow ? containTexts.UNFOLLOW : containTexts.FOLLOW}</button>
+              {activeAskQuestion && <button className="profile-ask-question profile-button-general"><QuestionAnswerOutlinedIcon /> {containTexts.ASK_A_QUESTION} (15 {currencyUnit})</button>}
+              <button className="profile-button-about profile-button-general" onClick={handleClickOpen}>{containTexts.ABOUT}</button>
               {alertDialog(dialogTitle, dialogText, dialogButtonText, open, handleClose)}
             </div>)
               :
-              <button className="profile-button-edit-profile profile-button-general">{containTexts.editProfile}</button>
+              <button className="profile-button-edit-profile profile-button-general">{containTexts.EDIT_PROFILE}</button>
             }
+          </div>
+          <div className="profile-doctor-statistic-container">
+            {infoText.map((info) => (
+              <div>
+                <div className='profile-doctor-statistic-count'>{info[1]}</div>
+                <div className='profile-doctor-statistic-name'>{info[0]}</div>
+              </div>
+            ))}
           </div>
         </div>
         {tabs(value, handleChange)}

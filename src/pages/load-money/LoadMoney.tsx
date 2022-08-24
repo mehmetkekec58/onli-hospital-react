@@ -5,21 +5,21 @@ import './LoadMoney.css'
 
 const creditPackages: CreditPackageModel[] = [
 {
-    creditPackageId:0,
+    id:0,
     creditPackageName:"En düşük paket",
     price:0.25,
     discount:0,
     creditAmount:1,
 },
 {
-    creditPackageId:2,
+    id:2,
     creditPackageName:"Orta paket paket",
     price:5.0,
     discount:0,
     creditAmount:20,
 },
 {
-    creditPackageId:1,
+    id:1,
     creditPackageName:"Al doya doya harca",
     price:10.0,
     discount:0,
@@ -27,7 +27,7 @@ const creditPackages: CreditPackageModel[] = [
 },
 
 {
-    creditPackageId:3,
+    id:3,
     creditPackageName:"Güç paketi paket",
     price:100.0,
     discount:0,

@@ -2,11 +2,14 @@ import React from "react";
 import "./Payment.css";
 
 const Payment = () => {
+
+  const creditValue = 0.10
+  const kredi = 50
   return (
     <div className="payment-container">
       <div className="payment-your-earning-container">
         <div className="payment-your-earning-text">Kazancınız</div>
-        <div className="payment-amount-of-money">120 kredi = 30.0$</div>
+        <div className="payment-amount-of-money">{kredi} kredi = {kredi * creditValue}$</div>
         <div className="payment-threshold">Ödeme Eşiği: 250$</div>
       </div>
       <div className="payment-button-container">

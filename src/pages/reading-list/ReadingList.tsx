@@ -6,7 +6,7 @@ import './ReadingList.css';
 
 const articles: ArticleModel[] = [
     {
-      articleId: 0,
+      id: 0,
       thumbnailUrl: "http://drmustafasener.com/2018/10/kanser-hucresi-vucutta-nasil-beslenir.jpeg",
       username: "mehmetkekec",
       profilePhotoUrl: "https://pbs.twimg.com/profile_images/1523976377074163713/hRUFPi6z_400x400.jpg",
@@ -18,7 +18,7 @@ const articles: ArticleModel[] = [
       date:new Date(1995, 11, 17),
     },
     {
-      articleId: 1,
+      id: 1,
       thumbnailUrl: "https://img-guven.mncdn.com/storage/temp/public/imageresizecache/a64/ba6/a45/a64ba6a45db7b11956e5241e3cfaba52a46a651b785234b1583cca5b4d052716.jpg",
       username: "savascebeci",
       profilePhotoUrl: "https://media.istockphoto.com/photos/happy-healthcare-practitioner-picture-id138205019?k=20&m=138205019&s=612x612&w=0&h=KpsSMVsplkOqTnAJmOye4y6DcciVYIBe5dYDgYXLVW4=",
@@ -30,7 +30,7 @@ const articles: ArticleModel[] = [
       date:new Date(1995, 11, 17),
     },
     {
-      articleId: 2,
+      id: 2,
       thumbnailUrl: "https://www.medicalpark.com.tr/_uploads/_images/_healthGuide/4BQH4O1E.jpg",
       username: "handeaslantas",
       profilePhotoUrl: "https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip",
@@ -42,7 +42,7 @@ const articles: ArticleModel[] = [
       date:new Date(1995, 11, 17),
     },
     {
-      articleId: 3,
+      id: 3,
       thumbnailUrl: "https://img.piri.net/mnresize/840/-/resim/imagecrop/2016/03/17/01/00/resized_6c4a8-4c911fcdgulhastaligi.jpg",
       username: "handeaslantas",
       profilePhotoUrl: "https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip",
@@ -54,7 +54,7 @@ const articles: ArticleModel[] = [
       date:new Date(1995, 11, 17),
     },
     {
-      articleId: 4,
+      id: 4,
       thumbnailUrl: "https://www.medicalpark.com.tr/_uploads/_images/_healthGuide/4BQH4O1E.jpg",
       username: "handeaslantas",
       profilePhotoUrl: "https://images.theconversation.com/files/304957/original/file-20191203-66986-im7o5.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip",

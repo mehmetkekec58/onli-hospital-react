@@ -10,7 +10,7 @@ const GridListLoadMoneyCard = ({creditPackages}:Props) => {
   return (
     <div className="grid-list-load-money-card-grid-container">
     {creditPackages.map((creditPackage,index) => (
-      <div key={index} className="grid-list-load-money-card-grid-item"> <LoadMoneyCard creditPackage={creditPackage} /></div>
+      <div key={creditPackage.id} className="grid-list-load-money-card-grid-item"> <LoadMoneyCard creditPackage={creditPackage} /></div>
     ))}
   </div>
   )

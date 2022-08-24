@@ -9,7 +9,7 @@ const GridListPostCard:React.FC<Props> = ({posts}:Props) => {
   return (
     <div className="grid-list-card-grid-container">
     {posts.map((post) => (
-      <div key={post.postId} className="grid-list-card-grid-item"> <PostCard post={post} /></div>
+      <div key={post.id} className="grid-list-card-grid-item"> <PostCard post={post} /></div>
     ))}
   </div>
   )

@@ -11,7 +11,7 @@ const GridListCard : React.FC<Props> = ({articles}:Props) => {
   return (
     <div className="grid-list-card-grid-container">
             {articles.map((article) => (
-              <div key={article.articleId} className="grid-list-card-grid-item"> <ArticleCard article={article} /></div>
+              <div key={article.id} className="grid-list-card-grid-item"> <ArticleCard article={article} /></div>
             ))}
           </div>
   )

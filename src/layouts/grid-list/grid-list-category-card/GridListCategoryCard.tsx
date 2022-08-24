@@ -11,7 +11,7 @@ const GridListCategoryCard:React.FC<Props> = ({categories}:Props) => {
   return (
     <div className="grid-list-category-card-grid-container">
             {categories.map((category,index) => (
-              <div key={index} className="grid-list-category-card-grid-item"> <CategoryCard category={category} /></div>
+              <div key={category.id} className="grid-list-category-card-grid-item"> <CategoryCard category={category} /></div>
             ))}
           </div>
   )

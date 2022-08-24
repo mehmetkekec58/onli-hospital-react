@@ -11,7 +11,7 @@ const GridListVideoCard:React.FC<Props> = ({videos}:Props) => {
   return (
     <div className="grid-list-video-card-grid-container">
     {videos.map((video,index) => (
-      <div key={index} className="grid-list-video-card-grid-item"> <VideoCard video={video} /></div>
+      <div key={video.id} className="grid-list-video-card-grid-item"> <VideoCard video={video} /></div>
     ))}
   </div>
   )

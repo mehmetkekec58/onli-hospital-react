@@ -15,7 +15,7 @@ const PostCard: React.FC<Props> = ({ post }: Props) => {
       <img alt={post.text} className='post-card-thumbnail-image' src={post.thumbnailUrl} />
       <div className='post-card-post-text'>{selectCharacterHelper(post.text, 120)}</div>
       <div className='post-card-operations-icons'>
-        <div style={{ ...(post.postId % 2 === 0 && { color: 'red' }) }}> {post.postId % 2 === 1 ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon />}</div>
+        <div style={{ ...(post.id % 2 === 0 && { color: 'red' }) }}> {post.id % 2 === 1 ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon />}</div>
 
 
 

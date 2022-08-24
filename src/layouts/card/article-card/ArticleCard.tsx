@@ -18,16 +18,16 @@ const ArticleCard: React.FC<Props> = ({ article }: Props) => {
 
         <div className='article-card'>
             <CardUserInfo userInfo={{ firstName: article.firstName, lastName: article.lastName, username: article.username, profilePhotoUrl: article.profilePhotoUrl }} />
-            <Link style={{ textDecoration: 'none', color: 'black' }} to={`/article/${article.articleId}`}>
+            <Link style={{ textDecoration: 'none', color: 'black' }} to={`/article/${article.id}`}>
                 <img alt={article.title} className='article-card-thumbnail-image' src={article.thumbnailUrl} />
                 <h4 className='article-card-article-title'>{article.title}</h4>
                 <div className='article-card-article-text'>{selectCharacterHelper(article.text, 120)}</div>
                 </Link>
                 <div className='article-card-operations-icons'>
-                    <div className='article-card-button' style={{ ...(article.articleId % 2 === 0 && { color: 'red' }) }}> {article.articleId % 2 === 1 ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon />}</div>
-                    <div className='article-card-button' style={{ color: '#ab1bc4' }}>{article.articleId % 2 === 0 ? <BookmarkOutlinedIcon /> : <BookmarkBorderOutlinedIcon />}</div>
+                    <div className='article-card-button' style={{ ...(article.id % 2 === 0 && { color: 'red' }) }}> {article.id % 2 === 1 ? <FavoriteBorderOutlinedIcon /> : <FavoriteIcon />}</div>
+                    <div className='article-card-button' style={{ color: '#ab1bc4' }}>{article.id % 2 === 0 ? <BookmarkOutlinedIcon /> : <BookmarkBorderOutlinedIcon />}</div>
 
-                    <Link  to={`/article/${article.articleId}`}> <div  className='article-card-read-more'>{containTexts.READ_MORE}</div>  </Link>
+                    <Link  to={`/article/${article.id}`}> <div  className='article-card-read-more'>{containTexts.READ_MORE}</div>  </Link>
 
                 </div>
         

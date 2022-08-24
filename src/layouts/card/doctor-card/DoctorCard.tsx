@@ -19,7 +19,7 @@ const DoctorCard: React.FC<Props> = ({ doctor }: Props) => {
       <div className='doctor-card-branch'>{doctor.branch}</div>
       <div className='doctor-card-about'>{selectCharacterHelper(doctor.about,120)}</div>
       <div className='doctor-card-operations-icons'>
-        <div className={doctor.userId % 2 ===1 ? 'doctor-card-follow-button doctor-card-follow': 'doctor-card-follow-button doctor-card-unfollow'}>{doctor.userId % 2 ===1 ? "Takip et" : "Takibi bırak"}</div>
+        <div className={doctor.id % 2 ===1 ? 'doctor-card-follow-button doctor-card-follow': 'doctor-card-follow-button doctor-card-unfollow'}>{doctor.id % 2 ===1 ? "Takip et" : "Takibi bırak"}</div>
       </div>
      
 

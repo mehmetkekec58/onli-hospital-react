@@ -1,11 +1,14 @@
-.video-player-video{
-width: 70%;
-height: 350px;
-background-color:black;
-object-fit:cover;
+.video-player-video {
+    width: 70%;
+    height: 350px;
+    background-color: black;
+    object-fit: cover;
 }
-:fullscreen{
-    position: fixed;
-    z-index: 3;
-    background-color: aqua;
+
+@media only screen and (max-width: 650px) {
+    .video-player-video {
+        width: 90%;
+        height: 200px;
+    }
+
 }

@@ -1,34 +1,41 @@
-.recommended-article-container{
+.general-recommended-list-container{
     display: flex;
     flex-direction: column;
     padding: 2px 5px;
+    position: relative;
 }
-.recommended-article-card{
+.general-recommended-list-card{
     display: flex;
     flex-direction: row;
     margin-top: 10px;
     align-items: center;
     border-radius: 2px;
 }
-.recommended-article-card:hover{
+.general-recommended-list-card:hover{
     opacity: 0.8;
     background-color: rgb(225, 225, 224);
 }
-.recommended-article-image{
+.general-recommended-list-image{
     width: 140px;
     height: 100px;
     border-radius: 2px;
 }
-.recommended-article-title-and-text-container{
+.general-recommended-list-title-and-text-container{
     width: 100%;
     padding: 2px;
     height:100px;
     overflow: hidden;
 
 }
-.recommended-article-title{
+.general-recommended-list-title{
     font-weight: 600;
     height:100px;
 
+  
+}
+.general-recommended-list-play-icon{
+    display: flex;
+    position: absolute;
+    left: 60px;
   
 }

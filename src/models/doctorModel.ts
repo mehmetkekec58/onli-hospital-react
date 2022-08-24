@@ -1,9 +1,7 @@
-export default interface DoctorModel{
-    userId:number;
-    firstName:string;
-    lastName:string;
-    profilePhotoUrl:string;
-    username:string;
-    branch:string;
-    about:string;
+import IdModel from "./idModel";
+import UserInfoModel from "./userInfoModel";
+
+export default interface DoctorModel extends IdModel, UserInfoModel {
+    branch: string;
+    about: string;
 }

@@ -1,13 +1,12 @@
-export default interface VideoModel{
- videoId:number;
- videoUrl:string;
- thumbnailUrl:string;
- title:string;
- explanation:string;
- tags:string[];
- date:Date;
- username:string;
- firstName:string;
- lastName:string;
- profilePhotoUrl:string;
+import IdModel from "./idModel";
+import UserInfoModel from "./userInfoModel";
+
+export default interface VideoModel extends IdModel, UserInfoModel {
+    videoUrl: string;
+    thumbnailUrl: string;
+    title: string;
+    explanation: string;
+    tags: string[];
+    date: Date;
+
 }

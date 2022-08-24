@@ -1,5 +1,6 @@
-export default interface CategoryModel{
-    categoryId:number;
-    categoryName:string;
-    categoryPhotoUrl:string;
+import IdModel from "./idModel";
+
+export default interface CategoryModel extends IdModel {
+    categoryName: string;
+    categoryPhotoUrl: string;
 }

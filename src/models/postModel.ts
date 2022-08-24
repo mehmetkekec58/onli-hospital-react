@@ -1,11 +1,9 @@
-export default interface PostModel{
-    postId:number;
-    thumbnailUrl:string;
-    username:string;
-    profilePhotoUrl:string;
-    firstName:string;
-    lastName:string;
-    text:string;
-    date:Date;
+import IdModel from "./idModel";
+import UserInfoModel from "./userInfoModel";
+
+export default interface PostModel extends IdModel, UserInfoModel {
+    thumbnailUrl: string;
+    text: string;
+    date: Date;
 
 }

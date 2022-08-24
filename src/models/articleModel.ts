@@ -1,12 +1,10 @@
-export default interface ArticleModel {
-    articleId:number;
-    thumbnailUrl:string;
-    username:string;
-    profilePhotoUrl:string;
-    firstName:string;
-    lastName:string;
-    title:string;
-    text:string;
-    tag:string[];
-    date:Date;
+import IdModel from "./idModel";
+import UserInfoModel from "./userInfoModel";
+
+export default interface ArticleModel extends IdModel, UserInfoModel {
+    thumbnailUrl: string;
+    title: string;
+    text: string;
+    tag: string[];
+    date: Date;
 }

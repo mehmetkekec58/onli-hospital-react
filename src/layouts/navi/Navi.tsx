@@ -7,13 +7,18 @@ import Avatar from '@mui/material/Avatar/Avatar';
 import { Link } from 'react-router-dom';
 import Badge from '@mui/material/Badge/Badge';
 import CircleNotificationsOutlinedIcon from '@mui/icons-material/CircleNotificationsOutlined';
-interface Props {
-  openDrawer: boolean;
-  setOpenDrawer: React.Dispatch<React.SetStateAction<boolean>>
-}
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from '@reduxjs/toolkit';
+import State from '../../store/state';
+import openDrawerFunctions from '../../store/actions/openDrawerActionCreater';
 
-const Navi: React.FC<Props> = ({ openDrawer, setOpenDrawer }: Props) => {
 
+const Navi: React.FC = () => {
+  const dispatch = useDispatch();
+  const { openDrawerChangeValue } = bindActionCreators(openDrawerFunctions, dispatch)
+  const openDrawerValue = useSelector((state: State) => state.openDrawer.openDrawer)
+
+  const [openDrawer,setOpenDrawer] = [openDrawerValue,openDrawerChangeValue]
   const [openNotification, setOpenNotification] = useState<boolean>(false)
 
   const handleOpenOrCloseNotification = () => {

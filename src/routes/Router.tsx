@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import { DOCTOR } from '../contains/containRoles'
 import { containUrls } from '../contains/containUrls'
 import Article from '../pages/article/Article'
 import Home from '../pages/home/Home'
@@ -15,11 +16,8 @@ import Settings from '../pages/settings/Settings'
 import Video from '../pages/video/Video'
 import RequireAuth from '../utilities/Auth/RequireAuth'
 
-interface Props {
-  openDrawer: boolean
-}
 
-const Router = ({ openDrawer }: Props) => {
+const Router = () => {
   return (
     <Routes>
       <Route index element={<Home />} />
@@ -27,7 +25,7 @@ const Router = ({ openDrawer }: Props) => {
       <Route path={containUrls.LOGIN} element={<Login />} />
       <Route path={containUrls.REGISTER} element={<Register />} />
       <Route path='/category/:id' element={<Search />} />
-      <Route path='/payments' element={<RequireAuth roles={["doctor"]}><Payment /></RequireAuth>} />
+      <Route path='/payments' element={<RequireAuth roles={[DOCTOR]}><Payment /></RequireAuth>} />
       <Route path='/buycredit' element={<RequireAuth><LoadMoney /></RequireAuth>} />
       <Route path='/history' element={<Search />} />
       <Route path='/readinglist' element={<ReadingList />} />
@@ -38,14 +36,14 @@ const Router = ({ openDrawer }: Props) => {
       <Route path='/resetpassword' element={<Search />} />
       <Route path='/video'>
         <Route path='panel' element={<Search />} />
-        <Route path=':id' element={<Video openDrawer={openDrawer} />} />
+        <Route path=':id' element={<Video/>} />
         <Route path='upload' element={<Search />} />
         <Route path=':id/update' element={<Search />} />
       </Route>
       <Route path='/article'>
         <Route path='panel' element={<Search />} />
         <Route path=':id/update' element={<Search />} />
-        <Route path=':id' element={<Article openDrawer={openDrawer} />} />
+        <Route path=':id' element={<Article/>} />
         <Route path='add' element={<Search />} />
       </Route>
       <Route path='/chat'>
@@ -56,7 +54,7 @@ const Router = ({ openDrawer }: Props) => {
         <Route index element={<Profile />} />
         <Route path='update' element={<Profile />} />
       </Route>
-      
+
       <Route path='/*' element={<Search />} />
     </Routes>
   )

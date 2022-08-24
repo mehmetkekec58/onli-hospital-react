@@ -16,11 +16,11 @@ import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined';
 import PlaylistPlayOutlinedIcon from '@mui/icons-material/PlaylistPlayOutlined';
 import { NavLink } from 'react-router-dom';
 import { containTexts } from '../../contains/containTexts';
+import { useSelector } from 'react-redux';
+import State from '../../store/state';
 
-interface Props {
-    openDrawer: boolean;
-}
-const Drawer: React.FC<Props> = ({ openDrawer }: Props) => {
+const Drawer: React.FC = () => {
+    const openDrawer = useSelector((state: State) => state.openDrawer.openDrawer)
     const activeMenus: boolean[] = [true, false, false, true, true, true, true, true, true, true, true, true, true, false]
 
     // const activeMenus: boolean[] = [true, true, true, false, false ,false, false, false, false, false, false, true] // when no login

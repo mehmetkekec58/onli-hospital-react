@@ -1,11 +1,13 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { DOCTOR } from '../contains/containRoles'
+import { ADMIN, DOCTOR } from '../contains/containRoles'
 import { containUrls } from '../contains/containUrls'
+import NotFoundPage from '../layouts/not-found-page/NotFoundPage'
 import Article from '../pages/article/Article'
 import Home from '../pages/home/Home'
 import LoadMoney from '../pages/load-money/LoadMoney'
 import Login from '../pages/login/Login'
+import Logout from '../pages/logout/Logout'
 import Payment from '../pages/payment/Payment'
 import Playlist from '../pages/playlist/Playlist'
 import Profile from '../pages/profile/Profile'
@@ -14,48 +16,55 @@ import Register from '../pages/register/Register'
 import Search from '../pages/search/Search'
 import Settings from '../pages/settings/Settings'
 import Video from '../pages/video/Video'
+import NotAuth from '../utilities/Auth/NotAuth'
 import RequireAuth from '../utilities/Auth/RequireAuth'
+import PanelRouter from './PanelRouter'
 
 
 const Router = () => {
   return (
     <Routes>
       <Route index element={<Home />} />
-      <Route path='/search' element={<Search />} />
-      <Route path={containUrls.LOGIN} element={<Login />} />
-      <Route path={containUrls.REGISTER} element={<Register />} />
-      <Route path='/category/:id' element={<Search />} />
-      <Route path='/payments' element={<RequireAuth roles={[DOCTOR]}><Payment /></RequireAuth>} />
-      <Route path='/buycredit' element={<RequireAuth><LoadMoney /></RequireAuth>} />
-      <Route path='/history' element={<Search />} />
-      <Route path='/readinglist' element={<ReadingList />} />
-      <Route path='/playlist' element={<Playlist />} />
-      <Route path='/settings' element={<Settings />} />
-      <Route path='/about' element={<Search />} />
-      <Route path='/videochat/:id' element={<Search />} />
-      <Route path='/resetpassword' element={<Search />} />
-      <Route path='/video'>
-        <Route path='panel' element={<Search />} />
-        <Route path=':id' element={<Video/>} />
-        <Route path='upload' element={<Search />} />
-        <Route path=':id/update' element={<Search />} />
+      <Route path={containUrls.SEARCH} element={<Search />} />
+      <Route path={containUrls.LOGIN} element={<NotAuth><Login /></NotAuth>} />
+      <Route path={containUrls.REGISTER} element={<NotAuth><Register /></NotAuth>} />
+      <Route path={containUrls.PAYMENTS} element={<RequireAuth roles={[DOCTOR]}><Payment /></RequireAuth>} />
+      <Route path={containUrls.BUY_CREDIT} element={<RequireAuth><LoadMoney /></RequireAuth>} />
+      <Route path={containUrls.HISTORY} element={<RequireAuth><Search /></RequireAuth>} />
+      <Route path={containUrls.EDIT_PROFILE} element={<RequireAuth><Search /></RequireAuth>} />
+      <Route path={containUrls.READING_LIST} element={<RequireAuth><ReadingList /></RequireAuth>} />
+      <Route path={containUrls.PLAYLIST} element={<RequireAuth><Playlist /></RequireAuth>} />
+      <Route path={containUrls.SETTINGS} element={<RequireAuth><Settings /></RequireAuth>} />
+      <Route path={containUrls.ABOUT} element={<Search />} />
+      <Route path={containUrls.LOGOUT} element={<RequireAuth><Logout /></RequireAuth>} />
+      <Route path={containUrls.RESET_PASSWORD} element={<NotAuth><Search /></NotAuth>} />
+      <Route path={containUrls.VIDEO_CHAT}>
+        <Route path=':id' element={<RequireAuth><Search /></RequireAuth>} />
       </Route>
-      <Route path='/article'>
-        <Route path='panel' element={<Search />} />
-        <Route path=':id/update' element={<Search />} />
-        <Route path=':id' element={<Article/>} />
-        <Route path='add' element={<Search />} />
-      </Route>
-      <Route path='/chat'>
-        <Route index element={<Search />} />
+      <Route path={containUrls.POST}>
         <Route path=':id' element={<Search />} />
       </Route>
-      <Route path='/profile/:username'>
-        <Route index element={<Profile />} />
-        <Route path='update' element={<Profile />} />
+      <Route path={containUrls.CATEGORY}>
+        <Route path=':id' element={<Search />} />
+      </Route>
+      <Route path={containUrls.VIDEO}>
+        <Route path=':id' element={<Video />} />
+      </Route>
+      <Route path={containUrls.ARTICLE}>
+        <Route path=':id' element={<Article />} />
+      </Route>
+      <Route path={containUrls.CHAT}>
+        <Route index element={<RequireAuth><Search /></RequireAuth>} />
+        <Route path=':id' element={<RequireAuth><Search /></RequireAuth>} />
+      </Route>
+      <Route path={containUrls.PROFILE}>
+        <Route path=':username' element={<Profile />} />
+        <Route path='update' element={<RequireAuth><Profile /></RequireAuth>} />
       </Route>
 
-      <Route path='/*' element={<Search />} />
+      <Route path={`${containUrls.PANEL}${containUrls.OTHER_LINK}`} element={<RequireAuth roles={[ADMIN, DOCTOR]}><PanelRouter /></RequireAuth>} />
+
+      <Route path={containUrls.OTHER_LINK} element={<NotFoundPage />} />
     </Routes>
   )
 }

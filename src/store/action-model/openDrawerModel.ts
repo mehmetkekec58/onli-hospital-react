@@ -1,9 +1,9 @@
-import { openDrawerActionType } from './../action-type/openDrawerActionType';
+import { OpenDrawerActionType } from './../action-type/openDrawerActionType';
 
-interface openDrawerChangeValue{
-    type:openDrawerActionType.CHANGE_VALUE_OPEN_DRAWER,
+interface OpenDrawerChangeValue{
+    type:OpenDrawerActionType.CHANGE_VALUE_OPEN_DRAWER,
     payload: boolean,
 }
 
 
-export type openDrawerActionModel = openDrawerChangeValue
+export type OpenDrawerActionModel = OpenDrawerChangeValue

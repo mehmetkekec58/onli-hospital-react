@@ -1,12 +1,12 @@
-import { openDrawerActionType } from './../action-type/openDrawerActionType';
+import { OpenDrawerActionType } from './../action-type/openDrawerActionType';
 import { Dispatch } from "redux";
-import { openDrawerActionModel } from "../action-model/openDrawerModel";
+import { OpenDrawerActionModel } from "../action-model/openDrawerModel";
 
 const openDrawerChangeValue  = (openOrClose:boolean) =>{
 
-return (dispatch:Dispatch<openDrawerActionModel>) =>{
+return (dispatch:Dispatch<OpenDrawerActionModel>) =>{
     dispatch({
-        type:openDrawerActionType.CHANGE_VALUE_OPEN_DRAWER,
+        type:OpenDrawerActionType.CHANGE_VALUE_OPEN_DRAWER,
         payload: openOrClose,
     })
 }

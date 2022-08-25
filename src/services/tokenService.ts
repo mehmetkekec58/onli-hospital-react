@@ -1,5 +1,5 @@
 import { containLocalStorageKey } from './../contains/containLocalStorageKey';
-import { deleteLocalStorage, getLocalStorage } from "./localStorageService";
+import { deleteLocalStorage, getLocalStorage, setLocalStorage } from "./localStorageService";
 
 const tokenKey = containLocalStorageKey.TOKEN
 
@@ -11,8 +11,13 @@ export function deleteToken() {
     deleteLocalStorage(tokenKey)
 }
 
-export function tokenValidation(token: string): boolean {
-    return tokenExpiration();
+export function setToken(token: string) {
+    setLocalStorage(tokenKey, token);
+}
+
+export function tokenValidation(token?: string): boolean {
+        return tokenExpiration();
+ 
 }
 export function tokenExpiration(): boolean {
     return true;

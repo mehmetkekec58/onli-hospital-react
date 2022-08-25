@@ -1,4 +1,4 @@
-import { setLocalStorage, getLocalStorage,deleteLocalStorage } from "./localStorageService";
+import { setLocalStorage, getLocalStorage,deleteLocalStorage } from "../services/localStorageService";
 
 describe("localStorage service", () => {
     it("setLocalStorage and getLocalStorage test", () => {

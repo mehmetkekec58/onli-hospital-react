@@ -7,23 +7,25 @@
     padding-left: 10px;
     font-family: 'Open Sans';
 }
-.search-input-recommended{
-    width: 33.5%;
+
+.search-input-recommended {
+    width: 83.7%;
     height: 260px;
-    top: 46px;
+    top: 38px;
     justify-content: center;
     border-bottom-left-radius: 10px;
-    border-bottom-right-radius:10px;
+    border-bottom-right-radius: 10px;
     padding: 0;
-    position: fixed;
+    position: absolute;
     background-color: rgb(245, 249, 249);
     list-style-type: none;
     z-index: 2;
     border: 1px gray solid;
-   
-   
+
+
 }
-.search-input-recommended-item{
+
+.search-input-recommended-item {
     width: 100%;
     padding-left: 1%;
     padding-bottom: 3px;
@@ -31,17 +33,19 @@
     margin: 5px 0px;
     font-weight: 600;
     overflow: hidden;
-    cursor:pointer;
+    cursor: pointer;
     border-radius: 8px;
-    
-    
+
+
 }
-.search-input-recommended-item:hover{
-   background-color:rgb(215, 218, 218) ;
+
+.search-input-recommended-item:hover {
+    background-color: rgb(215, 218, 218);
 }
+
 .search-input:focus {
     outline: none;
-  
+
 }
 
 input:focus::placeholder {
@@ -53,6 +57,7 @@ input:focus::placeholder {
     width: 100%;
     align-items: center;
     display: flex;
+    position: relative;
 
 }
 
@@ -76,20 +81,11 @@ input:focus::placeholder {
     width: 100px;
     height: 100px;
 }
-@media only screen and (max-width: 800px) {
-    .search-input-recommended{
-        width:41.5%;
-
-    }
-
-
-
-}
 
 @media only screen and (max-width: 600px) {
     .search-button {
         height: 33px;
-        width: 13%;
+        width: 15%;
         font-size: small;
     }
 
@@ -98,11 +94,11 @@ input:focus::placeholder {
         min-width: 50px;
         height: 33px;
     }
-    .search-input-recommended{
-        width:31.5%;
-        font-size: small;
 
+    .search-input-recommended {
+        width: 63%;
     }
+
 
 
 
@@ -122,13 +118,4 @@ input:focus::placeholder {
         min-width: 20px;
         height: 33px;
     }
-}
-@media only screen and (max-width: 300px) {
-    .search-input-recommended{
-        width:43.5%;
-
-    }
-
-
-
 }

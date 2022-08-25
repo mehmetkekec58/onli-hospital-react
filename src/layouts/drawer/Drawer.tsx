@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Drawer.css";
 import PersonIcon from '@mui/icons-material/PersonOutline';
 import HomeIcon from '@mui/icons-material/HomeOutlined';
@@ -14,40 +14,90 @@ import PaymentsOutlinedIcon from '@mui/icons-material/PaymentsOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import VideoCallOutlinedIcon from '@mui/icons-material/VideoCallOutlined';
 import PlaylistPlayOutlinedIcon from '@mui/icons-material/PlaylistPlayOutlined';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { NavLink } from 'react-router-dom';
 import { containTexts } from '../../contains/containTexts';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import State from '../../store/state';
+import { containUrls } from '../../contains/containUrls';
+import useAuth from '../../hooks/useAuth';
+import { bindActionCreators } from 'redux';
+import activeMenuFunction from '../../store/actions/activeMenuActionCreator'
+import { containActiveMenus } from '../../contains/containActiveMenus';
+import QuestionAnswerOutlinedIcon from '@mui/icons-material/QuestionAnswerOutlined';
+import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
+import { getRoles } from '@testing-library/react';
+import { getToken } from '../../services/tokenService';
+import { ADMIN, DOCTOR, USER } from '../../contains/containRoles';
+import IsLogin from '../../utilities/isLogin/IsLogin';
+import { getRolesService } from '../../services/rolesService';
+
+
+let isLogin = IsLogin()
 
 const Drawer: React.FC = () => {
-    const openDrawer = useSelector((state: State) => state.openDrawer.openDrawer)
-    const activeMenus: boolean[] = [true, false, false, true, true, true, true, true, true, true, true, true, true, false]
 
-    // const activeMenus: boolean[] = [true, true, true, false, false ,false, false, false, false, false, false, true] // when no login
-    /*  const menuLinks: string[] = ['/', 'login', 'register', 'editprofile', 'article/add', 'payments', 'buycredit', 'history', 'readinglist', 'settings', 'logout', 'about']
-      const menuIcons = [<HomeIcon />, <LoginOutlinedIcon />, <HowToRegOutlinedIcon />, <PersonIcon />, <CreateOutlinedIcon />, <PaymentsOutlinedIcon />, <CreditCardOutlinedIcon />, <HistoryIcon />, <BookIcon />, <SettingsIcon />, <LogoutIcon />, <InfoOutlinedIcon />]
-      const menuss: (string | undefined)[] = [containTexts.homePage, containTexts.login, containTexts.register, containTexts.editProfile, containTexts.addArticle, containTexts.payments, containTexts.loadMoney, containTexts.history, containTexts.readingList, containTexts.settings, containTexts.logout, containTexts.about]*/
+    const openDrawer = useSelector((state: State) => state.openDrawer.openDrawer)
+    const login = useSelector((state: State) => state.login.login)
+    const dispatch = useDispatch();
+    const { addActiveMenu } = bindActionCreators(activeMenuFunction, dispatch)
+    const value = useSelector((state: State) => state.activeMenu.activeMenu)
+
     const menus: [(string | JSX.Element), (string | undefined), (string)][] = [
-        [<HomeIcon />, containTexts.HOME_PAGE, '/'],
-        [<LoginOutlinedIcon />, containTexts.LOGIN, 'login'],
-        [<HowToRegOutlinedIcon />, containTexts.REGISTER, 'register'],
-        [<PersonIcon />, containTexts.EDIT_PROFILE, 'editprofile'],
-        [<CreateOutlinedIcon />, containTexts.ARTICLES, 'article/panel'],
-        [<VideoCallOutlinedIcon />, containTexts.VIDEOS, 'video/panel'],
-        [<PaymentsOutlinedIcon />, containTexts.PAYMENTS, 'payments'],
-        [<CreditCardOutlinedIcon />, containTexts.LOAD_MONEY, 'buycredit'],
-        [<HistoryIcon />, containTexts.HISTORY, 'history'],
-        [<BookIcon />, containTexts.READING_LIST, 'readinglist'],
-        [<PlaylistPlayOutlinedIcon />, containTexts.PLAYLIST, 'playlist'],
-        [<SettingsIcon />, containTexts.SETTINGS, 'settings'],
-        [<LogoutIcon />, containTexts.LOGOUT, 'logout'],
-        [<InfoOutlinedIcon />, containTexts.ABOUT, 'about'],
+        [<HomeIcon />, containTexts.HOME_PAGE, containUrls.HOME_PAGE],
+        [<LoginOutlinedIcon />, containTexts.LOGIN, containUrls.LOGIN],
+        [<HowToRegOutlinedIcon />, containTexts.REGISTER, containUrls.REGISTER],
+        [<AdminPanelSettingsIcon />, containTexts.DOCTOR_PANEL, containUrls.PANEL],
+        [<ManageAccountsIcon />, containTexts.ADMIN_PANEL, containUrls.ADMIN_PANEL],
+        [<PersonIcon />, containTexts.EDIT_PROFILE, containUrls.EDIT_PROFILE],
+        [<QuestionAnswerOutlinedIcon />, containTexts.MY_QUESTIONS, containUrls.MY_QUESTIONS],
+        [<PersonAddOutlinedIcon />, containTexts.SUBSCRIPTIONS, containUrls.SUBSCRIPTIONS],
+        [<CreateOutlinedIcon />, containTexts.ARTICLES, `${containUrls.PANEL}${containUrls.ARTICLE}`],
+        [<VideoCallOutlinedIcon />, containTexts.VIDEOS, `${containUrls.PANEL}${containUrls.VIDEO}`],
+        [<PaymentsOutlinedIcon />, containTexts.PAYMENTS, containUrls.PAYMENTS],
+        [<CreditCardOutlinedIcon />, containTexts.LOAD_MONEY, containUrls.BUY_CREDIT],
+        [<HistoryIcon />, containTexts.HISTORY, containUrls.HISTORY],
+        [<BookIcon />, containTexts.READING_LIST, containUrls.READING_LIST],
+        [<PlaylistPlayOutlinedIcon />, containTexts.PLAYLIST, containUrls.PLAYLIST],
+        [<SettingsIcon />, containTexts.SETTINGS, containUrls.SETTINGS],
+        [<LogoutIcon />, containTexts.LOGOUT, containUrls.LOGOUT],
+        [<InfoOutlinedIcon />, containTexts.ABOUT, containUrls.ABOUT],
     ]
+
+    const activeMenus: boolean[][] = [
+        containActiveMenus.NO_LOGIN,
+        containActiveMenus.DOCTOR,
+        containActiveMenus.ADMIN,
+        containActiveMenus.USER,
+    ]
+
+
+    useEffect(() => {
+        addActiveMenu(isLogin.isAuth ? activeMenuWhenAuthByRole() : activeMenus[0])
+    }, [login])
+
+    function activeMenuWhenAuthByRole() {
+
+        let role: string = "doctor";
+
+        switch (role) {
+            case DOCTOR:
+                return activeMenus[1];
+            case ADMIN:
+                return activeMenus[2];
+            case USER:
+                return activeMenus[3];
+            default:
+                return activeMenus[0];
+        }
+    }
+
     return (
         <div className='drawer-general-div'>
             {menus.map((menu, index) => (
-                activeMenus[index] &&
-                <NavLink title={menu[1]} key={index} style={({ isActive }) => { return isActive ? { textDecoration: 'none', color: '#6b1e9c' } : { textDecoration: 'none', color: 'black' } }} to={menu[2]}>
+                value[index] &&
+                <NavLink title={!openDrawer ? menu[1] : ""} key={index} style={({ isActive }) => { return isActive ? { textDecoration: 'none', color: '#6b1e9c' } : { textDecoration: 'none', color: 'black' } }} to={menu[2]}>
                     <div className={!openDrawer ? 'drawer-item-container-when-close-drawer' : 'drawer-item-container'}>
                         <div className={!openDrawer ? 'drawer-menu-icon-when-close-drawer' : 'drawer-menu-icon'}>{menu[0]}</div>
                         <div style={{ ...(!openDrawer && { display: 'none' }) }} className='drawer-menu-text'>{menu[1]}</div>

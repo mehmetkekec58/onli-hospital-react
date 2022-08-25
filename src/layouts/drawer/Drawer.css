@@ -56,23 +56,31 @@
 
 }
 
+.drawer-general-div::-webkit-scrollbar {
+    display: none;
+
+}
+.drawer-general-div:hover::-webkit-scrollbar {
+    display:contents;
+
+}
 
 ::-webkit-scrollbar {
     width: 7px;
+    scroll-behavior: smooth;
 
 }
 
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 3px white;
     border-radius: 100%;
-
 }
-
 ::-webkit-scrollbar-thumb {
-    background: rgb(168, 168, 167);
+    background: rgb(168, 168, 167,0.6);
     border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #929191;
+    background: #bab9b9;
+  
 }

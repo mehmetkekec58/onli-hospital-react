@@ -1,0 +1,28 @@
+.not-found-page-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    flex-direction: column;
+}
+
+.not-found-page-image-container {
+    width: 40%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-page-image {
+    width: 150px;
+    height: 150px;
+}
+
+.not-found-page-text{
+    font-size: large;
+    font-weight: bold;
+    margin: 5px;
+
+}

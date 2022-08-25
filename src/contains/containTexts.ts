@@ -34,7 +34,10 @@ export const containTexts = {
     LOAD_MONEY:"Para Yükle",
     artiles:"Yazılar",
     PLAYLIST:"Oynatma Listesi",
-  
+    DOCTOR_PANEL:"Doktor Panel",
+    ADMIN_PANEL:"Admin Panel",
+    MY_QUESTIONS:"Sorularım",
+    SUBSCRIPTIONS:"Abonelikler",
 
     ADD_ARTICLE:"Yazı Ekle",
     VIDEO_UPLOAD:"Video Yükle",
@@ -70,4 +73,8 @@ export const containTexts = {
     YOU_ARE_NOT_AUTHORIZED:"Yetkiniz yok",
     WARNING:"Uyarı",
     OPERATION_FAILED:"işlem başarısız",
+
+    GO_HOME_PAGE:"Ana Sayfaya Git",
+    NOTE_FOUND_PAGE_TEXT:"İstediğiniz sayfayı bulamadık. Lütfen aramayı deneyin.",
+   
 };

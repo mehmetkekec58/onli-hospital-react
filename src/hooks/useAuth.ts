@@ -7,7 +7,7 @@ import { getToken, tokenValidation } from '../services/tokenService';
 
 function checkRoles(roles: string[], getRoles?: string[]): AuthType {
 
-    if (getRoles !== undefined && getRoles.length > 0) {
+    if (getRoles !== null && getRoles !== undefined && getRoles.length > 0) {
         for (let i = 0; i < roles.length; i++) {
             if (getRoles.includes(roles[i])) {
                 return { isAuth: true };
@@ -22,11 +22,11 @@ export default function useAuth(roles?: string[]): AuthType {
     const token = getToken();
 
 
-    if (token && tokenValidation(token)) {
+    if (tokenValidation(token)) {
 
-        const getRoles: string[] = getRolesService(token)
+        const getRoles: string[] | null= getRolesService(token)
 
-        if (roles === undefined || roles === null) {
+        if (roles === null || roles === undefined) {
             return { isAuth: true };
         } else {
             return checkRoles(roles, getRoles)

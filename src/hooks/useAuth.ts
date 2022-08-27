@@ -22,7 +22,7 @@ export default function useAuth(roles?: string[]): AuthType {
     const token = getToken();
 
 
-    if (tokenValidation(token)) {
+    if (token && tokenValidation(token)) {
 
         const getRoles: string[] | null= getRolesService(token)
 

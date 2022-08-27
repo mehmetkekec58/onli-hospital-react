@@ -122,33 +122,33 @@ const doctors: DoctorModel[] = [
 const categories:CategoryModel[] = [
   {
     id:0,
-    categoryName:"Göğüs Hastalıkları",
-    categoryPhotoUrl:"https://www.bilgihastanesi.com.tr/lib/images/bolumler/detail/gogushastalik_1.jpg",
+    name:"Göğüs Hastalıkları",
+    thumbnailUrl:"https://www.bilgihastanesi.com.tr/lib/images/bolumler/detail/gogushastalik_1.jpg",
   },
   {
     id:1,
-    categoryName:"Kalp-Damar Hastalıkları",
-    categoryPhotoUrl:"https://madicanacdnstorage.blob.core.windows.net/main/Assets/photo/r/kalp-damar-cerrahisinde-son-gelismeler-76711_b.jpg",
+    name:"Kalp-Damar Hastalıkları",
+    thumbnailUrl:"https://madicanacdnstorage.blob.core.windows.net/main/Assets/photo/r/kalp-damar-cerrahisinde-son-gelismeler-76711_b.jpg",
   },
   {
     id:2,
-    categoryName:"Solunum Yolu Hastalıkları",
-    categoryPhotoUrl:"https://www.saglikveyasamdergisi.com.tr/wp-content/uploads/2012/10/sigara-solunum-yolu-enfeksiyon-nedeni.jpg",
+    name:"Solunum Yolu Hastalıkları",
+    thumbnailUrl:"https://www.saglikveyasamdergisi.com.tr/wp-content/uploads/2012/10/sigara-solunum-yolu-enfeksiyon-nedeni.jpg",
   },
   {
     id:3,
-    categoryName:"Mide Hastalıkları",
-    categoryPhotoUrl:"https://madicanacdnstorage.blob.core.windows.net/main/Assets/photo/r/mide-kanseri-37755-56944_b.jpg",
+    name:"Mide Hastalıkları",
+    thumbnailUrl:"https://madicanacdnstorage.blob.core.windows.net/main/Assets/photo/r/mide-kanseri-37755-56944_b.jpg",
   },
   {
     id:4,
-    categoryName:"Coronavirüs",
-    categoryPhotoUrl:"https://cdnuploads.aa.com.tr/uploads/Contents/2022/07/24/thumbs_b_c_854aacfcace81c5752b24cf12af1bbe6.jpg",
+    name:"Coronavirüs",
+    thumbnailUrl:"https://cdnuploads.aa.com.tr/uploads/Contents/2022/07/24/thumbs_b_c_854aacfcace81c5752b24cf12af1bbe6.jpg",
   },
   {
     id:5,
-    categoryName:"Mevsimsel Grip",
-    categoryPhotoUrl:"https://grip.gov.tr/depo/mevsimsel-grip/Cocuk-ates-1_c9088.jpg",
+    name:"Mevsimsel Grip",
+    thumbnailUrl:"https://grip.gov.tr/depo/mevsimsel-grip/Cocuk-ates-1_c9088.jpg",
   },
 
 ]

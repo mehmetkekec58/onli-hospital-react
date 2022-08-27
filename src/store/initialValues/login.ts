@@ -1,3 +1,3 @@
-import IsLogin from "../../utilities/isLogin/IsLogin";
+import { getToken } from "../../services/tokenService";
 
-export const login: boolean = IsLogin().isAuth ? true :false;
+export const login: boolean = getToken() ? true :false;

@@ -1,1 +1,5 @@
-export const searchHistoryItems:string[] = [];
+import { getHistorySearch } from "../../services/searchHistoryService";
+
+let getSearchHistory =  getHistorySearch()
+
+export const searchHistoryItems:string[] = getSearchHistory;

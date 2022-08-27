@@ -1,0 +1,75 @@
+.category-container {
+    height: calc(100vh - 70px);
+    padding: 7px 15px;
+    font-family: 'Open Sans';
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.category-info-continer {
+    height: 300px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction:row;
+    background-color: rgba(220, 220, 220,0.3);
+    box-shadow: 2px 2px 2px rgb(39, 40, 39,0.2);
+    padding: 10px;
+    border-radius: 10px;
+
+}
+
+.category-photo-image {
+    width: 40%;
+    height: auto;
+    margin-left: 10%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px gray;
+}
+
+.category-info-name-and-follow-button-continer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.category-info-category-name {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 10px 5px;
+}
+
+.category-button-general {
+    margin-right: 10px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ffd740;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.category-info-follower-count {
+    font-weight: bold;
+}
+
+.category-button-general:hover {
+    background-color: #cdab2f;
+}
+
+.category-unfollow-button {
+    background-color: red;
+    color: white;
+}
+
+.category-unfollow-button:hover {
+    background-color: rgb(188, 40, 40);
+}
+.category-tabs-container{
+    margin: 5px 0px;
+}

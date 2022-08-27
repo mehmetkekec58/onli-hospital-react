@@ -5,20 +5,20 @@ import { containTexts } from '../../contains/containTexts';
 import { useNavigate } from 'react-router-dom';
 import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { getLocalStorage, setLocalStorage, deleteLocalStorage } from '../../services/localStorageService';
-import { containLocalStorageKey } from '../../contains/containLocalStorageKey';
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { useSelector } from 'react-redux';
 import State from "../../store/state";
 import searchHistoryEdit from '../../store/actions/searchHistoryActionCreater';
+import { containUrls } from '../../contains/containUrls';
+import { getHistorySearch, setSearcHistoryToLocalStorage } from '../../services/searchHistoryService';
+import { arrayUnique } from '../../helpers/arrayUnique';
 
-const containSearchUrl: string = "search?q=";
+const CONTAIN_SEARCH_URL: string = `${containUrls.SEARCH}?q=`;
 const ENTER: string = "Enter";
-const searchListItemsMaxLenght: number = 7;
-const inputFocusChangeValueDelay = 300;
-const searchHistoryLocalStorageKey = containLocalStorageKey.SEARCH_HISTORY;
-const searchListTestItems: string[] = ["kanser nedir", "kaç saat spor yapmalıyım?", "Karabiber astıma niçin kötü gelir?", "yaz mevsimi hastalıkları", "Yoğurt gribe iyi gelir mi?", "Grip nasıl geçer", "renk körü", "yorgunluk", "Kışın nasıl giysiler giyilmeli", "Boyun ağrısı egzersizleri", "Baş ağrısı"];
+const SEARCH_LIST_ITEMS_MAX_LENGHT: number = 7;
+const INPUT_FOCUS_CHANGE_VALUE_DELAY: number = 300;
+const SEARCH_LIST_TEST_ITEMS: string[] = ["kanser nedir", "kaç saat spor yapmalıyım?", "Karabiber astıma niçin kötü gelir?", "yaz mevsimi hastalıkları", "Yoğurt gribe iyi gelir mi?", "Grip nasıl geçer", "renk körü", "yorgunluk", "Kışın nasıl giysiler giyilmeli", "Boyun ağrısı egzersizleri", "Baş ağrısı"];
 
 
 const Input = () => {
@@ -28,8 +28,8 @@ const Input = () => {
     const dispatch = useDispatch();
     const { addSearchHistoryState } = bindActionCreators(searchHistoryEdit, dispatch)
     const searchHistoryValues = useSelector((state: State) => state.searchHistory.searchHistoryItems)
-    
-    const [searchList, setSearchList] = useState<(string[])>([])
+
+    const [searchList, setSearchList] = useState<string[]>([])
     const [searchHistory, setSearchHistory] = [searchHistoryValues, addSearchHistoryState]
     const inputRef = useRef<HTMLInputElement>(null);
     const [inputText, setInputText] = useState<string>("")
@@ -40,16 +40,17 @@ const Input = () => {
         if (inputText !== "") {
             setsearchListItems(searchFilter())
         } else {
-            setsearchListItems(searchHistory.slice(0, searchListItemsMaxLenght).reverse());
+            setsearchListItems(searchHistory.slice(0, SEARCH_LIST_ITEMS_MAX_LENGHT).reverse());
         }
     }, [inputText])
 
     useEffect(() => {
-        setSearchList(searchListTestItems);
-        let getSearchHistory = getHistorySearch();
-        if (getSearchHistory !== null) {
+        let getSearchHistory = getHistorySearch()
+        console.log(getSearchHistory)
+        setSearchList(SEARCH_LIST_TEST_ITEMS)
+        if (getSearchHistory.length !== 0) {
             setSearchHistory(getSearchHistory)
-            setsearchListItems(getSearchHistory.slice(0, searchListItemsMaxLenght).reverse())
+            setsearchListItems(getSearchHistory.slice(0, SEARCH_LIST_ITEMS_MAX_LENGHT).reverse())
         }
     }, [])
 
@@ -57,6 +58,7 @@ const Input = () => {
         if (searchHistory.length === 0) {
             setsearchListItems([])
         }
+
     }, [searchHistory])
 
 
@@ -75,7 +77,7 @@ const Input = () => {
         if (inputOnFocus === false) {
             setInputOnFocus(!inputOnFocus)
         } else {
-            setTimeout(inputFocusChangeValue, inputFocusChangeValueDelay)
+            setTimeout(inputFocusChangeValue, INPUT_FOCUS_CHANGE_VALUE_DELAY)
         }
     }
 
@@ -94,7 +96,7 @@ const Input = () => {
 
     function directGoSearchPage(letters: string) {
         addSearchHistory(letters)
-        navigate(`${containSearchUrl}${letters}`)
+        navigate(`${CONTAIN_SEARCH_URL}${letters}`)
     }
 
     function addSearchHistory(letters: string) {
@@ -102,20 +104,6 @@ const Input = () => {
             setSearchHistory([...searchHistory, letters])
             setSearcHistoryToLocalStorage([...searchHistory, letters])
         }
-    }
-
-    function getHistorySearch() {
-        let getSearchHistory = getSearchHistoryOnLocalStorage()
-        if (getSearchHistory !== null && !(Array.isArray(getSearchHistory) && getSearchHistory.every(typeofString))) {
-            deleteSearcHistoryToLocalStorage();
-            return null;
-        } else {
-            return getSearchHistory;
-        }
-    }
-
-    function typeofString(item: any): boolean {
-        return typeof item === "string";
     }
 
     function inputFocusChangeValue() {
@@ -126,29 +114,14 @@ const Input = () => {
         return inputText === "" || inputText === null;
     }
 
-    function getSearchHistoryOnLocalStorage() {
-        return getLocalStorage(searchHistoryLocalStorageKey);
-    }
-    function deleteSearcHistoryToLocalStorage() {
-        deleteLocalStorage(searchHistoryLocalStorageKey)
-    }
-
-    function setSearcHistoryToLocalStorage(items: string[]) {
-        setLocalStorage(searchHistoryLocalStorageKey, items)
-    }
-
     function searchFilter(): string[] {
         let lowerCaseInputText: string = inputText.toLocaleLowerCase();
         let list: string[] = (searchHistory.filter((item) => (item.toLocaleLowerCase().startsWith(lowerCaseInputText) && item))).concat(searchList.filter((item) => (item.toLocaleLowerCase().startsWith(lowerCaseInputText) && item)))
-        return arrayUnique(list).slice(0, searchListItemsMaxLenght)
+        return arrayUnique(list).slice(0, SEARCH_LIST_ITEMS_MAX_LENGHT)
     }
 
     function searchHistoryIncludeLetters(letters: string): boolean {
         return searchHistory.includes(letters);
-    }
-
-    function arrayUnique(array: string[]): string[] {
-        return array.filter((c, index) => { return array.indexOf(c) === index; });
     }
 
     function searchInputRecommededHeight(): string {
@@ -166,12 +139,17 @@ const Input = () => {
         )
     }
 
+    function searchItemCount(): number {
+        return searchListItems.length;
+    }
+
+
     return (
         <div className='search-input-form'>
 
             <input ref={inputRef} onBlur={handleActiveOrPassiveSearchItems} onFocus={handleActiveOrPassiveSearchItems} value={inputText} onChange={(e) => setInputText(e.target.value)} className="search-input" placeholder={containTexts.SEARCH} type="text" onKeyDown={handleKeyDown} />
-            {searchListItems.length !== 0 &&
-                (<ul style={{ ...(!inputOnFocus && { display: 'none' }), height: searchInputRecommededHeight() }} className='search-input-recommended'>
+            {inputOnFocus && searchItemCount() !== 0 &&
+                (<ul style={{ height: searchInputRecommededHeight() }} className='search-input-recommended'>
                     {searchListItems.map((word, index) => (
                         <li key={index} onClick={(e) => handleSearchItemsClick(word)} className='search-input-recommended-item'>{searchAndSearhHistoryIcon(word)}{word}</li>
                     ))}

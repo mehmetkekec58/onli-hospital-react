@@ -1,4 +1,5 @@
 import React from 'react'
+import { containTexts } from '../../contains/containTexts';
 import GridListVideoCard from '../../layouts/grid-list/grid-list-video-card/GridListVideoCard';
 import VideoModel from '../../models/videoModel';
 import './Playlist.css';
@@ -49,7 +50,8 @@ const videos:VideoModel[]=[
 const Playlist = () => {
   return (
     <div className='playlist-container'>
-        
+             <div className="playlist-text">{containTexts.PLAYLIST}</div>
+      <hr/>
     <GridListVideoCard videos={videos} />
     </div>
   )

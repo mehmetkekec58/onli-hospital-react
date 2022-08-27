@@ -1,4 +1,5 @@
 import React from 'react'
+import { containTexts } from '../../contains/containTexts';
 import GridListCard from '../../layouts/grid-list/grid-list-card/GridListCard';
 import ArticleModel from '../../models/articleModel';
 import './ReadingList.css';
@@ -71,6 +72,8 @@ const articles: ArticleModel[] = [
 const ReadingList = () => {
   return (
     <div className='reading-list-container'>
+      <div className="reading-list-text">{containTexts.READING_LIST}</div>
+      <hr/>
         <GridListCard articles={articles} />
     </div>
   )

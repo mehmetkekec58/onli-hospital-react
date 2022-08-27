@@ -104,3 +104,8 @@
     align-items: center;
     font-size: small;
 }
+.login-alert{
+    display: flex;
+    position: absolute;
+    top: 25px;
+}

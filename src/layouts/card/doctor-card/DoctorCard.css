@@ -13,6 +13,7 @@
     text-align: center;
     flex-direction: column;
     font-family: 'Open Sans';
+    cursor: pointer;
 }
 
 .doctor-card:hover {

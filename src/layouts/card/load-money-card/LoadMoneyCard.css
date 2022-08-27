@@ -4,14 +4,16 @@
     height: 470px;
     padding: 10px;
     margin: 5px;
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px rgb(201, 198, 198);
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(201, 198, 198);
     display: flex;
     justify-content: center;
     position: relative;
     text-align: center;
     flex-direction: column;
     font-family: 'Open Sans';
+    backdrop-filter: blur(52px);
+    color: white;
 }
 
 
@@ -36,15 +38,19 @@
     clear: both
 }
 
-.load-money-card-follow-button {
+.load-money-card-buy-button {
     font-weight: 700;
-   
+    width: 250px;
     border-radius: 5px;
-    padding: 5px;
+    padding: 5px 15px;
     color: black;
 }
-.load-money-card-follow{
+.load-money-card-buy{
     background-color: rgb(255, 215, 64);
+    cursor:context-menu;
+}
+.load-money-card-buy:hover{
+    background-color: rgb(205, 173, 59);
 }
 .load-money-card-title {
     font-weight: bold;

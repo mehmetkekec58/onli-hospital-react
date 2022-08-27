@@ -8,12 +8,13 @@ interface Props{
 
 const LoadMoneyCard = ({creditPackage}:Props) => {
   return (
-    <div className='load-money-card'>
+    <div style={{backgroundImage:`url(${creditPackage.photoUrl})`,backgroundSize: 'cover'}} className='load-money-card'>
     <div className='load-money-card-package-name'>{creditPackage.creditPackageName}</div>
-    <div className='load-money-card-title'>Fiyat:{creditPackage.price}</div>
-    <div className='load-money-card-title'>Kredi:{creditPackage.creditAmount}</div>
+    <div className='load-money-card-title'>Fiyat: {creditPackage.price - (creditPackage.discount*creditPackage.price/100)}$</div>
+    <div className='load-money-card-title'>Kredi: {creditPackage.creditAmount}</div>
+    { creditPackage.discount>0 && <div className='load-money-card-title'>indirim: {creditPackage.discount}%</div>}
     <div className='load-money-card-operations-icons'>
-      <div className='load-money-card-follow-button load-money-card-follow'>Satın Al</div>
+      <div className='load-money-card-buy-button load-money-card-buy'>Satın Al</div>
     </div>
    
 

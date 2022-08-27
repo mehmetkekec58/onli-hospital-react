@@ -3,7 +3,7 @@ import { deleteLocalStorage, getLocalStorage, setLocalStorage } from "./localSto
 
 const tokenKey = containLocalStorageKey.TOKEN
 
-export function getToken(): string | undefined {
+export function getToken(): string | undefined | null {
     return getLocalStorage(tokenKey)
 }
 

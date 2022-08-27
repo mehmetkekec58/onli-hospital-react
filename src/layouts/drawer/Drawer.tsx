@@ -30,11 +30,11 @@ import PersonAddOutlinedIcon from '@mui/icons-material/PersonAddOutlined';
 import { getRoles } from '@testing-library/react';
 import { getToken } from '../../services/tokenService';
 import { ADMIN, DOCTOR, USER } from '../../contains/containRoles';
-import IsLogin from '../../utilities/isLogin/IsLogin';
 import { getRolesService } from '../../services/rolesService';
+import Tooltip from '@mui/material/Tooltip/Tooltip';
 
 
-let isLogin = IsLogin()
+
 
 const Drawer: React.FC = () => {
 
@@ -44,14 +44,14 @@ const Drawer: React.FC = () => {
     const { addActiveMenu } = bindActionCreators(activeMenuFunction, dispatch)
     const value = useSelector((state: State) => state.activeMenu.activeMenu)
 
-    const menus: [(string | JSX.Element), (string | undefined), (string)][] = [
+    const menus: [(string | JSX.Element), (string), (string)][] = [
         [<HomeIcon />, containTexts.HOME_PAGE, containUrls.HOME_PAGE],
         [<LoginOutlinedIcon />, containTexts.LOGIN, containUrls.LOGIN],
         [<HowToRegOutlinedIcon />, containTexts.REGISTER, containUrls.REGISTER],
         [<AdminPanelSettingsIcon />, containTexts.DOCTOR_PANEL, containUrls.PANEL],
         [<ManageAccountsIcon />, containTexts.ADMIN_PANEL, containUrls.ADMIN_PANEL],
         [<PersonIcon />, containTexts.EDIT_PROFILE, containUrls.EDIT_PROFILE],
-        [<QuestionAnswerOutlinedIcon />, containTexts.MY_QUESTIONS, containUrls.MY_QUESTIONS],
+        [<QuestionAnswerOutlinedIcon />, containTexts.MY_QUESTIONS, containUrls.QUESTIONS],
         [<PersonAddOutlinedIcon />, containTexts.SUBSCRIPTIONS, containUrls.SUBSCRIPTIONS],
         [<CreateOutlinedIcon />, containTexts.ARTICLES, `${containUrls.PANEL}${containUrls.ARTICLE}`],
         [<VideoCallOutlinedIcon />, containTexts.VIDEOS, `${containUrls.PANEL}${containUrls.VIDEO}`],
@@ -74,12 +74,12 @@ const Drawer: React.FC = () => {
 
 
     useEffect(() => {
-        addActiveMenu(isLogin.isAuth ? activeMenuWhenAuthByRole() : activeMenus[0])
+        addActiveMenu(getToken()? activeMenuWhenAuthByRole() : activeMenus[0])
     }, [login])
 
     function activeMenuWhenAuthByRole() {
 
-        let role: string = "doctor";
+        let role: string = "admin";
 
         switch (role) {
             case DOCTOR:
@@ -97,11 +97,13 @@ const Drawer: React.FC = () => {
         <div className='drawer-general-div'>
             {menus.map((menu, index) => (
                 value[index] &&
-                <NavLink title={!openDrawer ? menu[1] : ""} key={index} style={({ isActive }) => { return isActive ? { textDecoration: 'none', color: '#6b1e9c' } : { textDecoration: 'none', color: 'black' } }} to={menu[2]}>
+                <NavLink key={index} style={({ isActive }) => { return isActive ? { textDecoration: 'none', color: '#6b1e9c' } : { textDecoration: 'none', color: 'black' } }} to={menu[2]}>
+                     <Tooltip title={!openDrawer? menu[1]:""} placement="right">
                     <div className={!openDrawer ? 'drawer-item-container-when-close-drawer' : 'drawer-item-container'}>
                         <div className={!openDrawer ? 'drawer-menu-icon-when-close-drawer' : 'drawer-menu-icon'}>{menu[0]}</div>
                         <div style={{ ...(!openDrawer && { display: 'none' }) }} className='drawer-menu-text'>{menu[1]}</div>
                     </div>
+                    </Tooltip>
                 </NavLink>
 
             ))}

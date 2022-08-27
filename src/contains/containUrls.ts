@@ -24,6 +24,6 @@ export const containUrls = {
     LOGOUT:"/logout",
     POST:"/post",
     ADMIN_PANEL:"adminpanel",
-    MY_QUESTIONS:"/questions",
+    QUESTIONS:"/questions",
     SUBSCRIPTIONS:"/subscriptions",
 }

@@ -50,7 +50,8 @@ export const containTexts = {
     ARTICLES:"Yazılar",
     POSTS:"Gönderiler",
     VIDEOS:"Videolar",
-    
+    DOCTORS:"Doktorlar",
+
     OK:"Tamam",
 
     CREDIT:"Kredi",
@@ -76,5 +77,17 @@ export const containTexts = {
 
     GO_HOME_PAGE:"Ana Sayfaya Git",
     NOTE_FOUND_PAGE_TEXT:"İstediğiniz sayfayı bulamadık. Lütfen aramayı deneyin.",
-   
+    
+    RESET:"Sıfırla",
+
+    SAVE:"Kaydet",
+    CANCEL:"İptal",
+
+    HEIGHT:"Boy Uzunluğu (cm)",
+    WEIGHT:"Ağırlık (kg)",
+    REPEAT_PASSWORD:"Şifre Tekrarla",
+    PREVIOUS_PASSWORD:"Önceki Şifre",
+
+    BRANCH:"Branş",
+    AGE:"Yaş",
 };

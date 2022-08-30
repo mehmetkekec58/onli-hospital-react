@@ -1,12 +1,3 @@
-:root {
-    --navi-height: 60px;
-    --navi-color: #7c14a8;
-    --button-color-yellow: #ffd740;
-    --button-color-yellow-hover: #cdab2f;
-    --button-color-red: red;
-    --button-color-red-hover: rgb(188, 40, 40);
-    --fade-background-color-grey: rgba(201, 200, 195, 0.6);
-}
 
 .navi-component {
     background-color: var(--navi-color);
@@ -17,6 +8,7 @@
     padding: 0px 10px;
     align-items: center;
     box-shadow: 5px 5px 10px rgb(174, 171, 171);
+    min-width: 250px;
 }
 
 .navi-items-general-div {
@@ -53,6 +45,29 @@
     left: 32%;
     width: 40%;
 }
+.navi-drawer{
+    display:flex;
+    z-index: 4;
+    position: absolute;
+    top: 61px;
+    left: 0px;
+    min-width: 200px;
+    height:calc(100vh - 70px);;
+    word-break: keep-all;
+    animation-duration: 1s;
+    background-color: #7c14a8;
+    animation-name: opendrawer;
+   
+}
+@keyframes opendrawer {
+    from {
+     left:-150px
+    }
+  
+    to {
+      left: 0px;
+    }
+  }
 
 .navi-avatar {
     position: absolute;
@@ -78,34 +93,7 @@
     
 }
 
-.navi-notification-menu {
-    display: flex;
-    position: fixed;
-    top: 42px;
-    background-color: rgb(245, 249, 249);
-    overflow-y: scroll;
-    overflow-x: hidden;
-    right: 6%;
-    border-radius: 5px;
-    height: 32em;
-    padding: 0;
-    padding-top: 5px;
-    z-index: 2;
-    list-style-type: none;
-    width: 25%;
-}
 
-.navi-notification-item {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    position: absolute;
-    justify-content: center;
-    top: 2px;
-    padding: 1px 3px;
-    border-bottom: 0.2px rgb(215, 213, 213) solid;
-
-}
 
 @media only screen and (max-width: 800px) {
     .navi-input {
@@ -129,36 +117,48 @@
     }
 
     .navi-input {
-        left: 40%;
+        left: 38%;
         width: 50%;
     }
 }
 
 @media only screen and (max-width: 460px) {
     .brand-name-for-navi {
-        left: 50px;
-        font-size: small;
+        display: none;
 
     }
 
     .navi-input {
-        left: 40%;
+        left: 19%;
         width: 50%;
     }
+
 
 
 }
 
 @media only screen and (max-width: 330px) {
 
-    .brand-name-for-navi {
-        display: none;
-    }
 
     .navi-input {
-        left: 22%;
-        width: 70%;
+        left: 16%;
+        width: 50%;
+    }
+ 
+}
+
+@media only screen and (max-width: 311px) {
+
+    .navi-input {
+        left: 15%;
+        width: 50%;
     }
 
 
+}
+@media only screen and (max-width: 251px) {
+    .navi-input {
+        left: 18%;
+        width: 60%;
+    }
 }

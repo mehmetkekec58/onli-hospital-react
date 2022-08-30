@@ -11,14 +11,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
 import State from '../../store/state';
 import openDrawerFunctions from '../../store/actions/openDrawerActionCreater';
+import useWindowSize from '../../hooks/useWindowSize';
+import Drawer from '../drawer/Drawer';
+import { containUrls } from '../../contains/containUrls';
+import NotificationModel from '../../models/notificationModel';
+import Notification from '../../utilities/components/notification/Notification';
 
+const notifications: NotificationModel[] = [{ id: 0, message: "bu bir bildirim 1" }, { id: 1, message: "bildirim 2" }, { id: 2, message: "bildirim 3" }];
 
 const Navi: React.FC = () => {
+  
   const dispatch = useDispatch();
+  const { width } = useWindowSize();
   const { openDrawerChangeValue } = bindActionCreators(openDrawerFunctions, dispatch)
   const openDrawerValue = useSelector((state: State) => state.openDrawer.openDrawer)
 
-  const [openDrawer,setOpenDrawer] = [openDrawerValue,openDrawerChangeValue]
+  const [openDrawer, setOpenDrawer] = [openDrawerValue, openDrawerChangeValue]
   const [openNotification, setOpenNotification] = useState<boolean>(false)
 
   const handleOpenOrCloseNotification = () => {
@@ -27,6 +35,7 @@ const Navi: React.FC = () => {
 
   const profilePhotoUrl = "https://pbs.twimg.com/profile_images/1523976377074163713/hRUFPi6z_400x400.jpg"
   const userFullName: string = "Mehmet Kekeç"
+
   const handleOpenOrCloseDrawer = () => {
     setOpenDrawer(!openDrawer)
   }
@@ -34,19 +43,19 @@ const Navi: React.FC = () => {
     <div className='navi-component'>
       <div className='navi-items-general-div'>
         <div onClick={handleOpenOrCloseDrawer} className='navi-icon-for-drawer-open'><MenuIcon sx={{ color: 'white' }} /></div>
-        <div className='brand-name-for-navi'>  <Link style={{ textDecoration: 'none', color: 'white' }} to="/">{containTexts.BRAND_NAME}</Link></div>
+        {openDrawer && (width && width <= 606) && <div onClick={handleOpenOrCloseDrawer} className='navi-drawer'><Drawer /></div>}
+        <div className='brand-name-for-navi'>  <Link style={{ color: 'white' }} to={containUrls.HOME_PAGE}>{containTexts.BRAND_NAME}</Link></div>
         <div className='navi-input'><Input /></div>
-        <div   onClick={handleOpenOrCloseNotification} className='navi-notification-icon'> <Badge badgeContent={10} max={99} color="error">
-          <CircleNotificationsOutlinedIcon  style={{padding:'3px', color: 'white', height: '35px', width: '35px' }} />
-        </Badge>
+        {(width !== undefined && width > 250) &&
+          <div onClick={handleOpenOrCloseNotification} className='navi-notification-icon'>
+            <Badge badgeContent={10} max={99} color="error">
+              <CircleNotificationsOutlinedIcon style={{ padding: '3px', color: 'white', height: '35px', width: '35px' }} />
+            </Badge>
+          </div>}
         {openNotification &&
-        <ul className='navi-notification-menu'>
-          <li className='navi-notification-item'>Bu bir bildirimdir.</li>
-        </ul>
-}
-        </div>
-
-        <div className='navi-avatar'><Avatar alt={userFullName} src={profilePhotoUrl} sx={{ backgroundColor: '#ffd740', border: '2px white solid', color: 'black', fontWeight: 'bold', width: 45, height: 45 }} /> </div>
+          <Notification notifications={notifications} />
+        }
+        <div className='navi-avatar'><Avatar title={userFullName} alt={userFullName} src={profilePhotoUrl} sx={{ backgroundColor: '#ffd740', border: '2px white solid', color: 'black', fontWeight: 'bold', width: 45, height: 45 }} /> </div>
       </div>
     </div>
   )

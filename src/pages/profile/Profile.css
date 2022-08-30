@@ -76,10 +76,11 @@
 .profile-button-general {
     margin-right: 10px;
     margin-top: 20px;
-    padding: 5px 10px;
+    padding: 5px 5px;
+    width: 230px;
     background-color: #ffd740;
     border: none;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 600;
     border-radius: 8px;
 }
@@ -105,10 +106,9 @@
 
 .profile-tabs-container {
     display: flex;
-    position: absolute;
-    top: 490px;
     height: 100%;
     width: 100%;
+    padding: 0;
     align-items: center;
     flex-direction: column;
 
@@ -116,12 +116,12 @@
 
 .profile-doctor-statistic-container {
     width: 100%;
-    top: 225px;
+    top: 255px;
     align-items: center;
     display: flex;
+    margin: 15px 2px;
     flex-direction: row;
     justify-content: center;
-    position: absolute;
     padding: 5px;
     height: 70px;
     margin-bottom: 10px;

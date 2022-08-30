@@ -11,14 +11,20 @@
 
 .article-grid-container {
     display: grid;
-    grid-template-columns: calc(100vw - 30vw) 24vw;
+    grid-template-columns: 75% 25%;
     height: calc(100vh - 65px);
 }
 
 .article-grid-container2 {
     display: grid;
-    grid-template-columns: calc(100vw - 37vw) 20vw;
+    grid-template-columns: 75% 25%;
     height: calc(100vh - 65px);
+}
+
+.article-no-grid-container {
+    height: calc(100vh - 65px);
+    width: 100%;
+    overflow-y: scroll;
 }
 
 .article-grid-item1 {
@@ -96,6 +102,9 @@
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;
+    border: none;
+    background-color: white;
+    font-weight: bold;
 }
 
 .article-general-button:hover {
@@ -116,33 +125,34 @@
     .article-text {
         width: 80%;
     }
-   
-}
-@media only screen and (max-width: 1283px) {
-    .article-grid-container {
-        display: grid;
-        grid-template-columns: 85vw  ;
-        height: calc(100vh - 65px);
-    }
-    
-    .article-grid-container2 {
-        display: grid;
-        grid-template-columns:80vw ;
-        height: calc(100vh - 65px);
-    }
-    
 
 }
+
+@media only screen and (max-width: 1283px) {
+    .article-grid-container {
+        grid-template-columns: 100%;
+        height: calc(100vh - 65px);
+    }
+
+    .article-grid-container2 {
+        grid-template-columns: 100%;
+        height: calc(100vh - 65px);
+    }
+
+
+}
+
 @media only screen and (max-width: 800px) {
 
     .article-thumbnail-photo {
         width: 80%;
         height: 200px;
-       
+
     }
+
     .article-grid-item1 {
         overflow-y: scroll;
         padding: 20px 0px;
-    
+
     }
 }

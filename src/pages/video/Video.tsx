@@ -155,28 +155,36 @@ const videos: VideoModel[] = [
 const Video = () => {
   const openDrawer = useSelector((state: State) => state.openDrawer.openDrawer)
   const { width } = useWindowSize();
+
+  function videoGridContainer(): string {
+    return openDrawer ? "video-grid-container2" : "video-grid-container";
+  }
+
+  function smallSizeScreen(): string {
+    return (width && width <= 606) ? "video-no-grid-container" : videoGridContainer();
+  }
+
   return (
     <div>
       <div className='video-container'>
-        <div className={openDrawer ? "video-grid-container2" : "video-grid-container"}>
+        <div className={smallSizeScreen()}>
           <div className="video-grid-item1">
             <h1 className="video-title">{video.title}</h1>
             <div className="video-user-info"><ArticleAndVideoUserInfo userInfo={{ username: video.username, firstName: video.firstName, lastName: video.lastName, profilePhotoUrl: video.profilePhotoUrl }} /></div>
             <VideoPlayer video={videos[0]} />
-
             <div className="video-text-container"> <div className="video-text">{video.explanation}</div></div>
             <div className='video-tags-general-container'><Tag tags={video.tags} /></div>
-            {width !== undefined && width <= 1283 && <GeneralRecommendedList items={videos} />}
+            {width && width <= 1283 && width > 606 && <GeneralRecommendedList items={videos} />}
           </div>
           {width !== undefined && width >= 1283 && <div className="video-grid-item2"><GeneralRecommendedList items={videos} /></div>}
           <div className="video-buttons-container">
-            <div className='video-like-button video-general-button'><FavoriteIcon style={{ color: 'red' }} /> {containTexts.LIKE}</div>
-            <div className='video-general-button'><PlaylistAddIcon /> {containTexts.ADD_PLAYLIST}</div>
-            <div className='video-general-button'><ShareOutlinedIcon style={{ color: 'blue' }} /> {containTexts.SHARE}</div>
+            <button className='video-like-button video-general-button'><FavoriteIcon style={{ color: 'red' }} /> {containTexts.LIKE}</button>
+            <button className='video-general-button'><PlaylistAddIcon /> {containTexts.ADD_PLAYLIST}</button>
+            <button className='video-general-button'><ShareOutlinedIcon style={{ color: 'blue' }} /> {containTexts.SHARE}</button>
           </div>
+          {(width !== undefined && width <= 606) && <GeneralRecommendedList items={videos} />}
         </div>
       </div>
-
     </div>
   )
 }

@@ -117,23 +117,33 @@ const articles: ArticleModel[] = [
 const Article = () => {
   const openDrawer = useSelector((state: State) => state.openDrawer.openDrawer)
   const { width } = useWindowSize();
+
+  function articleGridContainer(): string {
+    return openDrawer ? "article-grid-container2" : "article-grid-container";
+  }
+
+  function smallSizeScreen(): string {
+    return (width && width <= 606) ? "article-no-grid-container" : articleGridContainer();
+  }
+
   return (
     <div className='article-container'>
-      <div className={openDrawer ? "article-grid-container2" : "article-grid-container"}>
+      <div className={smallSizeScreen()}>
         <div className="article-grid-item1">
           <h1 className="article-title">{article.title}</h1>
           <div className="article-user-info"><ArticleAndVideoUserInfo userInfo={{ username: article.username, firstName: article.firstName, lastName: article.lastName, profilePhotoUrl: article.profilePhotoUrl }} /></div>
           <img src={article.thumbnailUrl} alt={article.title} className="article-thumbnail-photo" />
           <div className="article-text-container"> <div className="article-text">{article.text}</div></div>
           <div className='article-tags-general-container'><Tag tags={article.tag} /></div>
-          {width !== undefined && width <= 1283 && <GeneralRecommendedList items={articles} />}
+          {width && width <= 1283 && width > 606 && <GeneralRecommendedList items={articles} />}
         </div>
-        {width !== undefined && width >= 1283 && <div className="article-grid-item2"><GeneralRecommendedList items={articles} /></div>}
+        {width && width >= 1283 && <div className="article-grid-item2"><GeneralRecommendedList items={articles} /></div>}
         <div className="article-buttons-container">
-          <div className='article-like-button article-general-button'><FavoriteIcon style={{ color: 'red' }} /> {containTexts.LIKE}</div>
-          <div className='article-general-button'><BookmarkOutlinedIcon style={{ color: '#7c14a8' }} /> {containTexts.ADD_READING_LIST}</div>
-          <div className='article-general-button'><ShareOutlinedIcon style={{ color: 'blue' }} /> {containTexts.SHARE}</div>
+          <button className='article-like-button article-general-button'><FavoriteIcon style={{ color: 'red' }} /> {containTexts.LIKE}</button>
+          <button className='article-general-button'><BookmarkOutlinedIcon style={{ color: '#7c14a8' }} /> {containTexts.ADD_READING_LIST}</button>
+          <button className='article-general-button'><ShareOutlinedIcon style={{ color: 'blue' }} /> {containTexts.SHARE}</button>
         </div>
+        {(width !== undefined && width <= 606) && <GeneralRecommendedList items={articles} />}
       </div>
     </div>
   )

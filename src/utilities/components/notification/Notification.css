@@ -1,0 +1,34 @@
+.notification-menu {
+    display: flex;
+    position: absolute;
+    top: 50px;
+    background-color: rgb(245, 249, 249);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    right: 6%;
+    border-radius: 5px;
+    height: 32em;
+    padding: 0;
+    flex-direction: column;
+    padding-top: 5px;
+    z-index: 2;
+    list-style-type: none;
+    width: 40%;
+}
+
+.notification-item {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 2px;
+    padding: 1px 3px;
+    border-bottom: 0.2px rgb(215, 213, 213) solid;
+
+}
+@media only screen and (max-width:500px) {
+    .notification-menu{
+        width: 90%;
+    }
+}

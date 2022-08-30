@@ -17,7 +17,7 @@ const Settings = () => {
     deleteLocalStorage(containLocalStorageKey.SEARCH_HISTORY)
   }
   return (
-    <div>
+    <div className='settings-container'>
 
       <button className='settings-delete-search-history-button' onClick={handleSearchHistoryClear}>Arama Geçmişini Temizle</button>
     </div>

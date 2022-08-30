@@ -1,11 +1,18 @@
+.settings-container {
+  height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+}
+
 .settings-delete-search-history-button {
-    border: none;
-    border-radius: 5px;
-    background-color: var(--button-color-yellow);
-    padding: 10px 10px;
-    margin-right: 5px;
-  }
-  
-  .settings-delete-search-history-button:hover {
-    background-color: var(--button-color-yellow-hover);
-  }
+  border: none;
+  border-radius: 5px;
+  background-color: var(--button-color-yellow);
+  padding: 10px 10px;
+  margin-right: 5px;
+  height: 50px;
+}
+
+.settings-delete-search-history-button:hover {
+  background-color: var(--button-color-yellow-hover);
+}

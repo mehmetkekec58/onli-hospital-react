@@ -2,16 +2,30 @@
     overflow-y: scroll;
     overflow-x: hidden;
     height: calc(100vh - 70px);
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 2px 2px 10px  rgba(170, 167, 167, 0.8); 
+}
+.drawer-general-div2 {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: calc(100vh - 70px);
+    background-color: white;
+    
 }
 
 .drawer-item-container {
     display: flex;
-    width: calc(95%);
+    width: 95%;
+    overflow: hidden;
     border-radius: 10px;
     align-items: center;
     margin: 7px 7px 10px 7px;
     padding: 5px 5px 5px 0px;
+    min-width: 200px;  
+    
 }
+
 
 .drawer-item-container-when-close-drawer {
     display: flex;
@@ -60,10 +74,20 @@
     display: none;
 
 }
-.drawer-general-div:hover::-webkit-scrollbar {
+.drawer-general-div :hover::-webkit-scrollbar {
     display:contents;
 
 }
+
+.drawer-general-div2::-webkit-scrollbar {
+    display: none;
+
+}
+.drawer-general-div2:hover::-webkit-scrollbar {
+    display:contents;
+
+}
+
 
 ::-webkit-scrollbar {
     width: 7px;
@@ -83,4 +107,12 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #bab9b9;
   
+}
+
+@media only screen and (max-width:606px){
+    .drawer-general-div {
+       
+        width: 50vw;
+    }
+    
 }

@@ -32,6 +32,9 @@ import { getToken } from '../../services/tokenService';
 import { ADMIN, DOCTOR, USER } from '../../contains/containRoles';
 import { getRolesService } from '../../services/rolesService';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
+import openDrawerFunctions from '../../store/actions/openDrawerActionCreater';
+import useWindowSize from '../../hooks/useWindowSize';
+
 
 
 
@@ -39,6 +42,7 @@ import Tooltip from '@mui/material/Tooltip/Tooltip';
 const Drawer: React.FC = () => {
 
     const openDrawer = useSelector((state: State) => state.openDrawer.openDrawer)
+    
     const login = useSelector((state: State) => state.login.login)
     const dispatch = useDispatch();
     const { addActiveMenu } = bindActionCreators(activeMenuFunction, dispatch)
@@ -74,13 +78,14 @@ const Drawer: React.FC = () => {
 
 
     useEffect(() => {
-        addActiveMenu(getToken()? activeMenuWhenAuthByRole() : activeMenus[0])
+        addActiveMenu(getToken() ? activeMenuWhenAuthByRole() : activeMenus[0])
     }, [login])
 
     function activeMenuWhenAuthByRole() {
 
         let role: string = "admin";
-
+        let panel:boolean = false;
+        if(!panel){
         switch (role) {
             case DOCTOR:
                 return activeMenus[1];
@@ -91,24 +96,54 @@ const Drawer: React.FC = () => {
             default:
                 return activeMenus[0];
         }
+    }else{
+        switch (role) {
+            case DOCTOR:
+                return activeMenus[1];
+            case ADMIN:
+                return activeMenus[2];
+            default:
+                return activeMenus[0];
+        }
+    }
     }
 
-    return (
-        <div className='drawer-general-div'>
-            {menus.map((menu, index) => (
-                value[index] &&
-                <NavLink key={index} style={({ isActive }) => { return isActive ? { textDecoration: 'none', color: '#6b1e9c' } : { textDecoration: 'none', color: 'black' } }} to={menu[2]}>
-                     <Tooltip title={!openDrawer? menu[1]:""} placement="right">
-                    <div className={!openDrawer ? 'drawer-item-container-when-close-drawer' : 'drawer-item-container'}>
-                        <div className={!openDrawer ? 'drawer-menu-icon-when-close-drawer' : 'drawer-menu-icon'}>{menu[0]}</div>
-                        <div style={{ ...(!openDrawer && { display: 'none' }) }} className='drawer-menu-text'>{menu[1]}</div>
-                    </div>
-                    </Tooltip>
-                </NavLink>
+    if (openDrawer) {
 
-            ))}
-        </div>
-    )
+        return (
+            <div className={'drawer-general-div'}>
+                {menus.map((menu, index) => (
+                    value[index] &&
+                    <NavLink key={index} style={({ isActive }) => { return isActive ? {  color: '#6b1e9c' } : { color: 'black' } }} to={menu[2]}>
+                        <div className={'drawer-item-container'}>
+                            <div className={'drawer-menu-icon'}>{menu[0]}</div>
+                            <div className='drawer-menu-text'>{menu[1]}</div>
+                        </div>
+                    </NavLink>
+
+                ))}
+            </div>
+        )
+
+    } else {
+
+        return (
+            <div className={'drawer-general-div2'}>
+                {menus.map((menu, index) => (
+                    value[index] &&
+                    <NavLink key={index} style={({ isActive }) => { return isActive ? { color: '#6b1e9c' } : {  color: 'black' } }} to={menu[2]}>
+                        <Tooltip title={menu[1]} placement="right">
+                            <div className={'drawer-item-container-when-close-drawer'}>
+                                <div className={'drawer-menu-icon-when-close-drawer'}>{menu[0]}</div>
+                                <div style={{ display: 'none' }} className='drawer-menu-text'>{menu[1]}</div>
+                            </div>
+                        </Tooltip>
+                    </NavLink>
+
+                ))}
+            </div>
+        )
+    }
 }
 
 export default Drawer

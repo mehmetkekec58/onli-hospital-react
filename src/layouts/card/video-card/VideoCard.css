@@ -34,14 +34,13 @@
     padding: 1px;
     position: relative;
     bottom: 95px;
-
 }
 
 .video-card-play-icon {
     position: relative;
     bottom: 160px;
-    left: 95px;
-    display: inline-flex;
+    justify-content: center;
+    display: flex;
 }
 
 .video-card-operations-icons {

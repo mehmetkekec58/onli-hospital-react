@@ -1,4 +1,5 @@
 import React from 'react'
+import { containTexts } from '../../contains/containTexts';
 import GridListCard from '../../layouts/grid-list/grid-list-card/GridListCard';
 import GridListCategoryCard from '../../layouts/grid-list/grid-list-category-card/GridListCategoryCard';
 import GridListDoctorCard from '../../layouts/grid-list/grid-list-doctor-card/GridListDoctorCard';
@@ -199,13 +200,13 @@ const Home = () => {
   return (
     <div className='home-general-div'>
       <div className='home-container'>
-        <div className='home-description-text'>En Çok Okunanlar:</div>
+        <div className='home-description-text'>{containTexts.MOST_READ_ARTICLES}:</div>
         <GridListCard articles={articles} />
-        <div className='home-description-text'>Popüler Doktorlar:</div>
+        <div className='home-description-text'>{containTexts.POPULAR_DOCTORS}:</div>
         <GridListDoctorCard doctors={doctors} />
-        <div className='home-description-text'>Kategoriler:</div>
+        <div className='home-description-text'>{containTexts.CATEGORIES}:</div>
         <GridListCategoryCard categories={categories} />
-        <div className='home-description-text'>Önerilen Videolar:</div>
+        <div className='home-description-text'>{containTexts.RECOMMENDED_VIDEOS}:</div>
         <GridListVideoCard videos={videos} /> 
       </div>
     </div>

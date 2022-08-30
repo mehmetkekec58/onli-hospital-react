@@ -24,7 +24,7 @@
 
 .login-input-email {
     position: absolute;
-    bottom: 95px;
+    bottom: 105px;
 
 }
 
@@ -36,7 +36,7 @@
 .login-submit-button {
     background-color: #ffd740;
     border: none;
-    width: 20%;
+    width: 50%;
     position: absolute;
     bottom: 140px;
     border-radius: 5px;
@@ -53,6 +53,7 @@
     display: flex;
     position: absolute;
     bottom: 80px;
+    text-align: center;
 }
 
 .login-create-account {
@@ -83,7 +84,7 @@
     color: black;
     display: flex;
     position: absolute;
-    right: 25.5%;
+    right: 1%;
     background-color: rgba(0, 0, 0, 0.1);
     padding: 1px 3px;
     border-radius: 3px;
@@ -99,13 +100,28 @@
 .login-checkbox {
     display: flex;
     position: absolute;
-    left: 25%;
+    left: 0%;
     justify-content: center;
     align-items: center;
     font-size: small;
 }
-.login-alert{
+
+.login-alert {
     display: flex;
     position: absolute;
     top: 25px;
+}
+
+.login-text {
+    display: flex;
+    position: absolute;
+    font-size: 28px;
+    top: 20px;
+    font-weight: bolder;
+}
+
+@media only screen and (max-width: 450px) {
+    .login-form {
+        width: 95%;
+    }
 }

@@ -42,7 +42,7 @@ export const containTexts = {
     ADD_ARTICLE:"Yazı Ekle",
     VIDEO_UPLOAD:"Video Yükle",
 
-    ASK_A_QUESTION:"Soru Sor",
+    ASK_A_QUESTION:"Soru sor",
 
     FOLLOW:"Takip et",
     UNFOLLOW:"Takibi bırak",
@@ -90,4 +90,11 @@ export const containTexts = {
 
     BRANCH:"Branş",
     AGE:"Yaş",
+
+    PRICE:"Fiyat",
+    DISCOUNT:"İndirim",
+    BUY:"Satın al",
+    NOT_CALCULATED_YET:"hesaplanmadı",
+    CHANGE_PASSWORD:"Şifre değiştir",
+    RESUME:"Özgeçmiş",
 };

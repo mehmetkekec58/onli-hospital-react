@@ -61,7 +61,7 @@
     font-weight: 600;
     display: flex;
     position: absolute;
-    right: 105px;
+    right: 20%;
 }
 @media only screen and (max-width:800px){
 
@@ -84,5 +84,18 @@
     
     .article-and-video-user-info-username {
         font-size: 10px;
+    }
+}
+@media only screen and (max-width:400px){
+    .article-and-video-user-follower-count{
+        font-size: 8px;
+        padding: 1px 1px;
+        font-weight: 600;
+        right: 25%;
+    }
+}
+@media only screen and (max-width:346px){
+    .article-and-video-user-follower-count{
+    display: none;
     }
 }

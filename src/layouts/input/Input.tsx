@@ -16,6 +16,9 @@ import { arrayUnique } from '../../helpers/arrayUnique';
 
 const CONTAIN_SEARCH_URL: string = `${containUrls.SEARCH}?q=`;
 const ENTER: string = "Enter";
+const ARROW_UP:string = "ArrowUp";
+const ARROW_DOWN:string = "ArrowDown";
+const ARROW_RIGHT:string = "ArrowRight";
 const SEARCH_LIST_ITEMS_MAX_LENGHT: number = 7;
 const INPUT_FOCUS_CHANGE_VALUE_DELAY: number = 300;
 const SEARCH_LIST_TEST_ITEMS: string[] = ["kanser nedir", "kaç saat spor yapmalıyım?", "Karabiber astıma niçin kötü gelir?", "yaz mevsimi hastalıkları", "Yoğurt gribe iyi gelir mi?", "Grip nasıl geçer", "renk körü", "yorgunluk", "Kışın nasıl giysiler giyilmeli", "Boyun ağrısı egzersizleri", "Baş ağrısı"];
@@ -31,12 +34,16 @@ const Input = () => {
 
     const [searchList, setSearchList] = useState<string[]>([])
     const [searchHistory, setSearchHistory] = [searchHistoryValues, addSearchHistoryState]
+    const [selectedItem, setSelectedItem] = useState<number>(0);
     const inputRef = useRef<HTMLInputElement>(null);
     const [inputText, setInputText] = useState<string>("")
     const [inputOnFocus, setInputOnFocus] = useState<boolean>(false);
     const [searchListItems, setsearchListItems] = useState<string[]>([])
 
     useEffect(() => {
+        if (selectedItem !== 0) {
+            setSelectedItem(0)
+        }
         if (inputText !== "") {
             setsearchListItems(searchFilter())
         } else {
@@ -46,7 +53,6 @@ const Input = () => {
 
     useEffect(() => {
         let getSearchHistory = getHistorySearch()
-        console.log(getSearchHistory)
         setSearchList(SEARCH_LIST_TEST_ITEMS)
         if (getSearchHistory.length !== 0) {
             setSearchHistory(getSearchHistory)
@@ -63,17 +69,48 @@ const Input = () => {
 
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-        if (event.key === ENTER) {
-            if (!inputTextNullOrEmpty()) {
+
+        switch (event.key) {
+            case ENTER:
+                if(selectedItem>0){
+                directGoSearchPage(searchListItems[selectedItem-1])
+                setInputText(searchListItems[selectedItem-1])
+                }else{
+                if (!inputTextNullOrEmpty()) {
+                    directGoSearchPage(inputText)
+                }}
                 inputRef.current?.blur();
-                directGoSearchPage(inputText)
-            }
+                break;
+
+            case ARROW_UP:
+                if (searchListItems.length > 0 && selectedItem > 0){
+                    setSelectedItem(selectedItem - 1) 
+                }
+                break;
+
+            case ARROW_DOWN:
+                if (searchListItems.length > 0 && selectedItem < searchListItems.length){
+                    setSelectedItem(selectedItem + 1)
+                }
+                break;
+
+                case ARROW_RIGHT:
+                    if (searchListItems.length > 0 && selectedItem > 0){
+                        setInputText(searchListItems[selectedItem-1])
+                    }
+                    break;
+                    
+            default:
+                break;
         }
     }
     const handleSearchButton = () => {
         goSearchPage(inputText)
     }
     const handleActiveOrPassiveSearchItems = () => {
+        if(selectedItem !==0){
+            setSelectedItem(0)
+        }
         if (inputOnFocus === false) {
             setInputOnFocus(!inputOnFocus)
         } else {
@@ -124,15 +161,6 @@ const Input = () => {
         return searchHistory.includes(letters);
     }
 
-    function searchInputRecommededHeight(): string {
-        let searchListItemsLength = searchListItems.length;
-        if (searchListItemsLength > 0) {
-            return `${40 * searchListItemsLength}px`
-        } else {
-            return '0px';
-        }
-    }
-
     function searchAndSearhHistoryIcon(word: string): JSX.Element {
         return (
             !searchHistoryIncludeLetters(word) ? <SearchOutlinedIcon style={{ marginRight: '5px' }} /> : <HistoryOutlinedIcon style={{ marginRight: '5px' }} />
@@ -142,20 +170,25 @@ const Input = () => {
     function searchItemCount(): number {
         return searchListItems.length;
     }
+    function inputRecommendedBackround(index: number) {
+        if (selectedItem !== 0 && index + 1 === selectedItem) {
+            return "search-input-recommended-item input-item-gray"
+        } else {
+            return "search-input-recommended-item"
+        }
+    }
 
 
     return (
         <div className='search-input-form'>
-
             <input ref={inputRef} onBlur={handleActiveOrPassiveSearchItems} onFocus={handleActiveOrPassiveSearchItems} value={inputText} onChange={(e) => setInputText(e.target.value)} className="search-input" placeholder={containTexts.SEARCH} type="text" onKeyDown={handleKeyDown} />
             {inputOnFocus && searchItemCount() !== 0 &&
-                (<ul style={{ height: searchInputRecommededHeight() }} className='search-input-recommended'>
+                (<div className='search-input-recommended'>
                     {searchListItems.map((word, index) => (
-                        <li key={index} onClick={(e) => handleSearchItemsClick(word)} className='search-input-recommended-item'>{searchAndSearhHistoryIcon(word)}{word}</li>
+                        <div key={index} onClick={(e) => handleSearchItemsClick(word)} className={inputRecommendedBackround(index)}>{searchAndSearhHistoryIcon(word)}{word}</div>
                     ))}
-                </ul>)
+                </div>)
             }
-
             <button disabled={inputTextNullOrEmpty() ? true : false} onClick={handleSearchButton} className='search-button' ><SearchIcon className='search-icon' /></button>
         </div>
     )

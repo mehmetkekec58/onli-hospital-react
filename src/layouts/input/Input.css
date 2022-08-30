@@ -10,16 +10,15 @@
 
 .search-input-recommended {
     width: 83.7%;
-    height: 260px;
+    height: auto;
     top: 38px;
     justify-content: center;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding: 0;
+    padding: 2px;
     position: absolute;
     background-color: rgb(245, 249, 249);
-    list-style-type: none;
-    z-index: 2;
+    z-index: 4;
     border: 1px gray solid;
 
 
@@ -27,6 +26,7 @@
 
 .search-input-recommended-item {
     width: 100%;
+    height: auto;
     padding-left: 1%;
     padding-bottom: 3px;
     padding-top: 2px;
@@ -99,9 +99,6 @@ input:focus::placeholder {
         width: 63%;
     }
 
-
-
-
 }
 
 @media only screen and (max-width: 460px) {
@@ -109,13 +106,20 @@ input:focus::placeholder {
     .search-button {
         height: 33px;
         width: 16%;
-        font-size: small;
+        font-size: 8px;
         padding: 2px 2px 2px 2px;
     }
 
     .search-input {
-        width: 65%;
+        width: 85%;
         min-width: 20px;
         height: 33px;
     }
+    .search-input-recommended{
+        width: 80%;
+    }
+}
+
+.input-item-gray{
+    background-color: rgb(215, 218, 218);
 }

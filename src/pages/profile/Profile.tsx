@@ -19,10 +19,11 @@ import PostModel from '../../models/postModel';
 import GridListPostCard from '../../layouts/grid-list/grid-list-post-card/GridListPostCard';
 import { containTexts } from '../../contains/containTexts';
 import alertDialog from '../../utilities/components/alert-dialog/AlertDialog';
+import useWindowSize from '../../hooks/useWindowSize';
 
 const profilePhotoUrl = "https://pbs.twimg.com/profile_images/1523976377074163713/hRUFPi6z_400x400.jpg"
 const userFullName: string = "Mehmet Kekeç"
-const dialogTitle = containTexts.ABOUT;
+const dialogTitle = containTexts.RESUME;
 const dialogText = " Merhaba, ben Mehmet Kekeç. Onli Hospital'in kurucusu."
 const dialogButtonText = containTexts.OK;
 const currencyUnit: string = containTexts.CREDIT;
@@ -164,19 +165,21 @@ const infoText: (string | number)[][] = [
 ];
 
 
+function widthSmallerThen227(width:number | undefined):boolean {
+  return (width && width<427)? true : false;
+}
 
-
-function tabs(value: string, handleChange: (event: React.SyntheticEvent, newValue: string) => void) {
+function tabs(value: string, handleChange: (event: React.SyntheticEvent, newValue: string) => void, width: number | undefined) {
   return (
     <div className='profile-tabs-container'>
       <Box sx={{ width: '100%', height: '100%', typography: 'body1' }}>
         <TabContext value={value}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
-            <TabList textColor="secondary"
+            <TabList variant='fullWidth' textColor="secondary"
               indicatorColor="secondary" onChange={handleChange} >
-              <Tab icon={<ArticleOutlinedIcon />} iconPosition="start" label={containTexts.ARTICLES} value="1" />
-              <Tab icon={<ThumbUpOutlinedIcon />} iconPosition="start" label={containTexts.POSTS} value="2" />
-              <Tab icon={<OndemandVideoOutlinedIcon />} iconPosition="start" label={containTexts.VIDEOS} value="3" />
+              <Tab icon={<ArticleOutlinedIcon />} iconPosition="start" sx={{...(widthSmallerThen227(width) && {fontSize:'8px'})}} label={containTexts.ARTICLES} value="1" />
+              <Tab icon={<ThumbUpOutlinedIcon />} iconPosition="start"   sx={{...(widthSmallerThen227(width) && {fontSize:'8px'})}} label={containTexts.POSTS} value="2" />
+              <Tab icon={<OndemandVideoOutlinedIcon />} iconPosition="start"  sx={{...(widthSmallerThen227(width) && {fontSize:'8px'})}} label={containTexts.VIDEOS} value="3" />
             </TabList>
           </Box>
           <TabPanel value="1"> <GridListCard articles={articles} /></TabPanel>
@@ -195,7 +198,7 @@ const Profile = () => {
   const [follow] = useState<boolean>(false)
   const [value, setValue] = React.useState('1');
   const [activeAskQuestion, setActiveAskQuestion] = useState<boolean>(true)
-
+  const { width } = useWindowSize()
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -222,7 +225,7 @@ const Profile = () => {
           <div className="profile-button-container">
             {!login || !mySelf ? (<div> <button className={follow ? "profile-unfollow-button profile-button-general" : "profile-button-general"}>{follow ? containTexts.UNFOLLOW : containTexts.FOLLOW}</button>
               {activeAskQuestion && <button className="profile-ask-question profile-button-general"><QuestionAnswerOutlinedIcon /> {containTexts.ASK_A_QUESTION} (15 {currencyUnit})</button>}
-              <button className="profile-button-about profile-button-general" onClick={handleClickOpen}>{containTexts.ABOUT}</button>
+              <button className="profile-button-about profile-button-general" onClick={handleClickOpen}>{containTexts.RESUME}</button>
               {alertDialog(dialogTitle, dialogText, dialogButtonText, open, handleClose)}
             </div>)
               :
@@ -237,8 +240,9 @@ const Profile = () => {
               </div>
             ))}
           </div>
+          {tabs(value, handleChange, width)}
         </div>
-        {tabs(value, handleChange)}
+      
       </div>
     </div>
   )

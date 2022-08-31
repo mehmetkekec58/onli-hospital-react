@@ -158,15 +158,11 @@ const posts: PostModel[] = [
   },
 ];
 
-const infoText: (string | number)[][] = [
-  [containTexts.FOLLOWER, 102],
-  [containTexts.ARTICLE, 17],
-  [containTexts.VIDEO, 2],
-];
 
 
-function widthSmallerThen227(width:number | undefined):boolean {
-  return (width && width<427)? true : false;
+
+function widthSmallerThen227(width: number | undefined): boolean {
+  return (width && width < 427) ? true : false;
 }
 
 function tabs(value: string, handleChange: (event: React.SyntheticEvent, newValue: string) => void, width: number | undefined) {
@@ -177,9 +173,9 @@ function tabs(value: string, handleChange: (event: React.SyntheticEvent, newValu
           <Box sx={{ borderBottom: 1, borderColor: 'divider', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
             <TabList variant='fullWidth' textColor="secondary"
               indicatorColor="secondary" onChange={handleChange} >
-              <Tab icon={<ArticleOutlinedIcon />} iconPosition="start" sx={{...(widthSmallerThen227(width) && {fontSize:'8px'})}} label={containTexts.ARTICLES} value="1" />
-              <Tab icon={<ThumbUpOutlinedIcon />} iconPosition="start"   sx={{...(widthSmallerThen227(width) && {fontSize:'8px'})}} label={containTexts.POSTS} value="2" />
-              <Tab icon={<OndemandVideoOutlinedIcon />} iconPosition="start"  sx={{...(widthSmallerThen227(width) && {fontSize:'8px'})}} label={containTexts.VIDEOS} value="3" />
+              <Tab icon={<ArticleOutlinedIcon />} iconPosition="start" sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} label={containTexts.ARTICLES} value="1" />
+              <Tab icon={<ThumbUpOutlinedIcon />} iconPosition="start" sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} label={containTexts.POSTS} value="2" />
+              <Tab icon={<OndemandVideoOutlinedIcon />} iconPosition="start" sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} label={containTexts.VIDEOS} value="3" />
             </TabList>
           </Box>
           <TabPanel value="1"> <GridListCard articles={articles} /></TabPanel>
@@ -192,10 +188,18 @@ function tabs(value: string, handleChange: (event: React.SyntheticEvent, newValu
 }
 
 const Profile = () => {
+  //const {changeValueLogin} = bindActionCreators(LoginFunction,useDispatch())
+  //const  login  = useSelector((state:State)=>state.login.login)
+
+  const [infoText, setInfoText] = useState<[string, number][]>([
+    [containTexts.FOLLOWER, 102],
+    [containTexts.ARTICLE, 17],
+    [containTexts.VIDEO, 2],
+  ])
 
   const [mySelf] = useState<boolean>(true);
   const [login] = useState<boolean>(false)
-  const [follow] = useState<boolean>(false)
+  const [follow, setFollow] = useState<boolean>(false)
   const [value, setValue] = React.useState('1');
   const [activeAskQuestion, setActiveAskQuestion] = useState<boolean>(true)
   const { width } = useWindowSize()
@@ -207,6 +211,10 @@ const Profile = () => {
   const handleClose = () => {
     setOpen(false);
   };
+  const handleFollowOrUnfollow = () => {
+    infoText[0][1] = follow ? infoText[0][1] - 1 : infoText[0][1] + 1
+    setFollow(!follow)
+  }
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -218,12 +226,12 @@ const Profile = () => {
           <img src={profilePhotoUrl} alt={userFullName} className="profile-user-image" />
         </div>
         <div className="profile-doctor-info-container">
-          <div className="profile-doctor-info-full-name">{userFullName} <VerifiedOutlinedIcon fontSize='medium' style={{ color: '#3fbdeb' }} /></div>
+          <div className="profile-doctor-info-full-name">{userFullName} <VerifiedOutlinedIcon fontSize='large' style={{ color: '#3fbdeb' }} /></div>
           <div className="profile-doctor-info-username">@mehmetkekec</div>
           <div className="profile-doctor-info-branch">Admin</div>
 
           <div className="profile-button-container">
-            {!login || !mySelf ? (<div> <button className={follow ? "profile-unfollow-button profile-button-general" : "profile-button-general"}>{follow ? containTexts.UNFOLLOW : containTexts.FOLLOW}</button>
+            {!login || !mySelf ? (<div> <button onClick={handleFollowOrUnfollow} className={follow ? "profile-unfollow-button profile-button-general" : "profile-button-general"}>{follow ? containTexts.UNFOLLOW : containTexts.FOLLOW}</button>
               {activeAskQuestion && <button className="profile-ask-question profile-button-general"><QuestionAnswerOutlinedIcon /> {containTexts.ASK_A_QUESTION} (15 {currencyUnit})</button>}
               <button className="profile-button-about profile-button-general" onClick={handleClickOpen}>{containTexts.RESUME}</button>
               {alertDialog(dialogTitle, dialogText, dialogButtonText, open, handleClose)}
@@ -242,7 +250,7 @@ const Profile = () => {
           </div>
           {tabs(value, handleChange, width)}
         </div>
-      
+
       </div>
     </div>
   )

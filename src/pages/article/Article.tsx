@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ArticleModel from '../../models/articleModel';
 import ArticleAndVideoUserInfo from '../../utilities/components/article-and-video-user-info/ArticleAndVideoUserInfo';
 import Tag from '../../utilities/components/tag/Tag';
@@ -13,6 +13,8 @@ import useWindowSize from '../../hooks/useWindowSize';
 import GeneralRecommendedList from '../../utilities/components/general-recommended-list/GeneralRecommendedList';
 import { useSelector } from 'react-redux';
 import State from '../../store/state';
+import { useSnackbar } from 'notistack';
+import { LikeModel } from '../../models/likeModel';
 
 const article: ArticleModel =
 {
@@ -116,7 +118,21 @@ const articles: ArticleModel[] = [
 ]
 const Article = () => {
   const openDrawer = useSelector((state: State) => state.openDrawer.openDrawer)
+
+  const [like, setLike] = useState<LikeModel>({ numberOfLikes: 250, like: false })
+  const [addReadingList, setAddReadingList] = useState<boolean>(false)
+
   const { width } = useWindowSize();
+
+  const { enqueueSnackbar } = useSnackbar();
+  const handleAddReadingList = () => {
+    setAddReadingList(!addReadingList)
+    enqueueSnackbar(addReadingList ? containTexts.REMOVED_FROM_READING_LIST : containTexts.ADDED_TO_READING_LIST)
+  }
+
+  const handleLike = () => {
+    setLike({ numberOfLikes: like.like ? like.numberOfLikes - 1 : like.numberOfLikes + 1, like: !like.like })
+  }
 
   function articleGridContainer(): string {
     return openDrawer ? "article-grid-container2" : "article-grid-container";
@@ -139,8 +155,8 @@ const Article = () => {
         </div>
         {width && width >= 1283 && <div className="article-grid-item2"><GeneralRecommendedList items={articles} /></div>}
         <div className="article-buttons-container">
-          <button className='article-like-button article-general-button'><FavoriteIcon style={{ color: 'red' }} /> {containTexts.LIKE}</button>
-          <button className='article-general-button'><BookmarkOutlinedIcon style={{ color: '#7c14a8' }} /> {containTexts.ADD_READING_LIST}</button>
+          <button onClick={handleLike} className='article-like-button article-general-button'>{like.like ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderOutlinedIcon  />} {containTexts.LIKE} ({like.numberOfLikes})</button>
+          <button onClick={handleAddReadingList} className='article-general-button'>{addReadingList ? <BookmarkOutlinedIcon style={{ color: '#7c14a8' }} />: <BookmarkBorderOutlinedIcon style={{ color: '#7c14a8' }}/> }{containTexts.READING_LIST}</button>
           <button className='article-general-button'><ShareOutlinedIcon style={{ color: 'blue' }} /> {containTexts.SHARE}</button>
         </div>
         {(width !== undefined && width <= 606) && <GeneralRecommendedList items={articles} />}

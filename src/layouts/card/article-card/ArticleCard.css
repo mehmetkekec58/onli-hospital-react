@@ -60,15 +60,15 @@
     background-color: rgba(162, 165, 168, 0.25);
     border-radius: 5px;
     padding: 1px 5px;
+    font-size: small;
+}
+.article-card-button{
+    font-size: small;
+    font-weight: bold;
 }
 
 .article-card-read-more:hover {
     background-color: rgba(162, 165, 168, 0.05)
-}
-
-.article-card-button:hover {
-    opacity: 0.5;
-    background: none;
 }
 
 @media only screen and (max-width: 1300px) {

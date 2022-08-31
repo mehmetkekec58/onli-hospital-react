@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { containTexts } from '../../contains/containTexts';
 import useWindowSize from '../../hooks/useWindowSize';
 import VideoModel from '../../models/videoModel';
@@ -16,6 +16,8 @@ import "./Video.css";
 import GeneralRecommendedList from '../../utilities/components/general-recommended-list/GeneralRecommendedList';
 import { useSelector } from 'react-redux';
 import State from '../../store/state';
+import { LikeModel } from '../../models/likeModel';
+import { useSnackbar } from 'notistack';
 
 const video: VideoModel = {
   id: 0,
@@ -154,6 +156,21 @@ const videos: VideoModel[] = [
 
 const Video = () => {
   const openDrawer = useSelector((state: State) => state.openDrawer.openDrawer)
+  const [like, setLike] = useState<LikeModel>({ numberOfLikes: 250, like: false })
+  const [addPlaylist, setAddPlaylist] = useState<boolean>(false)
+
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleAddPlaylist = () => {
+    setAddPlaylist(!addPlaylist)
+    enqueueSnackbar(addPlaylist ? containTexts.ADDED_TO_PLAYLIST : containTexts.REMOVED_FROM_PLAYLIST)
+  }
+
+  const handleLike = () => {
+    setLike({ numberOfLikes: like.like ? like.numberOfLikes - 1 : like.numberOfLikes + 1, like: !like.like })
+  }
+
   const { width } = useWindowSize();
 
   function videoGridContainer(): string {
@@ -178,8 +195,8 @@ const Video = () => {
           </div>
           {width !== undefined && width >= 1283 && <div className="video-grid-item2"><GeneralRecommendedList items={videos} /></div>}
           <div className="video-buttons-container">
-            <button className='video-like-button video-general-button'><FavoriteIcon style={{ color: 'red' }} /> {containTexts.LIKE}</button>
-            <button className='video-general-button'><PlaylistAddIcon /> {containTexts.ADD_PLAYLIST}</button>
+            <button onClick={handleLike} className='video-like-button video-general-button'>{like.like ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderOutlinedIcon />} {containTexts.LIKE} ({like.numberOfLikes})</button>
+            <button onClick={handleAddPlaylist} className='video-general-button'>{addPlaylist ? (<PlaylistAddCheckIcon />) : <PlaylistAddIcon />} {containTexts.PLAYLIST}</button>
             <button className='video-general-button'><ShareOutlinedIcon style={{ color: 'blue' }} /> {containTexts.SHARE}</button>
           </div>
           {(width !== undefined && width <= 606) && <GeneralRecommendedList items={videos} />}

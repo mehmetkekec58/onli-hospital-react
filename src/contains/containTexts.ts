@@ -20,7 +20,7 @@ export const containTexts = {
     FIRST_NAME:"Adı",
     LAST_NAME:"Soyadı",
     USERNAME:"Kullanıcı Adı",
-    EMAİL:"E-posta",
+    EMAIL:"E-posta",
     PASSWORD:"Şifre",
 
     HOME_PAGE:"Ana Sayfa",
@@ -97,4 +97,9 @@ export const containTexts = {
     NOT_CALCULATED_YET:"hesaplanmadı",
     CHANGE_PASSWORD:"Şifre değiştir",
     RESUME:"Özgeçmiş",
+
+    REMOVED_FROM_READING_LIST:"Okuma listesinden çıkarıldı",
+    ADDED_TO_READING_LIST:"Okuma listesine eklendi",
+    REMOVED_FROM_PLAYLIST:"Oynatma listesinden çıkarıldı",
+    ADDED_TO_PLAYLIST:"Oynatma listesine eklendi"
 };

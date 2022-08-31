@@ -41,6 +41,12 @@
     bottom: 160px;
     justify-content: center;
     display: flex;
+
+}
+
+.video-card-playlist-icon {
+    border: none;
+    background: none;
 }
 
 .video-card-operations-icons {

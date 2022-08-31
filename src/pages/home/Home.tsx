@@ -200,13 +200,13 @@ const Home = () => {
   return (
     <div className='home-general-div'>
       <div className='home-container'>
-        <div className='home-description-text'>{containTexts.MOST_READ_ARTICLES}:</div>
+        <div className='home-description-text'>{containTexts.MOST_READ_ARTICLES}</div>
         <GridListCard articles={articles} />
-        <div className='home-description-text'>{containTexts.POPULAR_DOCTORS}:</div>
+        <div className='home-description-text'>{containTexts.POPULAR_DOCTORS}</div>
         <GridListDoctorCard doctors={doctors} />
-        <div className='home-description-text'>{containTexts.CATEGORIES}:</div>
+        <div className='home-description-text'>{containTexts.CATEGORIES}</div>
         <GridListCategoryCard categories={categories} />
-        <div className='home-description-text'>{containTexts.RECOMMENDED_VIDEOS}:</div>
+        <div className='home-description-text'>{containTexts.RECOMMENDED_VIDEOS}</div>
         <GridListVideoCard videos={videos} /> 
       </div>
     </div>

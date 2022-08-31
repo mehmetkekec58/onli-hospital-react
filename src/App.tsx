@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import Main from './pages/main/Main';
-import { SnackbarProvider} from 'notistack';
+import { SnackbarProvider } from 'notistack';
 function App() {
   return (
     <div className="App">
-      <SnackbarProvider maxSnack={4}>
-     <Main/>
-     </SnackbarProvider>
+      <SnackbarProvider anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }} maxSnack={4}>
+        <Main />
+      </SnackbarProvider>
     </div>
   );
 }

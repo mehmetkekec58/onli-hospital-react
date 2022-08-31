@@ -29,7 +29,7 @@ const Login = () => {
         <div className='login-container'>
             <div className='login-form'>
                 <div className="login-text">{containTexts.LOGIN}</div>
-                <TextField className='login-input-email' name='email'  sx={{width:'100%'}} type="email" label={containTexts.EMAİL} variant="outlined" color='secondary' />
+                <TextField className='login-input-email' name='email'  sx={{width:'100%'}} type="email" label={containTexts.EMAIL} variant="outlined" color='secondary' />
                 <TextField className='login-input-password' name='password' sx={{width:'100%'}} type="password"  label={containTexts.PASSWORD} variant="outlined" color='secondary' />
                 <div className='login-checkbox'> <Checkbox color='secondary' />{containTexts.REMEMBER_ME}</div>
                 <Link className='i-forgot-my-password' to="/resetpassword">{containTexts.FORGET_MY_PASSWORD}</Link>

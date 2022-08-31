@@ -41,7 +41,7 @@ const creditPackages: CreditPackageModel[] = [
 {
     id:3,
     photoUrl:"https://cdn.pixabay.com/photo/2014/05/19/18/00/background-348350_960_720.jpg",
-    creditPackageName:"Güç paketi paket",
+    creditPackageName:"Güç paketi",
     price:100.0,
     discount:5,
     creditAmount:1000,

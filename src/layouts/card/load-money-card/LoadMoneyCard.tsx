@@ -26,7 +26,7 @@ const LoadMoneyCard = ({ creditPackage, currency, exchangeRateCurrency }: Props)
         <hr />
         <div className='load-money-card-title'>{containTexts.CREDIT}: {creditPackage.creditAmount}</div>
         {creditPackage.discount > 0 && <div className='load-money-card-title green'>{containTexts.DISCOUNT}: {creditPackage.discount}%</div>}
-        <div className='load-money-card-title'>{containTexts.PRICE}: {creditPackage.discount > 0 && <span style={{ textDecoration: 'line-through', color: 'rgb(241, 57, 57)', fontWeight: 'bold' }}> {creditPackage.price}$</span>}  {discountedPrice(creditPackage.price, creditPackage.discount)}$</div>
+        <div className='load-money-card-title'>{containTexts.PRICE}: {creditPackage.discount > 0 && <span style={{ textDecoration: 'line-through', color: 'rgb(241, 57, 57)', fontWeight: 'bold',marginLeft:"5px",marginRight:"5px"}}> {creditPackage.price}$ </span>}  {discountedPrice(creditPackage.price, creditPackage.discount)}$</div>
         <div className='load-money-card-title'>≌  {exchangeRateCurrency === 0 ? containTexts.NOT_CALCULATED_YET : numberCeil(exchangeRateCurrency * discountedPrice(creditPackage.price, creditPackage.discount))+ currency}</div>
         <hr />
       </div>

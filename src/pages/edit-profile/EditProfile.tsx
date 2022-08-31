@@ -35,7 +35,7 @@ const EditProfile = () => {
                     <div className="edit-profile-general-info">
                         <TextField className='edit-profile-input-email' fullWidth required label={containTexts.FIRST_NAME} type="text" variant="outlined" color='secondary' />
                         <TextField className='edit-profile-input-email' fullWidth required label={containTexts.LAST_NAME} type="text" variant="outlined" color='secondary' />
-                        <TextField className='edit-profile-input-email' fullWidth required label={containTexts.EMAİL} type="email" variant="outlined" color='secondary' />
+                        <TextField className='edit-profile-input-email' fullWidth required label={containTexts.EMAIL} type="email" variant="outlined" color='secondary' />
                         <TextField className='edit-profile-input-email' fullWidth required label={containTexts.AGE} type="number" variant="outlined" color='secondary' />
                         <TextField className='edit-profile-input-email' fullWidth label={containTexts.HEIGHT} type="number" variant="outlined" color='secondary' />
                         <TextField className='edit-profile-input-email' fullWidth label={containTexts.WEIGHT} type="number" variant="outlined" color='secondary' />
@@ -72,7 +72,7 @@ const EditProfile = () => {
                     <div className="edit-profile-general-info2">
                         <TextField className='edit-profile-input-email' fullWidth required label={containTexts.FIRST_NAME} type="text" variant="outlined" color='secondary' />
                         <TextField className='edit-profile-input-email' fullWidth required label={containTexts.LAST_NAME} type="text" variant="outlined" color='secondary' />
-                        <TextField className='edit-profile-input-email' fullWidth required label={containTexts.EMAİL} type="email" variant="outlined" color='secondary' />
+                        <TextField className='edit-profile-input-email' fullWidth required label={containTexts.EMAIL} type="email" variant="outlined" color='secondary' />
                         <TextField className='edit-profile-input-email' fullWidth required label={containTexts.AGE} type="number" variant="outlined" color='secondary' />
                         <TextField className='edit-profile-input-email' fullWidth label={containTexts.HEIGHT} type="number" variant="outlined" color='secondary' />
                         <TextField className='edit-profile-input-email' fullWidth label={containTexts.WEIGHT} type="number" variant="outlined" color='secondary' />

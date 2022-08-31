@@ -25,7 +25,7 @@ const Navi: React.FC = () => {
   const { width } = useWindowSize();
   const { openDrawerChangeValue } = bindActionCreators(openDrawerFunctions, dispatch)
   const openDrawerValue = useSelector((state: State) => state.openDrawer.openDrawer)
-
+  const login = useSelector((state:State) => state.login.login)
   const [openDrawer, setOpenDrawer] = [openDrawerValue, openDrawerChangeValue]
   const [openNotification, setOpenNotification] = useState<boolean>(false)
 
@@ -46,16 +46,16 @@ const Navi: React.FC = () => {
         {openDrawer && (width && width <= 606) && <div onClick={handleOpenOrCloseDrawer} className='navi-drawer'><Drawer /></div>}
         <div className='brand-name-for-navi'>  <Link style={{ color: 'white' }} to={containUrls.HOME_PAGE}>{containTexts.BRAND_NAME}</Link></div>
         <div className='navi-input'><Input /></div>
-        {(width !== undefined && width > 250) &&
+        {login && (width !== undefined && width > 250)  &&
           <div onClick={handleOpenOrCloseNotification} className='navi-notification-icon'>
             <Badge badgeContent={10} max={99} color="error">
               <CircleNotificationsOutlinedIcon style={{ padding: '3px', color: 'white', height: '35px', width: '35px' }} />
             </Badge>
           </div>}
-        {openNotification &&
+        {openNotification && login &&
           <Notification notifications={notifications} />
         }
-        <div className='navi-avatar'><Avatar title={userFullName} alt={userFullName} src={profilePhotoUrl} sx={{ backgroundColor: '#ffd740', border: '2px white solid', color: 'black', fontWeight: 'bold', width: 45, height: 45 }} /> </div>
+       {login && <div className='navi-avatar'><Avatar title={userFullName} alt={userFullName} src={profilePhotoUrl} sx={{ backgroundColor: '#ffd740', border: '2px white solid', color: 'black', fontWeight: 'bold', width: 45, height: 45 }} /> </div>}
       </div>
     </div>
   )

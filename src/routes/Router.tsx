@@ -37,7 +37,7 @@ const Router = () => {
       <Route path={containUrls.EDIT_PROFILE} element={<RequireAuth><EditProfile /></RequireAuth>} />
       <Route path={containUrls.READING_LIST} element={<RequireAuth><ReadingList /></RequireAuth>} />
       <Route path={containUrls.PLAYLIST} element={<RequireAuth><Playlist /></RequireAuth>} />
-      <Route path={containUrls.SETTINGS} element={<RequireAuth><Settings /></RequireAuth>} />
+      <Route path={containUrls.SETTINGS} element={<Settings />} />
       <Route path={containUrls.ABOUT} element={<Search />} />
       <Route path={containUrls.LOGOUT} element={<RequireAuth><Logout /></RequireAuth>} />
       <Route path={containUrls.RESET_PASSWORD} element={<NotAuth><ResetPassword /></NotAuth>} />

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { containTexts } from '../../../contains/containTexts';
 import { containUrls } from '../../../contains/containUrls';
+import { numberRounder } from '../../../helpers/numberRounder';
 import UserInfoModel from '../../../models/userInfoModel';
 import './ArticleAndVideoUserInfo.css';
 
@@ -12,7 +13,7 @@ interface Props {
 
 const ArticleAndVideoUserInfo: React.FC<Props> = ({ userInfo }: Props) => {
     let navigate = useNavigate();
-    const [follower, setFollower] = useState<number>(102);
+    const [follower, setFollower] = useState<number>(142);
     const [follow, setFollow] = useState<boolean>(false);
 
     const handleFollowOrUnfollow = () => {
@@ -30,7 +31,7 @@ const ArticleAndVideoUserInfo: React.FC<Props> = ({ userInfo }: Props) => {
                 <div className="article-and-video-user-info-first-name-and-last-name">{userInfo.firstName} {userInfo.lastName}</div>
                 <div className="article-and-video-user-info-username">@{userInfo.username}</div>
             </div>
-            <div className="article-and-video-user-follower-count">{follower} {containTexts.FOLLOWER}</div>
+            <div className="article-and-video-user-follower-count">{numberRounder(follower)} {containTexts.FOLLOWER}</div>
             <button onClick={handleFollowOrUnfollow} className={follow ? "article-and-video-user-info-follow-button article-and-video-user-info-card-unfollow" : "article-and-video-user-info-follow-button"}>{follow ? containTexts.UNFOLLOW : containTexts.FOLLOW}</button>
         </div>
 

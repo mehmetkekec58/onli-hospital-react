@@ -9,6 +9,7 @@ import { bindActionCreators } from '@reduxjs/toolkit';
 import LoginFunction from '../../store/actions/loginAction';
 import { VariantType, useSnackbar } from 'notistack';
 import useWindowSize from '../../hooks/useWindowSize';
+import { containUrls } from '../../contains/containUrls';
 
 const Login = () => {
     const { enqueueSnackbar } = useSnackbar();
@@ -32,10 +33,10 @@ const Login = () => {
                 <TextField className='login-input-email' name='email'  sx={{width:'100%'}} type="email" label={containTexts.EMAIL} variant="outlined" color='secondary' />
                 <TextField className='login-input-password' name='password' sx={{width:'100%'}} type="password"  label={containTexts.PASSWORD} variant="outlined" color='secondary' />
                 <div className='login-checkbox'> <Checkbox color='secondary' />{containTexts.REMEMBER_ME}</div>
-                <Link className='i-forgot-my-password' to="/resetpassword">{containTexts.FORGET_MY_PASSWORD}</Link>
+                <Link className='i-forgot-my-password' to={containUrls.RESET_PASSWORD}>{containTexts.FORGET_MY_PASSWORD}</Link>
                 <button onClick={handleLogin} className='login-submit-button' type='submit'>{containTexts.LOGIN}</button>
                 <div className='dont-have-an-account-text'>{containTexts.DONT_HAVE_AN_ACCOUNT_TEXT}</div>
-                <Link className='login-create-account' to="/register">{containTexts.REGISTER}</Link>
+                <Link className='login-create-account' to={containUrls.REGISTER}>{containTexts.REGISTER}</Link>
             </div>
         </div>
     )

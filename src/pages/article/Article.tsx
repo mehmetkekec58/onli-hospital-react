@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 import State from '../../store/state';
 import { useSnackbar } from 'notistack';
 import { LikeModel } from '../../models/likeModel';
+import { numberRounder } from '../../helpers/numberRounder';
 
 const article: ArticleModel =
 {
@@ -119,7 +120,7 @@ const articles: ArticleModel[] = [
 const Article = () => {
   const openDrawer = useSelector((state: State) => state.openDrawer.openDrawer)
 
-  const [like, setLike] = useState<LikeModel>({ numberOfLikes: 250, like: false })
+  const [like, setLike] = useState<LikeModel>({ numberOfLikes: 999, like: false })
   const [addReadingList, setAddReadingList] = useState<boolean>(false)
 
   const { width } = useWindowSize();
@@ -155,7 +156,7 @@ const Article = () => {
         </div>
         {width && width >= 1283 && <div className="article-grid-item2"><GeneralRecommendedList items={articles} /></div>}
         <div className="article-buttons-container">
-          <button onClick={handleLike} className='article-like-button article-general-button'>{like.like ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderOutlinedIcon  />} {containTexts.LIKE} ({like.numberOfLikes})</button>
+          <button onClick={handleLike} className='article-like-button article-general-button'>{like.like ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderOutlinedIcon  />} {containTexts.LIKE} ({numberRounder(like.numberOfLikes)})</button>
           <button onClick={handleAddReadingList} className='article-general-button'>{addReadingList ? <BookmarkOutlinedIcon style={{ color: '#7c14a8' }} />: <BookmarkBorderOutlinedIcon style={{ color: '#7c14a8' }}/> }{containTexts.READING_LIST}</button>
           <button className='article-general-button'><ShareOutlinedIcon style={{ color: 'blue' }} /> {containTexts.SHARE}</button>
         </div>

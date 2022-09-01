@@ -16,12 +16,14 @@ import Drawer from '../drawer/Drawer';
 import { containUrls } from '../../contains/containUrls';
 import NotificationModel from '../../models/notificationModel';
 import Notification from '../../utilities/components/notification/Notification';
+import LoginFunction from '../../store/actions/loginAction';
 
 const notifications: NotificationModel[] = [{ id: 0, message: "bu bir bildirim 1" }, { id: 1, message: "bildirim 2" }, { id: 2, message: "bildirim 3" }];
 
 const Navi: React.FC = () => {
   
   const dispatch = useDispatch();
+  
   const { width } = useWindowSize();
   const { openDrawerChangeValue } = bindActionCreators(openDrawerFunctions, dispatch)
   const openDrawerValue = useSelector((state: State) => state.openDrawer.openDrawer)
@@ -42,7 +44,7 @@ const Navi: React.FC = () => {
   return (
     <div className='navi-component'>
       <div className='navi-items-general-div'>
-        <div onClick={handleOpenOrCloseDrawer} className='navi-icon-for-drawer-open'><MenuIcon sx={{ color: 'white' }} /></div>
+        <div onClick={handleOpenOrCloseDrawer} className='navi-icon-for-drawer-open'><MenuIcon sx={{ color: 'white', ...(width && width <= 606)&&{ width:"20px", height:"20"} }} /></div>
         {openDrawer && (width && width <= 606) && <div onClick={handleOpenOrCloseDrawer} className='navi-drawer'><Drawer /></div>}
         <div className='brand-name-for-navi'>  <Link style={{ color: 'white' }} to={containUrls.HOME_PAGE}>{containTexts.BRAND_NAME}</Link></div>
         <div className='navi-input'><Input /></div>
@@ -55,7 +57,7 @@ const Navi: React.FC = () => {
         {openNotification && login &&
           <Notification notifications={notifications} />
         }
-       {login && <div className='navi-avatar'><Avatar title={userFullName} alt={userFullName} src={profilePhotoUrl} sx={{ backgroundColor: '#ffd740', border: '2px white solid', color: 'black', fontWeight: 'bold', width: 45, height: 45 }} /> </div>}
+       {login && <div className='navi-avatar'><Avatar title={userFullName} alt={userFullName} src={profilePhotoUrl} sx={{ backgroundColor: '#ffd740', border: '2px white solid', color: 'black', fontWeight: 'bold', width: '35px', height: '35px' }} /> </div>}
       </div>
     </div>
   )

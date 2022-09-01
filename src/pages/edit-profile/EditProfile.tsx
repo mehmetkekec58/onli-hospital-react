@@ -18,10 +18,7 @@ const EditProfile = () => {
     const handleSelectImage = (e: React.ChangeEvent<HTMLInputElement>) => {
         console.log(file);
         if (e.target.files && e.target.files[0]) {
-            let img = e.target.files[0];
-            setFile(URL.createObjectURL(img))
-            console.log(file)
-            console.log(img)
+            setFile(URL.createObjectURL(e.target.files[0]))
         }
     }
     function widthbiggerThan568() {

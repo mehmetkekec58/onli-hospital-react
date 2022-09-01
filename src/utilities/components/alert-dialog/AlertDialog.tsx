@@ -38,6 +38,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
               right: 8,
               top: 8,
               color: (theme) => theme.palette.grey[500],
+              borderRadius:'15px'
             }}
           >
             <CloseIcon />
@@ -47,14 +48,15 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     );
   };
 
-export default function alertDialog(title: string, text: string, buttonText: string, open: boolean, handleClose: () => void) {
+export default function alertDialog(title: string, text: string, buttonText: string, open: boolean, handleClose: () => void, handleCloseIcon?: ()=> void) {
     return (
       <BootstrapDialog
-        onClose={handleClose}
+        onClose={handleCloseIcon? handleCloseIcon :  handleClose}
         aria-labelledby="customized-dialog-title"
+        sx={{borderRadius:'15px'}}
         open={open}
       >
-        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
+        <BootstrapDialogTitle id="customized-dialog-title" onClose={handleCloseIcon? handleCloseIcon :  handleClose}>
           {title}
         </BootstrapDialogTitle>
         <DialogContent dividers>

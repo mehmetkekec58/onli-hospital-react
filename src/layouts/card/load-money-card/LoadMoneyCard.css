@@ -3,7 +3,7 @@
     width: 330px;
     height: 470px;
     margin: 5px;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 5px 5px 5px rgb(201, 198, 198);
     display: flex;
     justify-content: center;
@@ -50,7 +50,7 @@
 .load-money-card-buy-button {
     font-weight: 700;
     width: 90%;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 5px;
     color: black;
     position: absolute;

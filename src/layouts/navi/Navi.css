@@ -1,11 +1,10 @@
-
 .navi-component {
     background-color: var(--navi-color);
     display: flex;
     position: relative;
     height: var(--navi-height);
     margin-bottom: 0px;
-    padding: 0px 10px;
+    padding: 0px 3px;
     align-items: center;
     box-shadow: 5px 5px 10px rgb(174, 171, 171);
     min-width: 250px;
@@ -15,8 +14,10 @@
     width: 100%;
     align-items: center;
     display: flex;
-    padding: 1px 10px;
-    height: calc(var(--navi-height) - 20px);
+    justify-content: center;
+    align-items: center;
+    padding: 1px 2px;
+    height: 100%;
 }
 
 .brand-name-for-navi {
@@ -45,29 +46,31 @@
     left: 32%;
     width: 40%;
 }
-.navi-drawer{
-    display:flex;
+
+.navi-drawer {
+    display: flex;
     z-index: 4;
     position: absolute;
     top: 61px;
     left: 0px;
     min-width: 200px;
-    height:calc(100vh - 70px);;
+    height: calc(100vh - 70px);
     word-break: keep-all;
     animation-duration: 1s;
     background-color: #7c14a8;
     animation-name: opendrawer;
-   
+
 }
+
 @keyframes opendrawer {
     from {
-     left:-150px
+        left: -150px
     }
-  
+
     to {
-      left: 0px;
+        left: 0px;
     }
-  }
+}
 
 .navi-avatar {
     position: absolute;
@@ -83,14 +86,14 @@
 
 .navi-notification-icon {
     display: flex;
-    right: 100px;
+    right: 90px;
     position: absolute;
     border-radius: 100%;
 }
 
 .navi-notification-icon:active {
     background-color: rgb(233, 227, 227, 0.2);
-    
+
 }
 
 
@@ -124,41 +127,55 @@
 
 @media only screen and (max-width: 460px) {
     .brand-name-for-navi {
-        display: none;
-
+        left: 40px;
+        font-size: smaller;
     }
 
     .navi-input {
-        left: 19%;
-        width: 50%;
+        left: 38%;
+        width: 40%;
+    }
+
+    .navi-notification-icon {
+        right: 50px;
     }
 
 
 
 }
 
-@media only screen and (max-width: 330px) {
-
-
+@media only screen and (max-width: 440px) {
     .navi-input {
-        left: 16%;
-        width: 50%;
+        left: 43%;
+        width: 45%;
     }
- 
+    .navi-notification-icon {
+        display: none;
+    }
+}
+@media only screen and (max-width: 330px) {
+    .brand-name-for-navi {
+        left: 40px;
+        font-size: 10px;
+    }
+   
+
+    
+
 }
 
 @media only screen and (max-width: 311px) {
 
-    .navi-input {
-        left: 15%;
-        width: 50%;
+    .navi-avatar{
+        display: none;
+    }
+    .navi-input{
+        width: 55%;
     }
 
 
 }
+
 @media only screen and (max-width: 251px) {
-    .navi-input {
-        left: 18%;
-        width: 60%;
-    }
+   
 }

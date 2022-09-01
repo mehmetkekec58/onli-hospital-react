@@ -1,5 +1,6 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
+import { containUrls } from '../../../contains/containUrls';
 import selectCharacterHelper from '../../../helpers/selectCharacterHelper';
 import UserInfoModel from '../../../models/userInfoModel';
 import './CardUserInfo.css';
@@ -14,11 +15,11 @@ const CardUserInfo: React.FC<Props> = ({ userInfo, active }: Props) => {
     let navigate = useNavigate()
 
     const handleGoProfilePage = () =>{
-        navigate(`/profile/${userInfo?.username}`)
+        navigate(`${containUrls.PROFILE}/${userInfo?.username}`)
     }
 
     function isActive() {
-        if (location.pathname.substring(0, 9) === "/profile/"){ 
+        if (location.pathname.substring(0, 9) === `${containUrls.PROFILE}/`){ 
             return false 
         } else {
             return true;

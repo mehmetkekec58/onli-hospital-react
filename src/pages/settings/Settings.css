@@ -2,11 +2,12 @@
   height: calc(100vh - 70px);
   display: flex;
   justify-content: center;
+  padding: 5px;
 }
 
 .settings-delete-search-history-button {
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: var(--button-color-yellow);
   padding: 10px 10px;
   margin-right: 5px;

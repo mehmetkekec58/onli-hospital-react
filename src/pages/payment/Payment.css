@@ -3,7 +3,6 @@
   padding: 5px 1px;
   display: flex;
   justify-content: center;
-  position: relative;
   font-family: "Open Sans";
 
 }
@@ -11,13 +10,13 @@
 .payment-your-earning-container {
   background-color: white;
   margin: 10px 2px 5px 2px;
-  width: 60%;
+  width: 70%;
   height: 250px;
-  border-radius: 8px;
+  border-radius: 15px;
   box-shadow: 2px 2px 5px 5px gainsboro;
   padding: 5px 0px;
   position: relative;
-  display: block;
+  display: flex;
 }
 
 .payment-your-earning-text {
@@ -53,7 +52,7 @@
   position: absolute;
   display: flex;
   height: 50px;
-  width: 59%;
+  width: 70%;
   bottom: 0px;
   justify-content: flex-end;
   align-items: center;
@@ -63,9 +62,8 @@
 
 .payment-payment-button {
   border: none;
-  border-radius: 5px;
+  border-radius: 15px;
   background-color: var(--button-color-yellow);
-  padding: 10px 10px;
   margin-right: 5px;
 }
 

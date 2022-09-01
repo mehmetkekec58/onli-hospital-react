@@ -8,26 +8,25 @@ import State from '../../store/state';
 import useWindowSize from '../../hooks/useWindowSize';
 
 
-
 const Main = () => {
-  const {width} = useWindowSize()
+  const { width } = useWindowSize()
+  
   const openDrawer = useSelector((state: State) => state.openDrawer.openDrawer)
 
   function drawer(): string {
     return openDrawer ? "grid-container1" : "grid-container2"
   }
   function hideOrShowDrawer() {
-    return (width && width<=606)? "main-normal-container" : drawer();
-   }
-
+    return (width && width <= 606) ? "main-normal-container" : drawer();
+  }
 
   return (
     <div>
-      <Navi/>
+      <Navi />
       <div className={hideOrShowDrawer()}>
-      {(width && width>606) &&  <div className='grid-item1'> <Drawer /></div>}
+        {(width && width > 606) && <div className='grid-item1'> <Drawer /></div>}
         <div className='grid-item2'>
-        <Router />
+          <Router />
         </div>
       </div>
     </div>

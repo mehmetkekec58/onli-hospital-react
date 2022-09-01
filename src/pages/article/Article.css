@@ -60,7 +60,7 @@
     width: 70%;
     height: 350px;
     margin-bottom: 10px;
-    border-radius: 3px;
+    border-radius: 15px;
 }
 
 .article-text-container {
@@ -99,7 +99,7 @@
 
 .article-general-button {
     padding: 5px 10px;
-    border-radius: 10px;
+    border-radius: 15px;
     cursor: pointer;
     overflow: hidden;
     border: none;

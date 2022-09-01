@@ -5,7 +5,7 @@
     padding: 10px;
     position: relative;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 2px 2px 2px rgb(201, 198, 198);
 }
 
@@ -19,7 +19,7 @@
     height: 200px;
     width: 99%;
     margin: 5px 0px;
-    border-radius: 3px;
+    border-radius: 15px;
     position: relative;
 
 }

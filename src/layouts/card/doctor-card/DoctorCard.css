@@ -1,10 +1,9 @@
 .doctor-card {
-    /* background-color: #80fc7e;*/
     background-color: rgba(197, 190, 197, 0.2);
     width: 330px;
     height: 470px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 2px 2px 2px rgb(201, 198, 198);
     display: flex;
     justify-content: center;
@@ -74,11 +73,11 @@
 .doctor-card-follow-button {
     font-weight: 700;
     background-color: #7c14a8;
-    border-radius: 5px;
+    border-radius: 15px;
+    padding: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
     height: 30px;
     color: black;
 }
@@ -105,5 +104,5 @@
     position: relative;
     left: 20%;
     color: black;
-    border-radius: 5px;
+    border-radius: 15px;
 }

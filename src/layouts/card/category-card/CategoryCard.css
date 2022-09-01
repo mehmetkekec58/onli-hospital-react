@@ -4,7 +4,7 @@
     height: 350px;
     padding: 10px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 15px;
     box-shadow: 2px 2px 2px rgb(201, 198, 198);
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@
     width: 90%;
     display: flex;
     margin: 5px 0px;
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 2px 3px 3px rgb(183, 177, 177);
     position: relative;
     left: 5%;

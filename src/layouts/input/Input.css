@@ -1,5 +1,5 @@
 .search-input {
-    border-radius: 3px;
+    border-radius: 15px;
     border: none;
     width: 85%;
     min-width: 50px;
@@ -13,8 +13,7 @@
     height: auto;
     top: 38px;
     justify-content: center;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 15px;
     padding: 2px;
     position: absolute;
     background-color: rgb(245, 249, 249);
@@ -34,7 +33,7 @@
     font-weight: 600;
     overflow: hidden;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 15px;
 
 
 }
@@ -63,10 +62,10 @@ input:focus::placeholder {
 
 .search-button {
     border: none;
-    border-radius: 3px;
+    border-radius: 15px;
     margin-left: 2px;
     height: 33px;
-    width: 13%;
+    width: 35px;
     background-color: #ffd740;
     color: black;
     font-size: large;
@@ -83,11 +82,11 @@ input:focus::placeholder {
 }
 
 @media only screen and (max-width: 600px) {
-    .search-button {
+    /* .search-button {
         height: 33px;
         width: 15%;
         font-size: small;
-    }
+    } */
 
     .search-input {
         width: 65%;
@@ -103,12 +102,12 @@ input:focus::placeholder {
 
 @media only screen and (max-width: 460px) {
 
-    .search-button {
+    /* .search-button {
         height: 33px;
         width: 16%;
         font-size: 8px;
         padding: 2px 2px 2px 2px;
-    }
+    } */
 
     .search-input {
         width: 85%;

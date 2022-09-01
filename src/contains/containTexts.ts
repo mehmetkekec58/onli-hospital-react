@@ -101,5 +101,15 @@ export const containTexts = {
     REMOVED_FROM_READING_LIST:"Okuma listesinden çıkarıldı",
     ADDED_TO_READING_LIST:"Okuma listesine eklendi",
     REMOVED_FROM_PLAYLIST:"Oynatma listesinden çıkarıldı",
-    ADDED_TO_PLAYLIST:"Oynatma listesine eklendi"
+    ADDED_TO_PLAYLIST:"Oynatma listesine eklendi",
+
+    MILLION:"Mn",
+    THOUSAND:"B",
+
+    PAYMENT_THRESHOLD:"Ödeme eşiği:",
+    EARNING:"Kazanç",
+    PAYMENT_SETTINGS:"Ödeme ayarları",
+    PREVIOUS_PAYMENTS:"Daha önce yapılan ödemeler",
+
+    PLEASE_LOGIN:"Lütfen giriş yapınız"
 };

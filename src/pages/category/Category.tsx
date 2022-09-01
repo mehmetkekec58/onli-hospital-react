@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { containTexts } from '../../contains/containTexts'
 import CategoryModel from '../../models/categoryModel'
 import Box from '@mui/material/Box';
@@ -18,6 +18,8 @@ import "./Category.css"
 import GridListDoctorCard from '../../layouts/grid-list/grid-list-doctor-card/GridListDoctorCard';
 import DoctorModel from '../../models/doctorModel';
 import useWindowSize from '../../hooks/useWindowSize';
+import { numberRounder } from '../../helpers/numberRounder';
+import RequireAuthButton from '../../utilities/Auth/RequireAuthButton';
 
 
 const videos: VideoModel[] = [
@@ -199,7 +201,16 @@ function tabs(value: string, handleChange: (event: React.SyntheticEvent, newValu
 }
 
 const Category = () => {
+  const [followers, setFollowers] = useState<number>(121)
+  const [follow, setFollow] = useState<boolean>(false)
+
   const { width } = useWindowSize()
+
+const handleFollow =  ()  =>{
+  setFollowers(follow? followers-1 : followers+1)
+  setFollow(!follow);
+}
+
   const [value, setValue] = React.useState('1');
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -217,8 +228,8 @@ const Category = () => {
         <img src={category.thumbnailUrl} alt={category.name} className="category-photo-image" />
         <div className="category-info-name-and-follow-button-continer">
           <div className="category-info-category-name">{category.name}</div>
-          <div className="category-info-follower-count">120 B {containTexts.FOLLOWER}</div>
-          <button className="category-button-general">Takip Et</button>
+          <div className="category-info-follower-count">{numberRounder(followers)} {containTexts.FOLLOWER}</div>
+          <RequireAuthButton onClick={handleFollow} errorMessage="Kategoriyi takip etmek için giriş yapınız" className={follow ? "category-button-general category-unfollow-button" : "category-button-general"}>{follow ? containTexts.UNFOLLOW : containTexts.FOLLOW}</RequireAuthButton>
         </div>
       </div>
       {tabs(value, handleChange, width)}

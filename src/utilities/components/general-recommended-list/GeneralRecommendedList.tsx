@@ -6,6 +6,7 @@ import PlayCircleFilledWhiteOutlinedIcon from '@mui/icons-material/PlayCircleFil
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { containUrls } from '../../../contains/containUrls';
+import selectCharacterHelper from '../../../helpers/selectCharacterHelper';
 
 interface Props {
     items: ArticleModel[] | VideoModel[]
@@ -27,7 +28,7 @@ const GeneralRecommendedList = ({ items }: Props) => {
                         <img alt={item.title} className="general-recommended-list-image" src={item.thumbnailUrl} />
                         {model && <div className="general-recommended-list-play-icon"><PlayCircleFilledWhiteOutlinedIcon fontSize='large' style={{ color: 'white' }} /></div>}
                         <div className="general-recommended-list-title-and-text-container">
-                            <div className="general-recommended-list-title">{item.title}</div>
+                            <div className="general-recommended-list-title">{selectCharacterHelper(item.title,60)}</div>
                         </div>
                     </div>
                 </Link>

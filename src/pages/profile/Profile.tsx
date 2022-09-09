@@ -17,16 +17,19 @@ import VideoModel from '../../models/videoModel';
 import GridListVideoCard from '../../layouts/grid-list/grid-list-video-card/GridListVideoCard';
 import PostModel from '../../models/postModel';
 import GridListPostCard from '../../layouts/grid-list/grid-list-post-card/GridListPostCard';
-import { containTexts } from '../../contains/containTexts';
+import { constantsText } from '../../constants/constantsText';
 import alertDialog from '../../utilities/components/alert-dialog/AlertDialog';
 import useWindowSize from '../../hooks/useWindowSize';
+import RequireAuthButton from '../../utilities/Auth/RequireAuthButton';
+import { ProfileStatisticModel } from '../../models/profileStatisticModel';
+import { numberRounder } from '../../helpers/numberRounder';
 
 const profilePhotoUrl = "https://pbs.twimg.com/profile_images/1523976377074163713/hRUFPi6z_400x400.jpg"
 const userFullName: string = "Mehmet Kekeç"
-const dialogTitle = containTexts.RESUME;
+const dialogTitle = constantsText.RESUME;
 const dialogText = " Merhaba, ben Mehmet Kekeç. Onli Hospital'in kurucusu."
-const dialogButtonText = containTexts.OK;
-const currencyUnit: string = containTexts.CREDIT;
+const dialogButtonText = constantsText.OK;
+const currencyUnit: string = constantsText.CREDIT;
 
 const articles: ArticleModel[] = [
   {
@@ -173,9 +176,9 @@ function tabs(value: string, handleChange: (event: React.SyntheticEvent, newValu
           <Box sx={{ borderBottom: 1, borderColor: 'divider', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
             <TabList variant='fullWidth' textColor="secondary"
               indicatorColor="secondary" onChange={handleChange} >
-              <Tab icon={<ArticleOutlinedIcon />} iconPosition="start" sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} label={containTexts.ARTICLES} value="1" />
-              <Tab icon={<ThumbUpOutlinedIcon />} iconPosition="start" sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} label={containTexts.POSTS} value="2" />
-              <Tab icon={<OndemandVideoOutlinedIcon />} iconPosition="start" sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} label={containTexts.VIDEOS} value="3" />
+              <Tab icon={<ArticleOutlinedIcon />} iconPosition="start" sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} label={constantsText.ARTICLES} value="1" />
+              <Tab icon={<ThumbUpOutlinedIcon />} iconPosition="start" sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} label={constantsText.POSTS} value="2" />
+              <Tab icon={<OndemandVideoOutlinedIcon />} iconPosition="start" sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} label={constantsText.VIDEOS} value="3" />
             </TabList>
           </Box>
           <TabPanel value="1"> <GridListCard articles={articles} /></TabPanel>
@@ -191,17 +194,12 @@ const Profile = () => {
   //const {changeValueLogin} = bindActionCreators(LoginFunction,useDispatch())
   //const  login  = useSelector((state:State)=>state.login.login)
 
-  const [infoText, setInfoText] = useState<[string, number][]>([
-    [containTexts.FOLLOWER, 102],
-    [containTexts.ARTICLE, 17],
-    [containTexts.VIDEO, 2],
-  ])
-
   const [mySelf] = useState<boolean>(true);
   const [login] = useState<boolean>(false)
   const [follow, setFollow] = useState<boolean>(false)
   const [value, setValue] = React.useState('1');
   const [activeAskQuestion, setActiveAskQuestion] = useState<boolean>(true)
+  const [profileStatictic, setProfileStatictic] = useState<ProfileStatisticModel>({ numberOfFollower: 102, numberOfArticle: 17, numberOfVideo: 2 })
   const { width } = useWindowSize()
   const [open, setOpen] = React.useState(false);
 
@@ -212,7 +210,7 @@ const Profile = () => {
     setOpen(false);
   };
   const handleFollowOrUnfollow = () => {
-    infoText[0][1] = follow ? infoText[0][1] - 1 : infoText[0][1] + 1
+    setProfileStatictic({ numberOfFollower: follow ? profileStatictic.numberOfFollower - 1 : profileStatictic.numberOfFollower + 1, numberOfArticle: profileStatictic.numberOfArticle, numberOfVideo: profileStatictic.numberOfVideo })
     setFollow(!follow)
   }
 
@@ -229,24 +227,30 @@ const Profile = () => {
           <div className="profile-doctor-info-full-name">{userFullName} <VerifiedOutlinedIcon fontSize='large' style={{ color: '#3fbdeb' }} /></div>
           <div className="profile-doctor-info-username">@mehmetkekec</div>
           <div className="profile-doctor-info-branch">Admin</div>
-
           <div className="profile-button-container">
-            {!login || !mySelf ? (<div> <button onClick={handleFollowOrUnfollow} className={follow ? "profile-unfollow-button profile-button-general" : "profile-button-general"}>{follow ? containTexts.UNFOLLOW : containTexts.FOLLOW}</button>
-              {activeAskQuestion && <button className="profile-ask-question profile-button-general"><QuestionAnswerOutlinedIcon /> {containTexts.ASK_A_QUESTION} (15 {currencyUnit})</button>}
-              <button className="profile-button-about profile-button-general" onClick={handleClickOpen}>{containTexts.RESUME}</button>
+            {!login || !mySelf ? (<div> <RequireAuthButton errorMessage={constantsText.YOU_MUST_BE_LOGGED_IN_TO_FOLLOW_DOCTORS} onClick={handleFollowOrUnfollow} className={follow ? "profile-unfollow-button profile-button-general" : "profile-button-general"}>{follow ? constantsText.UNFOLLOW : constantsText.FOLLOW}</RequireAuthButton>
+              {activeAskQuestion && <RequireAuthButton errorMessage={constantsText.YOU_MUST_BE_LOGGED_IN_TO_ASK_QUESTIONS_TO_DOCTORS}className="profile-ask-question profile-button-general"><QuestionAnswerOutlinedIcon /> {constantsText.ASK_A_QUESTION} (15 {currencyUnit})</RequireAuthButton>}
+              <button className="profile-button-about profile-button-general" onClick={handleClickOpen}>{constantsText.RESUME}</button>
               {alertDialog(dialogTitle, dialogText, dialogButtonText, open, handleClose)}
             </div>)
               :
-              <button className="profile-button-edit-profile profile-button-general">{containTexts.EDIT_PROFILE}</button>
+              <button className="profile-button-edit-profile profile-button-general">{constantsText.EDIT_PROFILE}</button>
             }
           </div>
           <div className="profile-doctor-statistic-container">
-            {infoText.map((info) => (
-              <div>
-                <div className='profile-doctor-statistic-count'>{info[1]}</div>
-                <div className='profile-doctor-statistic-name'>{info[0]}</div>
-              </div>
-            ))}
+
+            <div>
+              <div className='profile-doctor-statistic-count'>{numberRounder(profileStatictic.numberOfFollower)}</div>
+              <div className='profile-doctor-statistic-name'>{constantsText.FOLLOWER}</div>
+            </div>
+            <div>
+              <div className='profile-doctor-statistic-count'>{numberRounder(profileStatictic.numberOfArticle)}</div>
+              <div className='profile-doctor-statistic-name'>{constantsText.ARTICLE}</div>
+            </div>
+            <div>
+              <div className='profile-doctor-statistic-count'>{numberRounder(profileStatictic.numberOfVideo)}</div>
+              <div className='profile-doctor-statistic-name'>{constantsText.VIDEO}</div>
+            </div>
           </div>
           {tabs(value, handleChange, width)}
         </div>

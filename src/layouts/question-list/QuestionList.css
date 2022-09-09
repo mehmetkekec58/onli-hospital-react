@@ -1,0 +1,67 @@
+.question-list-container {
+    height: calc(100vh - 70px);
+    padding: 7px 7px;
+    font-family: 'Open Sans';
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.question-list-item-container {
+    height: 105px;
+    width: 100%;
+    margin-bottom: 15px;
+    display: flex;
+    padding: 2px 5px;
+    justify-content: space-evenly;
+    flex-direction: row;
+    border-radius: 15px;
+}
+
+.question-list-img {
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+}
+
+.question-list-user-info {
+    width: 80%;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.question-list-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 10px;
+    padding: 0px 2px;
+    margin-left: 5px;
+}
+
+.question-list-full-name {
+    font-weight: bold;
+    font-size: 25px;
+    overflow: hidden;
+    height: 45px;
+}
+
+.question-list-last-message {
+    height: 100px;
+    overflow: hidden;
+    font-size: small;
+    color: rgb(47, 46, 46);
+}
+
+.question-list-delete-button {
+    background-color: red;
+    color: white;
+    border-radius: 15px;
+    padding: 5;
+    font-weight: bold;
+}

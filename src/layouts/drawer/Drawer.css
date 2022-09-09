@@ -71,6 +71,7 @@
 }
 
 .drawer-general-div::-webkit-scrollbar {
+    width: 5px;
     display: none;
 
 }
@@ -80,6 +81,7 @@
 }
 
 .drawer-general-div2::-webkit-scrollbar {
+    width: 5px;
     display: none;
 
 }

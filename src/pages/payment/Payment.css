@@ -8,9 +8,9 @@
 }
 
 .payment-your-earning-container {
-  background-color: white;
+  background-image: linear-gradient(var(--navi-color), var(--button-color-yellow));
   margin: 10px 2px 5px 2px;
-  width: 70%;
+  width: 95%;
   height: 250px;
   border-radius: 15px;
   box-shadow: 2px 2px 5px 5px gainsboro;
@@ -63,6 +63,7 @@
 .payment-payment-button {
   border: none;
   border-radius: 15px;
+  padding: 5px;
   background-color: var(--button-color-yellow);
   margin-right: 5px;
 }

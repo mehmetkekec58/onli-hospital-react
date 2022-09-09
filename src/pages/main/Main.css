@@ -43,3 +43,15 @@ button{
   background: none;
   border: none;
 }
+a:link {
+  text-decoration: none;
+  color: black;
+}
+
+a:link:active {
+  color: black;
+}
+
+a:visited {
+  color: black;
+}

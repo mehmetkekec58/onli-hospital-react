@@ -2,8 +2,11 @@
     background-color: rgba(197, 190, 197, 0.2);
     width: 330px;
     height: 470px;
-    padding: 10px;
     margin: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
     border-radius: 15px;
     box-shadow: 2px 2px 2px rgb(201, 198, 198);
 }
@@ -26,6 +29,9 @@
     font-weight: bold;
     font-size: 22px;
     height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
     text-align: center;
     padding: 1px;
@@ -40,61 +46,48 @@
     color: rgb(47, 46, 46);
     margin-bottom: 5px;
 
-
 }
 
 .article-card-operations-icons {
     display: flex;
-    bottom: 50%;
+    position: absolute;
     align-items: center;
+    justify-content: flex-start;
     padding: 5px 5px;
-    gap: 20px;
+    bottom: 12px;
+    left: 0px;
     margin: 2px;
-    top: 0px;
+    width: 100%;
     margin-top: 20px;
-    clear: both
+ 
 }
 
 .article-card-read-more {
     font-weight: 700;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    justify-content: center;
     background-color: rgba(162, 165, 168, 0.25);
     border-radius: 15px;
     padding: 1px 5px;
-    font-size: small;
+    font-size: 10px;
+    width: 80px;
+    height: 20px;
 }
 
 .article-card-button {
     font-size: small;
     font-weight: bold;
+    width: 100px;   
 }
 
 .article-card-read-more:hover {
     background-color: rgba(162, 165, 168, 0.05)
 }
 
-@media only screen and (max-width: 1300px) {
-
-    .article-card-read-more {
-        font-size: 13px;
-    }
-
-}
-
-
-@media only screen and (max-width: 800px) {
-
-    .article-card-read-more {
-        font-size: 10px;
-    }
-
-
-}
 
 @media only screen and (max-width: 330px) {
-
-    .article-card-read-more {
-        font-size: 10px;
-    }
 
     .article-card-button {
         font-size: 8px;
@@ -104,15 +97,3 @@
 
 }
 
-a:link {
-    text-decoration: none;
-    color: black;
-}
-
-a:link:active {
-    color: black;
-}
-
-a:visited {
-    color: black;
-}

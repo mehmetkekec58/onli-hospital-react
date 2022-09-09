@@ -103,6 +103,7 @@
     cursor: pointer;
     overflow: hidden;
     border: none;
+    width: 100px;
     background-color: white;
     font-weight: bold;
 }

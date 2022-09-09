@@ -3,9 +3,11 @@ import selectCharacterHelper from '../../../helpers/selectCharacterHelper'
 import DoctorModel from '../../../models/doctorModel'
 import "./DoctorCard.css"
 import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { containUrls } from '../../../contains/containUrls';
-import { containTexts } from '../../../contains/containTexts';
+import { useNavigate } from 'react-router-dom';
+import { constantsUrl } from '../../../constants/constantsUrl';
+import { constantsText } from '../../../constants/constantsText';
+import RequireAuthButton from '../../../utilities/Auth/RequireAuthButton';
+
 interface Props {
   doctor: DoctorModel
 }
@@ -13,11 +15,12 @@ interface Props {
 const DoctorCard: React.FC<Props> = ({ doctor }: Props) => {
   const navigate = useNavigate();
   const [follow, setFollow] = useState<boolean>(false)
+
   const handleFollow = () =>{
     setFollow(!follow)
   }
   const handleGoDoctorProfile = (username: string) => {
-    navigate(containUrls.PROFILE + "/" + username)
+    navigate(`${constantsUrl.PROFILE}/${username}`)
   }
 
   return (
@@ -31,7 +34,7 @@ const DoctorCard: React.FC<Props> = ({ doctor }: Props) => {
       <div className='doctor-card-about'>{selectCharacterHelper(doctor.about, 120)}</div>
       </div>
       <div className='doctor-card-operations-icons'>
-        <button onClick={handleFollow} className={follow?'doctor-card-follow-button  doctor-card-unfollow' : 'doctor-card-follow-button doctor-card-follow' }>{follow ? containTexts.UNFOLLOW : containTexts.FOLLOW}</button>
+        <RequireAuthButton errorMessage={constantsText.YOU_MUST_BE_LOGGED_IN_TO_FOLLOW_DOCTORS} onClick={handleFollow} className={follow?'doctor-card-follow-button  doctor-card-unfollow' : 'doctor-card-follow-button doctor-card-follow' }>{follow ? constantsText.UNFOLLOW : constantsText.FOLLOW}</RequireAuthButton>
       </div>
 
 

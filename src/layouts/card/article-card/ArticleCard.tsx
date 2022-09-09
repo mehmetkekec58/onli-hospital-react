@@ -6,13 +6,14 @@ import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlin
 import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import { containTexts } from "../../../contains/containTexts"
+import { constantsText } from "../../../constants/constantsText"
 import CardUserInfo from '../../../utilities/components/card-user-info/CardUserInfo';
 import { Link } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { LikeModel } from '../../../models/likeModel';
-import { containUrls } from '../../../contains/containUrls';
+import { constantsUrl } from '../../../constants/constantsUrl';
 import { numberRounder } from '../../../helpers/numberRounder';
+import RequireAuthButton from '../../../utilities/Auth/RequireAuthButton';
 
 interface Props {
     article: ArticleModel
@@ -21,11 +22,11 @@ const ArticleCard: React.FC<Props> = ({ article }: Props) => {
 
     const { enqueueSnackbar } = useSnackbar();
     const [addReadingList, setAddReadingList] = useState<boolean>(false)
-    const [like, setLike] = useState<LikeModel>({numberOfLikes:999, like:false})
+    const [like, setLike] = useState<LikeModel>({ numberOfLikes: 999, like: false })
 
     const handleAddReadingList = () => {
         setAddReadingList(!addReadingList)
-        enqueueSnackbar(addReadingList ? containTexts.REMOVED_FROM_READING_LIST : containTexts.ADDED_TO_READING_LIST)
+        enqueueSnackbar(addReadingList ? constantsText.REMOVED_FROM_READING_LIST : constantsText.ADDED_TO_READING_LIST)
     }
 
     const handleLike = () => {
@@ -35,20 +36,17 @@ const ArticleCard: React.FC<Props> = ({ article }: Props) => {
     return (
         <div className='article-card'>
             <CardUserInfo userInfo={{ firstName: article.firstName, lastName: article.lastName, username: article.username, profilePhotoUrl: article.profilePhotoUrl }} />
-            <Link style={{ color: 'black' }} to={`${containUrls.ARTICLE}/${article.id}`}>
+            <Link className='article-card-article-container' style={{ color: 'black' }} to={`${constantsUrl.ARTICLE}/${article.id}`}>
                 <img alt={article.title} className='article-card-thumbnail-image' src={article.thumbnailUrl} />
                 <h4 className='article-card-article-title'>{article.title}</h4>
                 <div className='article-card-article-text'>{selectCharacterHelper(article.text, 120)}</div>
             </Link>
             <div className='article-card-operations-icons'>
-                <button onClick={handleLike} className='article-card-button'> {like.like? <FavoriteIcon style={{color:'red'}} /> : <FavoriteBorderOutlinedIcon />} {numberRounder(like.numberOfLikes)}</button>
-                <button onClick={handleAddReadingList} className='article-card-button' style={{ color: '#ab1bc4' }}>{addReadingList ? <BookmarkOutlinedIcon /> : <BookmarkBorderOutlinedIcon />}</button>
-                <Link to={`${containUrls.ARTICLE}/${article.id}`}> <div className='article-card-read-more'>{containTexts.READ_MORE}</div>  </Link>
+                <RequireAuthButton errorMessage={constantsText.YOU_MUST_BE_LOGGED_IN_TO_LIKE_ARTICLES} onClick={handleLike} className='article-card-button'> {like.like ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderOutlinedIcon />} {numberRounder(like.numberOfLikes)}</RequireAuthButton>
+                <RequireAuthButton errorMessage={constantsText.YOU_MUST_BE_LOGGED_IN_TO_ADD_ARTICLES_TO_READING_LIST} onClick={handleAddReadingList} className='article-card-button' >{addReadingList ? <BookmarkOutlinedIcon style={{ color: '#ab1bc4' }} /> : <BookmarkBorderOutlinedIcon style={{ color: '#ab1bc4' }} />}</RequireAuthButton>
+                <Link to={`${constantsUrl.ARTICLE}/${article.id}`}> <div className='article-card-read-more'>{constantsText.READ_MORE}</div>  </Link>
             </div>
-
-
         </div>
-
     )
 }
 

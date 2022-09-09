@@ -149,33 +149,34 @@
         left: 43%;
         width: 45%;
     }
+
     .navi-notification-icon {
         display: none;
     }
 }
+
 @media only screen and (max-width: 330px) {
     .brand-name-for-navi {
         left: 40px;
         font-size: 10px;
     }
-   
 
-    
+
+
 
 }
 
 @media only screen and (max-width: 311px) {
 
-    .navi-avatar{
+    .navi-avatar {
         display: none;
     }
-    .navi-input{
+
+    .navi-input {
         width: 55%;
     }
 
 
 }
 
-@media only screen and (max-width: 251px) {
-   
-}
+@media only screen and (max-width: 251px) {}

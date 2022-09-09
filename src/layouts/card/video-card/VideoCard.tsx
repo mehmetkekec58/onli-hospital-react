@@ -7,7 +7,8 @@ import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import { Link } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
-import { containTexts } from '../../../contains/containTexts';
+import { constantsText } from '../../../constants/constantsText';
+import RequireAuthButton from '../../../utilities/Auth/RequireAuthButton';
 interface Props {
     video: VideoModel
 }
@@ -19,7 +20,7 @@ const VideoCard: React.FC<Props> = ({ video }: Props) => {
 
     const handleAddPlaylist = () => {
         setAddPlaylist(!addPlaylist)
-        enqueueSnackbar(addPlaylist ? containTexts.ADDED_TO_PLAYLIST : containTexts.REMOVED_FROM_PLAYLIST)
+        enqueueSnackbar(addPlaylist ? constantsText.ADDED_TO_PLAYLIST : constantsText.REMOVED_FROM_PLAYLIST)
     }
 
     return (
@@ -30,7 +31,7 @@ const VideoCard: React.FC<Props> = ({ video }: Props) => {
                 <h4 className='video-card-article-title'>{video.title}</h4>
             </Link>
             <div className='video-card-operations-icons'>
-                <button onClick={handleAddPlaylist} className='video-card-playlist-icon'> {addPlaylist ? <PlaylistAddCheckIcon /> : <PlaylistAddIcon />}</button>
+                <RequireAuthButton errorMessage={constantsText.YOU_MUST_BE_LOGGED_IN_TO_ADD_THE_VIDEO_TO_YOUR_PLAYLIST} onClick={handleAddPlaylist} className='video-card-playlist-icon'> {addPlaylist ? <PlaylistAddCheckIcon /> : <PlaylistAddIcon />}</RequireAuthButton>
             </div>
         </div>
     )

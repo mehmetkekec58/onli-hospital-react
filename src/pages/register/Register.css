@@ -1,5 +1,4 @@
 .register-container {
-    height: 100%;
     padding: 5px 1px;
     display: flex;
     position: relative;
@@ -12,10 +11,12 @@
 
 .register-form {
     width: 80%;
-    height: 90%;
+    height: 500px;
+    position: absolute;
     background-color: rgba(233, 226, 47, 0.4);
     border-radius: 15px;
     display: flex;
+    top: 60px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -95,7 +96,7 @@
     display: flex;
     position: absolute;
     font-size: 28px;
-    top: 50px;
+    top: 10px;
     font-weight: bolder;
 }
 

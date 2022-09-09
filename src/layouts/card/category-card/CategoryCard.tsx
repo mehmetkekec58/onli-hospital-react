@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { containUrls } from '../../../contains/containUrls'
+import { constantsUrl } from '../../../constants/constantsUrl'
 import CategoryModel from '../../../models/categoryModel'
 import "./CategoryCard.css"
 
@@ -12,7 +12,7 @@ const CategoryCard:React.FC<Props> = ({category}:Props) => {
   const navigate = useNavigate()
 
   const handleGoCategoryPage = (id:number) =>{
-    navigate(containUrls.CATEGORY+"/"+id)
+    navigate(`${constantsUrl.CATEGORY}/${id}`)
   }
   return (
     <div onClick={() =>handleGoCategoryPage(category.id)} className='category-card'>

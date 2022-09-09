@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { containUrls } from "../../contains/containUrls";
+import { constantsUrl } from "../../constants/constantsUrl";
 import useAuth from "../../hooks/useAuth"
 
 function NotAuth({ children }: { children: JSX.Element }) {
@@ -7,7 +7,7 @@ function NotAuth({ children }: { children: JSX.Element }) {
     if (!auth.isAuth) {
         return children
     } else {
-        return <Navigate to={containUrls.HOME_PAGE} />
+        return <Navigate to={constantsUrl.HOME_PAGE} />
     }
 }
 export default NotAuth

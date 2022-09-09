@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { containTexts } from '../../contains/containTexts'
-import { containUrls } from '../../contains/containUrls'
+import { constantsText } from '../../constants/constantsText'
+import { constantsUrl } from '../../constants/constantsUrl'
 import Input from '../input/Input'
 import "./NotFoundPage.css"
 
@@ -29,8 +29,8 @@ const NotFoundPage = () => {
     return (
         <div className='not-found-page-container'>
             {searchSVG()}
-            <div className="not-found-page-text">{containTexts.NOTE_FOUND_PAGE_TEXT} (404)</div>
-            <Link to={containUrls.HOME_PAGE}>{containTexts.GO_HOME_PAGE}</Link>
+            <div className="not-found-page-text">{constantsText.NOTE_FOUND_PAGE_TEXT} (404)</div>
+            <Link to={constantsUrl.HOME_PAGE}>{constantsText.GO_HOME_PAGE}</Link>
 
         </div>
     )

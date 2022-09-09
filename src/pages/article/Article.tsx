@@ -8,7 +8,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import './Article.css';
-import { containTexts } from '../../contains/containTexts';
+import { constantsText } from '../../constants/constantsText';
 import useWindowSize from '../../hooks/useWindowSize';
 import GeneralRecommendedList from '../../utilities/components/general-recommended-list/GeneralRecommendedList';
 import { useSelector } from 'react-redux';
@@ -16,6 +16,9 @@ import State from '../../store/state';
 import { useSnackbar } from 'notistack';
 import { LikeModel } from '../../models/likeModel';
 import { numberRounder } from '../../helpers/numberRounder';
+import RequireAuthButton from '../../utilities/Auth/RequireAuthButton';
+import Tooltip from '@mui/material/Tooltip/Tooltip';
+import ReportProblemOutlinedIcon from '@mui/icons-material/ReportProblemOutlined';
 
 const article: ArticleModel =
 {
@@ -128,7 +131,7 @@ const Article = () => {
   const { enqueueSnackbar } = useSnackbar();
   const handleAddReadingList = () => {
     setAddReadingList(!addReadingList)
-    enqueueSnackbar(addReadingList ? containTexts.REMOVED_FROM_READING_LIST : containTexts.ADDED_TO_READING_LIST)
+    enqueueSnackbar(addReadingList ? constantsText.REMOVED_FROM_READING_LIST : constantsText.ADDED_TO_READING_LIST)
   }
 
   const handleLike = () => {
@@ -156,9 +159,14 @@ const Article = () => {
         </div>
         {width && width >= 1283 && <div className="article-grid-item2"><GeneralRecommendedList items={articles} /></div>}
         <div className="article-buttons-container">
-          <button onClick={handleLike} className='article-like-button article-general-button'>{like.like ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderOutlinedIcon  />} {containTexts.LIKE} ({numberRounder(like.numberOfLikes)})</button>
-          <button onClick={handleAddReadingList} className='article-general-button'>{addReadingList ? <BookmarkOutlinedIcon style={{ color: '#7c14a8' }} />: <BookmarkBorderOutlinedIcon style={{ color: '#7c14a8' }}/> }{containTexts.READING_LIST}</button>
-          <button className='article-general-button'><ShareOutlinedIcon style={{ color: 'blue' }} /> {containTexts.SHARE}</button>
+          <RequireAuthButton title={constantsText.LIKE} errorMessage={constantsText.YOU_MUST_BE_LOGGED_IN_TO_LIKE_ARTICLES} onClick={handleLike} className='article-like-button article-general-button'>{like.like ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderOutlinedIcon />} {numberRounder(like.numberOfLikes)}</RequireAuthButton>
+          <RequireAuthButton title={constantsText.READING_LIST} errorMessage={constantsText.YOU_MUST_BE_LOGGED_IN_TO_ADD_ARTICLES_TO_READING_LIST} onClick={handleAddReadingList} className='article-general-button'>{addReadingList ? <BookmarkOutlinedIcon style={{ color: '#7c14a8' }} /> : <BookmarkBorderOutlinedIcon style={{ color: '#7c14a8' }} />}</RequireAuthButton>
+          <Tooltip title={constantsText.SHARE} placement="right">
+          <button className='article-general-button'><ShareOutlinedIcon style={{ color: 'blue' }} /> </button>
+          </Tooltip>
+          <Tooltip title={constantsText.REPORT} placement="right">
+          <button className='article-general-button'><ReportProblemOutlinedIcon style={{ color: 'brown' }} /> </button>
+          </Tooltip>
         </div>
         {(width !== undefined && width <= 606) && <GeneralRecommendedList items={articles} />}
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { containTexts } from '../../contains/containTexts'
+import { constantsText } from '../../constants/constantsText'
 import CategoryModel from '../../models/categoryModel'
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -7,7 +7,6 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
-import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import OndemandVideoOutlinedIcon from '@mui/icons-material/OndemandVideoOutlined';
 import GridListCard from '../../layouts/grid-list/grid-list-card/GridListCard';
 import ArticleModel from '../../models/articleModel';
@@ -186,9 +185,9 @@ function tabs(value: string, handleChange: (event: React.SyntheticEvent, newValu
           <Box sx={{ borderBottom: 1, borderColor: 'divider', justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
             <TabList variant='fullWidth' textColor="secondary"
               indicatorColor="secondary" onChange={handleChange} >
-              <Tab icon={<ArticleOutlinedIcon />} sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} iconPosition="start" label={containTexts.ARTICLES} value="1" />
-              <Tab icon={<PersonIcon />} sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} iconPosition="start" label={containTexts.DOCTORS} value="2" />
-              <Tab icon={<OndemandVideoOutlinedIcon />} sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} iconPosition="start" label={containTexts.VIDEOS} value="3" />
+              <Tab icon={<ArticleOutlinedIcon />} sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} iconPosition="start" label={constantsText.ARTICLES} value="1" />
+              <Tab icon={<PersonIcon />} sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} iconPosition="start" label={constantsText.DOCTORS} value="2" />
+              <Tab icon={<OndemandVideoOutlinedIcon />} sx={{ ...(widthSmallerThen227(width) && { fontSize: '8px' }) }} iconPosition="start" label={constantsText.VIDEOS} value="3" />
             </TabList>
           </Box>
           <TabPanel value="1"> <GridListCard articles={articles} /></TabPanel>
@@ -228,8 +227,8 @@ const handleFollow =  ()  =>{
         <img src={category.thumbnailUrl} alt={category.name} className="category-photo-image" />
         <div className="category-info-name-and-follow-button-continer">
           <div className="category-info-category-name">{category.name}</div>
-          <div className="category-info-follower-count">{numberRounder(followers)} {containTexts.FOLLOWER}</div>
-          <RequireAuthButton onClick={handleFollow} errorMessage="Kategoriyi takip etmek için giriş yapınız" className={follow ? "category-button-general category-unfollow-button" : "category-button-general"}>{follow ? containTexts.UNFOLLOW : containTexts.FOLLOW}</RequireAuthButton>
+          <div className="category-info-follower-count">{numberRounder(followers)} {constantsText.FOLLOWER}</div>
+          <RequireAuthButton onClick={handleFollow} errorMessage={constantsText.YOU_MUST_BE_LOGGED_IN_TO_FOLLOW_THE_CATEGORY} className={follow ? "category-button-general category-unfollow-button" : "category-button-general"}>{follow ? constantsText.UNFOLLOW : constantsText.FOLLOW}</RequireAuthButton>
         </div>
       </div>
       {tabs(value, handleChange, width)}

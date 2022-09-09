@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import { containTexts } from '../../contains/containTexts';
+import { constantsText } from '../../constants/constantsText';
 import useWindowSize from '../../hooks/useWindowSize';
 import VideoModel from '../../models/videoModel';
 import ArticleAndVideoUserInfo from '../../utilities/components/article-and-video-user-info/ArticleAndVideoUserInfo';
 import Tag from '../../utilities/components/tag/Tag';
 import VideoPlayer from '../../utilities/components/video-player/VideoPlayer';
-import BookmarkBorderOutlinedIcon from '@mui/icons-material/BookmarkBorderOutlined';
-import BookmarkOutlinedIcon from '@mui/icons-material/BookmarkOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -18,6 +16,9 @@ import { useSelector } from 'react-redux';
 import State from '../../store/state';
 import { LikeModel } from '../../models/likeModel';
 import { useSnackbar } from 'notistack';
+import RequireAuthButton from '../../utilities/Auth/RequireAuthButton';
+import Tooltip from '@mui/material/Tooltip/Tooltip';
+import ReportProblemOutlinedIcon from '@mui/icons-material/ReportProblemOutlined';
 
 const video: VideoModel = {
   id: 0,
@@ -164,7 +165,7 @@ const Video = () => {
 
   const handleAddPlaylist = () => {
     setAddPlaylist(!addPlaylist)
-    enqueueSnackbar(addPlaylist ? containTexts.ADDED_TO_PLAYLIST : containTexts.REMOVED_FROM_PLAYLIST)
+    enqueueSnackbar(addPlaylist ? constantsText.REMOVED_FROM_PLAYLIST : constantsText.ADDED_TO_PLAYLIST)
   }
 
   const handleLike = () => {
@@ -195,9 +196,14 @@ const Video = () => {
           </div>
           {width !== undefined && width >= 1283 && <div className="video-grid-item2"><GeneralRecommendedList items={videos} /></div>}
           <div className="video-buttons-container">
-            <button onClick={handleLike} className='video-like-button video-general-button'>{like.like ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderOutlinedIcon />} {containTexts.LIKE} ({like.numberOfLikes})</button>
-            <button onClick={handleAddPlaylist} className='video-general-button'>{addPlaylist ? (<PlaylistAddCheckIcon />) : <PlaylistAddIcon />} {containTexts.PLAYLIST}</button>
-            <button className='video-general-button'><ShareOutlinedIcon style={{ color: 'blue' }} /> {containTexts.SHARE}</button>
+            <RequireAuthButton title={constantsText.LIKE} errorMessage={constantsText.YOU_MUST_BE_LOGGED_IN_TO_LIKE_VIDEOS} onClick={handleLike} className='video-like-button video-general-button'>{like.like ? <FavoriteIcon style={{ color: 'red' }} /> : <FavoriteBorderOutlinedIcon />} {like.numberOfLikes}</RequireAuthButton>
+            <RequireAuthButton title={constantsText.PLAYLIST} errorMessage={constantsText.YOU_MUST_BE_LOGGED_IN_TO_ADD_THE_VIDEO_TO_YOUR_PLAYLIST} onClick={handleAddPlaylist} className='video-general-button'>{addPlaylist ? (<PlaylistAddCheckIcon />) : <PlaylistAddIcon />} </RequireAuthButton>
+            <Tooltip title={constantsText.SHARE} placement="right">
+            <button className='video-general-button'><ShareOutlinedIcon style={{ color: 'blue' }} /></button>
+            </Tooltip>
+            <Tooltip title={constantsText.REPORT} placement="right">
+            <button className='video-general-button'><ReportProblemOutlinedIcon style={{ color: 'brown' }} /></button>
+            </Tooltip>
           </div>
           {(width !== undefined && width <= 606) && <GeneralRecommendedList items={videos} />}
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { containTexts } from "../../contains/containTexts";
+import { constantsText } from "../../constants/constantsText";
 import "./Payment.css";
 
 const Payment = () => {
@@ -9,13 +9,13 @@ const Payment = () => {
   return (
     <div className="payment-container">
       <div className="payment-your-earning-container">
-        <div className="payment-your-earning-text">{containTexts.EARNING}</div>
-        <div className="payment-amount-of-money">{credit} {containTexts.CREDIT} = {credit * creditValue}$</div>
-        <div className="payment-threshold">{containTexts.PAYMENT_THRESHOLD} {paymentThreshold}$</div>
+        <div className="payment-your-earning-text">{constantsText.EARNING}</div>
+        <div className="payment-amount-of-money">{credit} {constantsText.CREDIT} = {credit * creditValue}$</div>
+        <div className="payment-threshold">{constantsText.PAYMENT_THRESHOLD} {paymentThreshold}$</div>
       </div>
       <div className="payment-button-container">
-        <button className="payment-payment-button">{containTexts.PREVIOUS_PAYMENTS}</button>
-        <button className="payment-payment-button">{containTexts.PAYMENT_SETTINGS}</button>
+        <button className="payment-payment-button">{constantsText.PREVIOUS_PAYMENTS}</button>
+        <button className="payment-payment-button">{constantsText.PAYMENT_SETTINGS}</button>
       </div>
     </div>
   );

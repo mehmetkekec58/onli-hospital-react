@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import "./Input.css"
 import SearchIcon from '@mui/icons-material/Search';
-import { containTexts } from '../../contains/containTexts';
+import { constantsText } from '../../constants/constantsText';
 import { useNavigate } from 'react-router-dom';
 import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
@@ -10,11 +10,11 @@ import { bindActionCreators } from 'redux';
 import { useSelector } from 'react-redux';
 import State from "../../store/state";
 import searchHistoryEdit from '../../store/actions/searchHistoryActionCreater';
-import { containUrls } from '../../contains/containUrls';
+import { constantsUrl } from '../../constants/constantsUrl';
 import { getHistorySearch, setSearcHistoryToLocalStorage } from '../../services/searchHistoryService';
 import { arrayUnique } from '../../helpers/arrayUnique';
 
-const CONTAIN_SEARCH_URL: string = `${containUrls.SEARCH}?q=`;
+const CONTAIN_SEARCH_URL: string = `${constantsUrl.SEARCH}?q=`;
 const ENTER: string = "Enter";
 const ARROW_UP:string = "ArrowUp";
 const ARROW_DOWN:string = "ArrowDown";
@@ -181,7 +181,7 @@ const Input = () => {
 
     return (
         <div className='search-input-form'>
-            <input ref={inputRef} onBlur={handleActiveOrPassiveSearchItems} onFocus={handleActiveOrPassiveSearchItems} value={inputText} onChange={(e) => setInputText(e.target.value)} className="search-input" placeholder={containTexts.SEARCH} type="text" onKeyDown={handleKeyDown} />
+            <input ref={inputRef} onBlur={handleActiveOrPassiveSearchItems} onFocus={handleActiveOrPassiveSearchItems} value={inputText} onChange={(e) => setInputText(e.target.value)} className="search-input" placeholder={constantsText.SEARCH} type="text" onKeyDown={handleKeyDown} />
             {inputOnFocus && searchItemCount() !== 0 &&
                 (<div className='search-input-recommended'>
                     {searchListItems.map((word, index) => (

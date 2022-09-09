@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { deleteLocalStorage } from '../../services/localStorageService';
 import searchHistoryEdit from '../../store/actions/searchHistoryActionCreater';
-import { containLocalStorageKey } from '../../contains/containLocalStorageKey';
+import { constantsLocalStorageKey } from '../../constants/constantsLocalStorageKey';
 import "./Settings.css";
 
 const Settings = () => {
@@ -14,7 +14,7 @@ const Settings = () => {
 
   const handleSearchHistoryClear = () => {
     addSearchHistoryState([])
-    deleteLocalStorage(containLocalStorageKey.SEARCH_HISTORY)
+    deleteLocalStorage(constantsLocalStorageKey.SEARCH_HISTORY)
   }
   return (
     <div className='settings-container'>

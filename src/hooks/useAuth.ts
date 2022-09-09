@@ -1,5 +1,5 @@
-import { containUrls } from '../contains/containUrls';
-import { containTexts } from '../contains/containTexts';
+import { constantsUrl } from '../constants/constantsUrl';
+import { constantsText } from '../constants/constantsText';
 import { getRolesService } from "../services/rolesService";
 import AuthType from "./hookTypes/authType";
 import { getToken, tokenValidation } from '../services/tokenService';
@@ -14,7 +14,7 @@ function checkRoles(roles: string[], getRoles?: string[]): AuthType {
             }
         }
     }
-    return { isAuth: false, redirectUrl: containUrls.HOME_PAGE };
+    return { isAuth: false, redirectUrl: constantsUrl.HOME_PAGE };
 }
 
 export default function useAuth(roles?: string[]): AuthType {
@@ -33,6 +33,6 @@ export default function useAuth(roles?: string[]): AuthType {
         }
 
     } else {
-        return { isAuth: false, redirectUrl: containUrls.LOGIN, alertDialog: { message: containTexts.MUST_BE_LOGGED_IN_TO_VIEW_THIS_PAGE, title: containTexts.LOGIN } };
+        return { isAuth: false, redirectUrl: constantsUrl.LOGIN, alertDialog: { message: constantsText.MUST_BE_LOGGED_IN_TO_VIEW_THIS_PAGE, title: constantsText.LOGIN } };
     }
 }

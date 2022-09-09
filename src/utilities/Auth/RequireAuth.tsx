@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { containTexts } from "../../contains/containTexts";
-import { containUrls } from "../../contains/containUrls";
+import { constantsText } from "../../constants/constantsText";
+import { constantsUrl } from "../../constants/constantsUrl";
 import AlertDialog from "../components/alert-dialog/AlertDialog";
 import useAuth from "../../hooks/useAuth";
 import AuthType from "../../hooks/hookTypes/authType";
@@ -20,14 +20,14 @@ export default function RequireAuth({ children, roles }: { children: JSX.Element
 
   function createAlertDialog(authType: AuthType) {
     if (authType.alertDialog !== undefined) {
-      return AlertDialog(authType.alertDialog.title ? authType.alertDialog.title : containTexts.WARNING, authType.alertDialog.message ? authType.alertDialog.message : containTexts.OPERATION_FAILED, containTexts.OK, open, handleClose);
+      return AlertDialog(authType.alertDialog.title ? authType.alertDialog.title : constantsText.WARNING, authType.alertDialog.message ? authType.alertDialog.message : constantsText.OPERATION_FAILED, constantsText.OK, open, handleClose);
     } else {
-      return <Navigate to={authType.redirectUrl ? authType.redirectUrl : containUrls.HOME_PAGE} />;
+      return <Navigate to={authType.redirectUrl ? authType.redirectUrl : constantsUrl.HOME_PAGE} />;
     }
   }
 
   function redirectNavigate(url: string | undefined) {
-    navigate(url ? url : containUrls.HOME_PAGE)
+    navigate(url ? url : constantsUrl.HOME_PAGE)
   }
 
   if (!auth.isAuth) {

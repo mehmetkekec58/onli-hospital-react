@@ -1,8 +1,8 @@
-import { containLocalStorageKey } from "../contains/containLocalStorageKey";
+import { constantsLocalStorageKey } from "../constants/constantsLocalStorageKey";
 import { typeofString } from "../helpers/typeofString";
 import { deleteLocalStorage, getLocalStorage, setLocalStorage } from "./localStorageService";
 
-const SEARCH_HISTORY_LOCAL_STORAGE_KEY: string = containLocalStorageKey.SEARCH_HISTORY;
+const SEARCH_HISTORY_LOCAL_STORAGE_KEY: string = constantsLocalStorageKey.SEARCH_HISTORY;
 
 export function setSearcHistoryToLocalStorage(items: string[]) {
     setLocalStorage(SEARCH_HISTORY_LOCAL_STORAGE_KEY, items)

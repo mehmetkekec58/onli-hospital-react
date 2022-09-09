@@ -1,7 +1,7 @@
-import { containLocalStorageKey } from './../contains/containLocalStorageKey';
+import { constantsLocalStorageKey } from '../constants/constantsLocalStorageKey';
 import { deleteLocalStorage, getLocalStorage, setLocalStorage } from "./localStorageService";
 
-const tokenKey = containLocalStorageKey.TOKEN
+const tokenKey = constantsLocalStorageKey.TOKEN
 
 export function getToken(): string | undefined | null {
     return getLocalStorage(tokenKey)

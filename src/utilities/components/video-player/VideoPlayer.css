@@ -3,6 +3,7 @@
     height: 350px;
     background-color: black;
     object-fit: cover;
+    border-radius: 15px;
 }
 
 @media only screen and (max-width: 650px) {

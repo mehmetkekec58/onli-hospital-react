@@ -1,0 +1,14 @@
+.history-container{
+    height: calc(100vh - 70px);
+    padding: 7px 15px;
+    font-family: 'Open Sans';
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+}
+.history-text{
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 5px;
+}

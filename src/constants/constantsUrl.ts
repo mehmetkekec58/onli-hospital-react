@@ -1,4 +1,4 @@
-export const containUrls = {
+export const constantsUrl = {
     LOGIN:"/login",
     REGISTER:"/register",
     HOME_PAGE:"/",
@@ -23,7 +23,7 @@ export const containUrls = {
     ANALYTICS:"/analytics",
     LOGOUT:"/logout",
     POST:"/post",
-    ADMIN_PANEL:"adminpanel",
+    ADMIN_PANEL:"/adminpanel",
     QUESTIONS:"/questions",
     SUBSCRIPTIONS:"/subscriptions",
 }

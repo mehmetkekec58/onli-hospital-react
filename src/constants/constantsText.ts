@@ -1,4 +1,4 @@
-export const containTexts = {
+export const constantsText = {
     BRAND_NAME:"Onli Hospital",
 
     SEARCH:"Ara",
@@ -111,5 +111,17 @@ export const containTexts = {
     PAYMENT_SETTINGS:"Ödeme ayarları",
     PREVIOUS_PAYMENTS:"Daha önce yapılan ödemeler",
 
-    PLEASE_LOGIN:"Lütfen giriş yapınız"
+    PLEASE_LOGIN:"Lütfen giriş yapınız",
+    YOU_MUST_BE_LOGGED_IN_TO_FOLLOW_DOCTORS:"Doktorları takip edebilmek için giriş yapmalısın",
+    YOU_MUST_BE_LOGGED_IN_TO_LIKE_ARTICLES:"Yazıları beğenebilmek için giriş yapmalısın",
+    YOU_MUST_BE_LOGGED_IN_TO_ADD_ARTICLES_TO_READING_LIST:"Yazıları okuma listene ekleyebilmek için giriş yapmalısın",
+    YOU_MUST_BE_LOGGED_IN_TO_LOAD_CREDITS:"Kredi yükleyebilmek için giriş yapmalısın",
+    YOU_MUST_BE_LOGGED_IN_TO_ADD_THE_VIDEO_TO_YOUR_PLAYLIST:"Videoyu oynatma listene ekleyebilmek için giriş yapmalısın",
+    YOU_MUST_BE_LOGGED_IN_TO_FOLLOW_THE_CATEGORY:"Kategoriyi takip edebilmek için giriş yapmalısınız",
+    YOU_MUST_BE_LOGGED_IN_TO_LIKE_VIDEOS:"Videoları beğenebilmek için giriş yapmalısın",
+    YOU_MUST_BE_LOGGED_IN_TO_ASK_QUESTIONS_TO_DOCTORS:"Doktorlara soru sorabilmek için giriş yapmalısın",
+    YOU_MUST_BE_LOGGED_IN_TO_LIKE_POSTS:"Gönderileri beğenebilmek için giriş yapmalısın",
+    REPORT:"Bildir",
+
+    DELETE:"Sil",
 };
